@@ -1,0 +1,612 @@
+\documentclass[a4j]{ltjsarticle}
+\usepackage{bookmark}
+
+% 数式
+\usepackage{luatexja}
+\usepackage{amsmath,amsfonts,amssymb,ascmac}
+\usepackage{bm}
+\usepackage{url}
+\usepackage{xurl}
+\usepackage{mathtools}
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usetikzlibrary{cd}
+\setcounter{tocdepth}{2}
+\newcommand{\Rset}{\mathbb{R}}
+\newcommand{\Nset}{\mathbb{N}}
+\newcommand{\Zset}{\mathbb{Z}}
+\newcommand{\Qset}{\mathbb{Q}}
+\newcommand{\Cset}{\mathbb{C}}
+\newcommand{\opensub}{\underset{\text{open}}{\subset}}
+\newcommand{\closedsub}{\underset{\text{closed}}{\subset}}
+\newcommand{\transpose}[1]{\prescript{t\!}{}{#1}}
+\mathtoolsset{showonlyrefs=true}
+\numberwithin{equation}{section}
+\usepackage{physics}
+% 画像
+\usepackage{graphicx}
+
+% 定理環境
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{thm}{定理}
+\newtheorem{cor}[thm]{系}
+\newtheorem{dfn}[thm]{定義}
+\newtheorem{prop}[thm]{命題}
+\newtheorem{lem}[thm]{補題}
+\newtheorem{rmk}[thm]{注意}
+\newtheorem{eg}[thm]{例}
+\newtheorem{prob}[thm]{問題}
+
+\begin{document}
+
+\title{東工大院試}
+\author{un cinglé}
+\date{\today}
+\maketitle
+\begin{abstract}
+    問題は
+    \begin{quote}
+        \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/innsi.html}
+    \end{quote}
+    を見よ．
+\end{abstract}
+\tableofcontents
+
+\newpage 
+
+\section{午前}
+\subsection{2012年度}
+問題は
+\begin{quote}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/H24innsi.pdf}
+\end{quote}
+を見よ．
+\subsubsection*{[1]}
+簡単すぎるため省略．
+\subsubsection*{[2]}
+(1)\ $a>0$を任意に固定する(今は$a=1$でよい)．$n\in\Nset_0$に対して$x_n$を，$[an,a(n+1)]$における$f$の最小化元とする．すなわち
+\begin{equation}
+    an\leq x_n\leq a(n+1)\quad \text{and}\quad f(x_n)=\min_{[an,a(n+1)]}f 
+\end{equation}
+となる$(x_n)_{n\in\Nset_{0}}$を取る.今
+\begin{equation}
+    \sum_{n=0}^\infty \int_{an}^{a(n+1)}f(x)\,dx=\int_{0}^\infty f(x)\,dx<\infty 
+\end{equation}
+なので，とくに
+\begin{equation}
+    f(x_n)\leq \frac{1}{a}\int_{an}^{a(n+1)}f(x)\,dx\to 0\quad (\text{as $n\to\infty $})
+\end{equation}
+であるから$f(x_n)\to0\ (n\to\infty)$となる．$x_n\to\infty\ (n\to\infty)$であることはよい．
+
+(2)\ $f(x)=x/(1+x^6\sin^2 x)$は$(\ast)$を満たすが有界ですらない．
+
+(3)\ $\varepsilon>0$を任意に取る．$f$は一様連続であるから，$\delta>0$があり，任意の$x,y\in[0,\infty)$に対して次が成り立つ：
+\begin{equation}
+    \abs{x-y}\leq \delta\Longrightarrow \abs{f(x)-f(y)}<\varepsilon/2
+\end{equation}
+ここで，(1)の解答において$a=\delta$としたときの$\qty{x_n}_{n\in\Nset_0}$を取る．$f(x_n)\to 0\ (n\to\infty)$であるから，十分大きな$N\in\Nset$があり，任意の$n\geq N$に対して$f(x_n)<\varepsilon/2$となる．したがって，任意の$x\geq N\delta$に対して$n=\lfloor x/\delta\rfloor $を$x/\delta$の整数部分とすると
+\begin{equation}
+    f(x)\leq f(x_n)+\abs{f(x)-f(x_n)}<\varepsilon/2+\varepsilon/2=\varepsilon
+\end{equation}
+を得る($x\in [\delta n,\delta(n+1)]$より$\abs{x-x_n}\leq \delta$に注意せよ)．
+\subsubsection*{[3]}
+(1)\ $\emptyset,\ X\in\mathcal{O}$であることはよい．
+
+$A,B\in \mathcal{O}$だとする．もし$A\subset \Nset$または$B\subset \Nset$ならば$A\cap B\subset \Nset$より$A\cap B\in\mathcal{O}$である．一方，もし$X-A$と$X-B$が$\Nset$の有限部分集合ならば，$X-(A\cap B)=(X-A)\cup(X-B)$もそうである．よって$A\cap B\in \mathcal{O}$．以上よりいずれの場合も$A\cap B\in\mathcal{O}$は成り立つ．
+
+$\qty{A_\lambda}_{\lambda\in\Lambda}$を$\mathcal{O}$の元の族とする．もし任意の$\lambda\in\Lambda$に対して$A_\lambda\subset \Nset$ならば，$\bigcup_{\lambda\in\Lambda}A_\lambda\subset \Nset$より$\bigcup_{\lambda\in\Lambda}A_\lambda\in \mathcal{O}$である．一方，ある$\lambda_0\in\Lambda$について$X-A_{\lambda_0}$が$\Nset$の有限部分集合ならば，$X-\bigcup_{\lambda\in\Lambda}A_\lambda\subset X-A_{\lambda_0}$もそうである．よってこの場合も$\bigcup_{\lambda\in\Lambda}A_\lambda\in\mathcal{O}$が示された．
+
+(2)\ $x,y\in X$を相異なる元とする．このとき最初から$x<y$と仮定してもよい．もし$0=x<y$ならば$A=X-\qty{y},\ B=\qty{y}$が$x$と$y$を分離する開集合たちである．もし$0<x<y$ならば$A=\qty{x},\ B=\qty{y}$でよい．
+
+次に$C,D\subset X$は閉集合で$C\cap D=\emptyset$だとする．このとき，$C\subset \qty{0}$であるか，$C$は$\Nset$の有限部分集合である．$D$についても同様である．もし$C\subset \qty{0}$ならば，$D\subset \Nset$かつ$D$は有限集合だとしてよい．このときは$A=X-D,\ B=D$が$C,D$を分離する．一方，もし$C,D\subset \Nset$らが有限部分集合ならば，$A=C,\ B=D$とおけばよい．
+
+(3)\ 答えははい．$\qty{A_\lambda}_{\lambda\in\Lambda}$を$X$の開被覆だとせよ．このとき$\lambda_0\in\Lambda$で$0\in A_{\lambda_0}$となるものが存在する．ここで$X-A_{\lambda_0}$は$\Nset$の有限部分集合であることに注意する．各$x\in X-A_{\lambda_0}$に対して$\lambda_x\in\Lambda$があり$x\in A_{\lambda_x}$となるので，これら$\qty{A_{\lambda_x}}_{x\in \qty{0}\cup (X-A_{\lambda_0})}$が有限部分開被覆を与える．
+
+(4)\ 丁寧な誘導をありがとう．$f\colon X\to Y$を$f(0)=0,\ f(n)=1/n\ (n\in\Nset)$により定める．$f$は連続であることを示すが，それには$\Rset$の開区間$I=(a,b)$について$f^{-1}(I\cap Y)\in\mathcal{O}$であることを示せばよい．もし$0<a<b$ならば$f^{-1}(I\cap Y)=\qty{n\in\Nset \mid 1/b<n<1/a}\in\mathcal{O}$である．一方，$a\leq 0<b$ならば$f^{-1}(I\cap Y)=\qty{0}\cup \qty{n\in\Nset\mid n>1/b}\in\mathcal{O}$となる．
+
+$f$はコンパクト空間からHausdorff空間への連続全単射であるから同相である．
+\subsection{2013年度}
+問題は
+\begin{quote}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/H25innsi.pdf}
+\end{quote}
+を見よ．
+\subsubsection*{[1]}答えは$\pi^2/8a$．極座標に変換する．つまり
+\begin{equation}
+    x=r\sin\theta\cos\varphi,\quad y=r\sin\theta\cos\varphi,\quad z=r\cos\theta\ ;\quad (r,\theta,\varphi)\in [0,\infty)\times [0,\pi/2]\times [0,\pi/2]
+\end{equation}
+とおく．すると
+\begin{align}
+    \iiint_{D}\frac{dxdydz}{(a^2+x^2+y^2+z^2)^2}&=\int_0^\infty\,dr \int_0^{\pi/2}\,d\theta\int_0^{\pi/2}\,d\varphi\,\frac{r^2\sin\theta}{(a^2+r^2)^2}\\
+    &=\frac{\pi}{2}\int_{0}^\infty\frac{r^2}{(a^2+r^2)^2}\,dr\\
+    &=\frac{\pi}{2}\int_{0}^{\pi/2}\frac{a^2\tan^2 x}{a^4(1+\tan^2x)^2}\frac{a}{\cos^2 x}\,dx\qquad(\text{put $r=a\tan x$})\\
+    &=\frac{\pi}{2a}\int_{0}^{\pi/2}\sin^2 x\,dx\\
+    &=\frac{\pi}{2a}\qty[\frac{x}{2}-\frac{\sin 2x}{4}]_0^{\pi/2}\\
+    &=\frac{\pi^2}{8a}
+\end{align}
+と計算される．
+\subsubsection*{[2]}
+(1) 
+\begin{equation}
+    \min_{I}f\leq \mu_1\coloneq \frac{1}{2a}\int_{-a}^a f(x)\,dx \leq \max_{I}f
+\end{equation}
+であるから，中間値の定理より$f(b)=\mu_1$となる$b\in I$が存在する．
+
+(2) 
+\begin{equation}
+    \min_I f=\qty(\frac{3}{2a^3}\min_I f)\int_{-a}^ax^2\,dx\leq \mu_2\coloneq \frac{3}{2a^3}\int_{-a}^a x^2f(x)\,dx\leq \qty(\frac{3}{2a^3}\max_I f)\int_{-a}^ax^2\,dx=\max_I f
+\end{equation}
+であるから，以下同文．
+
+(3) 部分積分より
+\begin{align}
+    \mu_3&\coloneq \frac{3}{2a^3}\int_{-a}^a xf(x)\,dx\\
+    &=\frac{3(f(a)-f(-a))}{4a}-\frac{3}{4a^3}\int_{-a}^ax^2f'(x)\,dx\\
+    &=\frac{3}{4a}\int_{-a}^af'(x)\,dx -\frac{3}{4a^3}\int_{-a}^ax^2f'(x)\,dx\\
+    &=\frac{3}{4a^3}\int_{-a}^a (a^2-x^2)f'(x)\,dx 
+\end{align}
+であり，したがって
+\begin{equation}
+    \min_{I}f'=\qty(\min_I f')\frac{3}{4a^3}\int_{-a}^a(a^2-x^2)\,dx\leq \mu_3\leq \qty(\max_I f')\frac{3}{4a^3}\int_{-a}^a(a^2-x^2)\,dx=\max_I f'
+\end{equation}
+であるから，以下同文．
+\subsubsection*{[3]}
+(1)\ $(\varphi(\bm{0}),\varphi(\bm{0}))=(\bm{0},\bm{0})=0$より$\varphi(\bm{0})=\bm{0}$を得る．
+
+(2)\ $\bm{x},\bm{y}\in \Rset^n,\ a,b\in\Rset $とする．このとき$\varphi(a\bm{x}+b\bm{y})=a\varphi(\bm{x})+b\varphi(\bm{y})$を示せばよいが，内積の双線形性を用いて分解し，さらにわちゃわちゃすると
+\begin{align}
+    &(\varphi(a\bm{x}+b\bm{y})-a\varphi(\bm{x})-b\varphi(\bm{y}),\varphi(a\bm{x}+b\bm{y})-a\varphi(\bm{x})-b\varphi(\bm{y}))\\
+    &=(\varphi(a\bm{x}+b\bm{y}),\varphi(a\bm{x}+b\bm{y}))-a(\varphi(a\bm{x}+b\bm{y}),\varphi(\bm{x}))-b(\varphi(a\bm{x}+b\bm{y}),\varphi(\bm{y}))\\
+    &\quad -a(\varphi(\bm{x}),\varphi(a\bm{x}+b\bm{y}))+a^2(\varphi(\bm{x}),\varphi(\bm{x}))+ab(\varphi(\bm{x}),\varphi(\bm{y}))\\
+    &\quad -b(\varphi(\bm{y}),\varphi(a\bm{x}+b\bm{y}))+ab(\varphi(\bm{y}),\varphi(\bm{x}))+b^2(\varphi(\bm{y}),\varphi(\bm{y}))\\
+    &=(a\bm{x}+b\bm{y},a\bm{x}+b\bm{y})-a(a\bm{x}+b\bm{y},\bm{x})-b(a\bm{x}+b\bm{y},\bm{y})\\
+    &\quad -a(\bm{x},a\bm{x}+b\bm{y})+a^2(\bm{x},\bm{x})+ab(\bm{x},\bm{y})\\
+    &\quad -b(\bm{y},a\bm{x}+b\bm{y})+ab(\bm{y},\bm{x})+b^2(\bm{y},\bm{y})\\
+    &=0
+\end{align}
+となることから従う．
+
+(3)\ $\bm{e}_1,\ldots,\bm{e}_n$を$\Rset^n$の標準基底とする．$\varphi\colon \Rset^n\to \Rset^n$は線形写像だから行列$A=\begin{bmatrix}
+    \varphi(\bm{e}_1) & \cdots & \varphi(\bm{e}_n)
+\end{bmatrix}$により$\varphi(\bm{x})=A\bm{x}$と表される．仮定より$\varphi(\bm{e}_1),\ldots,\varphi(\bm{e}_n)$は$\Rset^n$の正規直交系を与えており，したがって$A$は直交行列である．
+
+\subsubsection*{[4]}
+(1)\ 略．
+
+(2)\ 行列$\begin{bmatrix}
+    \mathbf{a} & \mathbf{b} & \mathbf{c} & \mathbf{d}
+\end{bmatrix}$を基本変形してなんやかんややると$X+Y;\ X\cap Y$の基底としてそれぞれ$\mathbf{a},\mathbf{b},\mathbf{c};\ \mathbf{a}-\mathbf{b}$が取れることがわかる．
+
+\subsubsection*{[5]}
+(1)\ $(X,d)$は，$n=1$のとき不連結，$n\geq2$のとき連結．
+
+(2)\ $(X,d)$の有界閉集合$B=\qty{\bm{p}\in X\mid \abs{\bm p}\leq 1}$はコンパクトではない．実際，
+\begin{equation}
+    B_n=\qty{\bm{p}\in X\mid  1/n< \abs{\bm{p}}}
+\end{equation}
+で定まる$A$の開被覆$\qty{B_n}_{n\in\Nset}$は，有限部分被覆を持たない．
+
+(3)\ はい．$X$は完備距離空間$\Rset \times S^{n-1}$に同相である．ここで$S^{n-1}$は$\Rset^n$内の単位$(n-1)$-球面．実際に
+\begin{equation}
+    X\ni \bm{p}\mapsto(\log \abs{p},\ p/\abs{p})\in \Rset\times S^{n-1}
+\end{equation}
+が同相写像である．
+\paragraph*{余談}ある完備距離空間と同相となるような位相空間をポーランド空間という．例えば，ポーランド空間の$G_\delta$集合はポーランド空間であることが知られている．とくに無理数全体の集合に$\Rset$の相対位相を入れるとポーランド空間になる．
+\subsection{2014年度}
+問題は
+\begin{quote}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/H26innsi.pdf}
+\end{quote}
+を見よ．
+\subsubsection*{[1]}
+答えは$\pi/12$．円柱座標
+\begin{equation}
+    x=r\cos\theta,\quad y=r\sin\theta,\quad \zeta=z\ ;\quad (r,\theta,\zeta)\in [0,\infty)\times [0,\pi/2]\times [0,\infty)
+\end{equation}
+を用いよ．
+\subsubsection*{[2]}
+(1)\ 答えは$p\leq 3$で，$p<3$のとき$f(x)=0$；$p=3$のとき$f(x)=\begin{cases}
+    0 & (\text{if $x=0$})\\
+    x^{-2} & (\text{if $0<x\leq 1$})
+\end{cases}$である．
+
+(2)\ 答えは$p<1$．$p=3$のときは明らかに$f_n$は一様収束しない(連続関数の一様収束極限が連続であることを思い出せばよい)．そこで$p<3$だとしよう．
+\begin{equation}
+    f'_n(x)=\frac{n^p(1-2n^3x^3)}{(1+n^3x^3)^2}
+\end{equation}
+であり，増減を考えると$f_n(x)$は$x=2^{-1/3}n^{-1}$で最大値をとることがわかる．よって
+\begin{equation}
+    \sup_{[0,1]}\abs{f_n}=f_n(2^{-1/3}n^{-1})=\frac{2^{2/3}\cdot n^{p-1}}{3}
+\end{equation}
+である．よって$f_n$が一様に$f=0$に収束するのは$p<1$のときに限る．
+
+(3)\ 答えは$p\leq 2$．変数変換$y=nx$により
+\begin{equation}
+    \int_0^1f_n(x)\,dx=n^{p-2}\int_0^n\frac{y}{1+y^3}\,dy
+\end{equation}
+だが，
+\begin{equation}
+    I_n\coloneq \int_0^n\frac{y}{1+y^3}\,dy\leq \int_0^1y\,dy+\int_1^n\frac{1}{y^2}\,dy\leq \frac{3}{2}-\frac{1}{n}\leq \frac{3}{2}<\infty 
+\end{equation}
+は収束するので$n^{p-2} I_n$は$p\leq 2$のときに限って収束する．
+\subsubsection*{[3]}
+(1)\ 例えば
+\begin{equation}
+    E_1=\begin{bmatrix}
+        1 & 0\\
+        0 & 0
+    \end{bmatrix},\quad E_2=\begin{bmatrix}
+        0 & 1\\
+        0 & 0
+    \end{bmatrix},\quad E_3=\begin{bmatrix}
+        0 & 0\\
+        1 & 0
+    \end{bmatrix},\quad E_4=\begin{bmatrix}
+        0 & 0\\
+        0 & 1
+    \end{bmatrix}
+\end{equation}
+
+(2)\ $(a+d)^2$．
+
+(3)\ $16$．
+
+\subsubsection*{[4]}
+(1)\ $F$はスケール不変である．つまり$F(k\bm{x})=F(\bm{x})\ (\forall k\in\Rset\setminus\qty{0},\ \bm{x}\in \Rset^3\setminus\qty{\bm{0}})$．とくに$F(\bm{x})=F(\bm{x}/\abs{\bm{x}})$．
+
+(2)\ $F$の連続性より，$F$の$S^2$への制限は最大値・最小値を持つが，(1)よりこれらは$\Rset^3\setminus\qty{\bm{0}}$全域における$F$の最大値・最小値を与える．
+
+(3)\ 仮定より$\bm{a}$と$\bm{b}$は一次独立．よって$\det P=\det\begin{bmatrix}
+    \bm{a} & \bm{b} & \bm{a}\times \bm{b}
+\end{bmatrix}=\abs{\bm{a}\times \bm{b}}^2\neq0$なので$P$は正則である．さて，$\bm{a},\bm{b}$が$A$の固有ベクトルであることを示そう．$\bm{a},\bm{b}$はそれぞれ，拘束条件$\abs{\bm{x}}^2=1$のもとでの
+\begin{equation}
+    \langle A\bm{x},\bm{x}\rangle =\sum_{i,j}a_{ij}x_ix_j 
+\end{equation}
+の最大化・最小化元である．ここで$A=(a_{ij})_{i,j},\ \bm{x}=\transpose{(x_1,x_2,x_3)}$とおいた．Lagrangeの未定乗数法より，$\bm{x}=\bm{a},\bm{b}$に対して
+\begin{equation}
+    \sum_{j}a_{ij}x_j-2\lambda x_i=0\quad (\text{for $i=1,2,3$})
+\end{equation}
+が成り立つ．ここで$\lambda$は未定定数を表す．これは$\bm{a},\bm{b}$が$A$の固有ベクトルであることを示している．最後に$\bm{c}$が$A$の固有ベクトルであることを示す．$A$は対称行列であり，$\bm{a}$は$A$の固有ベクトルなので固有値を$\lambda$として
+\begin{equation}
+    \langle A\bm{c},\bm{a}\rangle = \langle \bm{c},A\bm{a}\rangle = \lambda \langle \bm{c},\bm{a}\rangle =0
+\end{equation}
+が成り立つ．同様に$\langle A\bm{c},\bm{b}\rangle=0$が成り立つので，$A\bm{c}$は$\bm{a},\bm{b}$に直交するベクトルである．よって$A\bm{c}$は$\bm{a}\times \bm{b}=\bm{c}$の定数倍になるしかない．
+
+以上より$\bm{a},\bm{b},\bm{c}$が$A$の固有ベクトルからなる$\Rset^3$の基底をなすことが示された．
+
+\subsubsection*{[5]}
+(1)\ はい．$a,b\in\Rset,\ a\neq b$とする．最初から$a<b$としてよい．このとき$[a,b)$と$[b,b+1)$は$a$と$b$を分離する開集合である．
+
+(2)\ いいえ．$U\coloneq(-\infty,0)=\bigcup_{n\geq0}[-n,0)\in\mathcal{O}$および$V\coloneq [0,\infty)=\bigcup_{n\geq0}[0,n)\in\mathcal{O}$は空でなく，$U\cup V=\Rset,\ U\cap V=\emptyset$．
+
+(3)\ いいえ．$[0,1]=\bigcup_{n\in\Nset}[0,1-1/2n)\cup [1,2)$は有限部分被覆を持たない．
+\subsection{2015年度}
+問題は
+\begin{quote}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/H27innsi.pdf}
+\end{quote}
+を見よ．
+\subsubsection*{[1]}
+(1)\ 答えは$\alpha<-1$．極座標に変換すると
+\begin{equation}
+    2\pi\int_0^\infty (1+r^2)^\alpha r\,dr 
+\end{equation}
+の収束・発散を見ればよい．
+
+(2)\ $M=\sup_{n}\abs{a_n}<\infty$とおく．$\varepsilon>0$とせよ．$\lim_{n}a_n=a$より，十分大きい$N\in\Nset$があり，任意の$n\geq N$に対して$\abs{a-a_n}\leq \varepsilon$が成り立つ．よって$n\geq N$ならば
+\begin{equation}
+    \abs{a-\frac{a_1+\cdots+a_n}{n}}\leq \frac{\abs{a-a_1}+\cdots+\abs{a-a_n}}{n}\leq \frac{N(\abs{a}+M)}{n}+\frac{(n-N)\varepsilon}{n}
+\end{equation}
+よって
+\begin{equation}
+    \limsup_{n}\abs{a-\frac{a_1+\cdots+a_n}{n}}\leq \limsup_{n}\qty(\frac{N(\abs{a}+M)}{n}+\frac{(n-N)\varepsilon}{n})=\varepsilon
+\end{equation}
+となる．$\varepsilon>0$は任意なので$\lim_{n}\frac{a_1+\cdots+a_n}{n}=a$を得る．
+\subsubsection*{[2]}
+(1)\ $1>0$に対して$M>0$があり，任意の$\abs{x}\geq M$に対して$\abs{f(x)}\leq 1$となる．よって
+\begin{equation}
+    \sup_{\Rset}\abs{f}\leq 1+\sup_{[-M,M]}\abs{f}<\infty 
+\end{equation}
+である．
+
+(2)\ $\varepsilon>0$とせよ．仮定より，$M>0$があり，任意の$\abs{x}\geq M$に対して$\abs{f(x)}\leq \varepsilon/3$となる．$f$は有界閉区間$[-M,M]$上一様連続であるから，$0<\delta<1$があり，任意の$x,y\in [-M,M]$に対して
+\begin{equation}
+    \abs{x-y}\leq \delta\Longrightarrow \abs{f(x)-f(y)}\leq \varepsilon/3 
+\end{equation}
+が成り立つ．$x,y\in\Rset$が$\abs{x-y}\leq \delta$を満たすと仮定しよう．
+\begin{itemize}
+    \item $x,y\in[-M,M]$ならば$\abs{f(x)-f(y)}\leq \varepsilon/2$である．
+    \item $x,y\notin [-M,M]$ならば$\abs{f(x)-f(y)}\leq \abs{f(x)}+\abs{f(y)}\leq \varepsilon$である．
+    \item $x>M$かつ$y\in [-M,M]$ならば，$\abs{y-M}\leq \abs{x-y}\leq \delta$より$\abs{f(x)-f(y)}\leq \abs{f(x)}+\abs{f(M)}+\abs{f(M)-f(y)}\leq \varepsilon$である．同様に$\abs{x}\geq M$もしくは$\abs{y}\geq M$の場合が示せる．
+\end{itemize}
+
+(3)\ $M=\sup_{\Rset}\abs{f}$とおく．$z=ny$と変数変換して
+\begin{equation}
+    f_n(x)=\int_{-\infty}^{\infty} f(x+z/n)g(z)\,dz 
+\end{equation}
+となる．
+\begin{align}
+    \abs{f(x)-f_n(x)}\leq \int_{-\infty}^\infty \abs{f(x)-f(x+z/n)}g(z)\,dz 
+\end{align}
+である．さて，$\varepsilon>0$とせよ．$f$は一様連続なので，$\delta>0$があり，任意の$x,y\in \Rset$に対して
+\begin{equation}
+    \abs{x-y}\leq \delta\Longrightarrow \abs{f(x)-f(y)}\leq \varepsilon 
+\end{equation}
+となる．よって$x\in\Rset$に対して
+\begin{align}
+    \abs{f(x)-f_n(x)}&\leq \int_{\abs{z}\leq n\delta}\abs{f(x)-f(x+z/n)}g(z)\,dz+\int_{\abs{z}\geq n\delta} \abs{f(x)-f(x+z/n)}g(z)\,dz\\
+    &\leq \varepsilon\int_{\Rset}g(z)\,dz+2M\int_{\abs{z}\geq n\delta}g(z)\,dz \\
+    &\leq \varepsilon+\int_{\abs{z}\geq n\delta}g(z)\,dz 
+\end{align}
+だが，今$\int_{\abs{z}\geq n\delta}g\,dz\to \infty \ (n\to\infty)$より 
+\begin{equation}
+    \limsup_{n}\sup_{x\in\Rset}\abs{f(x)-f_n(x)}\leq \varepsilon 
+\end{equation}
+となる．$\varepsilon>0$は任意なので$\sup_{x\in\Rset}\abs{f(x)-f_n(x)}\to0\ (n\to\infty)$を得る．
+\subsubsection*{[3]}
+固有多項式は$(\lambda-a-b)^2(\lambda-a+b)(\lambda+a-b)$．固有値$\lambda$に対する固有空間を$V_\lambda$と書くことにすると，
+\begin{equation}
+    V_{2a}=\left\langle\begin{bmatrix}
+        1 \\
+        0 \\
+        0 \\
+        1 
+    \end{bmatrix},\ \begin{bmatrix}
+        0 \\
+        1 \\
+        1 \\
+        0
+    \end{bmatrix}\right\rangle,\quad V_{0}=\left\langle\begin{bmatrix}
+        1 \\
+        0 \\
+        0 \\
+        -1 
+    \end{bmatrix},\ \begin{bmatrix}
+        0 \\
+        1 \\
+        -1 \\
+        0
+    \end{bmatrix}\right\rangle\quad (\text{if $a=b$})
+\end{equation}
+\begin{equation}
+    V_{a+b}=\left\langle\begin{bmatrix}
+        1 \\
+        0 \\
+        0 \\
+        1 
+    \end{bmatrix},\ \begin{bmatrix}
+        0 \\
+        1 \\
+        1 \\
+        0
+    \end{bmatrix}\right\rangle,\ V_{a-b}=\left\langle\begin{bmatrix}
+        1 \\
+        0 \\
+        0 \\
+        -1 
+    \end{bmatrix}\right\rangle,\ V_{-a+b}\left\langle\begin{bmatrix}
+        0 \\
+        1 \\
+        -1 \\
+        0
+    \end{bmatrix}\right\rangle\quad (\text{if $a\neq b$})
+\end{equation}
+
+最小多項式は
+\begin{equation}
+    (\lambda-2a)\lambda\quad (\text{if $a=b$})\quad ; \quad (\lambda-a-b)(\lambda-a+b)(\lambda+a-b) \quad (\text{if $a\neq b$})
+\end{equation}
+\subsubsection*{[4]}
+(1)\ $\ker(E_n-A)\subset \mathop{\text{Im}}(A)$より従う．(2)\ 等号成立は$\ker(E_n-A)\supset \mathop{\text{Im}}(A)$つまり$A-A^2=(E_n-A)A=0$と同値．
+\subsubsection*{[5]}
+(1)\ $\emptyset,\Rset^2\in\mathcal{O}$はよい．$U_\lambda,U,V\subset \Rset^2$を$\Rset$の開集合とせよ($\lambda\in\Lambda$)．このとき
+\begin{equation}
+    (U\times \Rset)\cap (V\times \Rset)=(U\cap V)\times \Rset,\quad \bigcup_{\lambda\in\Lambda}(U_\lambda\times \Rset)=\qty(\bigcup_{\lambda\in\Lambda}U_{\lambda})\times \Rset\in\mathcal{O}
+\end{equation}
+である．
+
+(2)\ いいえ．$(0,0),\ (0,1)\in\Rset^2$は開集合で分離できない．
+
+(3)\ コンパクトであるものは，$J\times J,\ I\times I$のみ．ほかはコンパクトでない．
+
+(4)\ $\mathop{\text{cl}}(I\times I)=J\times \Rset,\ \mathop{\text{cl}}(I\times J)=J\times \Rset,\ \mathop{\text{cl}}(J\times I)=J\times \Rset,\ \mathop{\text{cl}}(J\times J)=J\times \Rset$
+\subsection{2016年度}
+問題は
+\begin{quote}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/H28innsi.pdf}
+\end{quote}
+を見よ．
+\subsubsection*{[1]}
+(1)，(2)\ 略．
+
+(3)\ $X=(x_{ij})\in M_n(\Cset)$に対して
+\begin{equation}
+    D_A(X)=O\iff x_{11}=x_{33},\ x_{12}=x_{32},\ x_{13}=x_{31},\ x_{21}=x_{23}
+\end{equation}
+であることがわかる．よって$\dim \ker(D_A)=5$，次元定理より$\dim \Im(D_A)=4$．
+
+\subsubsection*{[2]}
+(1)\ $\Phi_n(\lambda)=A-\lambda$を$A$の固有多項式とすると，
+\begin{equation}
+    \Phi_1(\lambda)=1-\lambda,\ \Phi_2(\lambda)=\lambda^2-2\lambda\quad ;\quad \Phi_n(\lambda)=(1-\lambda)\Phi_{n-1}(\lambda)-\Phi_{n-2}(\lambda)\quad (n\geq3).
+\end{equation}
+を得る．よって
+\begin{equation}
+    \det A=\Phi_n(0)=\begin{cases}
+        1 & (\text{if }n\equiv 0,1\mod 6),\\
+        -1 & (\text{if }n\equiv 3,4\mod 6),\\
+        0  & (\text{if }n\equiv 2,5\mod 6).
+    \end{cases}
+\end{equation}
+
+(2)\ direct calculationより固有空間は
+\begin{equation}
+    \left\langle\transpose{(1,0,-1,0,\ldots,0,(-1)^{(n-1)/2})}\right\rangle.
+\end{equation}
+\subsubsection*{[3]}
+(1) 略．
+
+(2) $(-\infty,0)$はコンパクトでないが$(-\infty,0]$はコンパクトである．$(-\infty,0)$の開被覆$\qty{(-\infty,-1/n)\mid n\in\Nset}$は有限部分被覆を持たない．$\qty{U_\lambda}_{\lambda\in\Lambda}$を$(-\infty,0]$の$\mathcal{O}$-開被覆とせよ．$U_\lambda=(-\infty,a_\lambda)$とおく($U_\lambda=\emptyset$ならば$a_\lambda=-\infty$，$U_\lambda=\Rset$ならば$a_{\lambda}=\infty$と解釈せよ)．$0\in \bigcup_{\lambda\in\Lambda} U_{\lambda}$であるから，ある$\lambda_{0}\in\Lambda$に対して$0\in U_{\lambda_0}$である．$\qty{U_{\lambda_0}}$が有限部分被覆．
+
+(3) 答えははい．$(0,1)\cup(2,3)\subset U\cup V;\ U,V\in\mathcal{O};\ U\cap V\cap((0,1)\cup(2,3))=\emptyset$とせよ．このとき$U\subset V$または$U\supset V$が成り立つので，$U\cap((0,1)\cup(2,3))=\emptyset$または$V\cap ((0,1)\cup(2,3))=\emptyset$である．よって$(0,1)\cup(2,3)$は連結．
+
+(4) $f\colon(\Rset,\mathcal{O})\to(\Rset,\mathcal{O})$を連続写像とする．$x,x'\in\Rset$で$x\leq x',\ f(x)>f(x')$を満たすものがあったと仮定しよう．$f$の連続性より
+\begin{equation}
+    f^{-1}((-\infty,f(x)))=(-\infty,a),\quad a\in\Rset\cup\qty{\pm\infty}
+\end{equation}
+となる$a$がある．$f(x')<f(x)$より$x'<a$である．一方明らかに$x\geq a$である．よって$x'<x$となり矛盾．
+
+\subsubsection*{[4]}
+(1) 答えは$p+q>0$．$x\neq0$に対して$f_{p,q}(x)=\abs{x}^{p+q}\abs{\sin x/x}^q$であり，$\sin x/x\to 1\ (x\to0)$に注意するとわかる．
+
+(2) 答えは$p+q>1$．$x\neq0$に対して
+\begin{equation}
+    \frac{f_{p,q}(x)-f_{p,q}(0)}{x}=\frac{x}{\abs{x}}\abs{x}^{p+q-1}\abs{\frac{\sin x}{x}}^q
+\end{equation}
+が$x\to0$で有限確定値に収束する条件を考えればわかる．
+
+(3) 答えは$p+q>-1$．極座標に変換すると
+\begin{equation}
+    \iint_{D}f_{p,q}(\sqrt{x^2+y^2})\,dxdy =\frac{\pi}{2}\int_{0}^1r^{p+q+1}\abs{\frac{\sin r}{r}}^q\,dr
+\end{equation}
+で同様．$[0,1]$で$0<\exists m\leq \abs{\sin r/r}\leq 1$に注意せよ．
+
+\subsubsection*{[5]}
+(1) まず$f,g$は連続関数の一様収束極限として連続である．$\varepsilon>0$とせよ．次を満たす$\delta>0$がある：任意の$x\in\Rset$に対して
+\begin{equation}
+    \abs{a-x}\leq \delta\Longrightarrow \abs{f(a)-f(x)}\leq \varepsilon 
+\end{equation}
+$a_n\to a\ (n\to\infty)$より，$N\in\Nset$があり任意の$n\geq N$について$\abs{a-a_n}\leq \delta$かつ$\sup_{x\in\Rset}\abs{f(x)-f_{n}(x)}\leq \varepsilon$，よって
+\begin{equation}
+    \abs{f(a)-f_n(a_n)}\leq \abs{f(a)-f(a_n)}+\abs{f(a_n)-f_{n}(a_n)}\leq 2\varepsilon.
+\end{equation}
+
+(2) $\varepsilon>0$とせよ．$f\circ g$は$[0,1]$で一様連続であるから，次を満たす$\delta>0$がある：任意の$x,y\in[0,1],\ \abs{x-y}\leq\delta$に対して$\abs{f(g(x))-f(g(y))}\leq\varepsilon$．$g_n$が$g$に一様収束することから，ある$N\in\Nset$について，任意の$n\geq N$に対して$\sup_{x\in[0,1]}\abs{g(x)-g_n(x)}\leq \delta$，よって
+\begin{equation}
+    \sup_{x\in[0,1]}\abs{f(g(x))-f(g_n(x))}\leq \varepsilon 
+\end{equation}
+となる．
+
+(3)\ $\varepsilon>0$とせよ．(2)と，$f$は$f_n$に一様収束することから，$N\in\Nset$があり，任意の$n\geq N$に対して$\sup_{x\in[0,1]}\abs{f(g(x))-f(g_n(x))}\leq \varepsilon$かつ$\sup_{x\in[0,1]}\abs{f(x)-f_n(x)}\leq \varepsilon$．よって
+\begin{equation}
+    \sup_{x\in[0,1]}\abs{f(g(x))-f_n(g_n(x))}\leq \sup_{x\in[0,1]}\abs{f(g(x))-f(g_n(x))}+\sup_{x\in[0,1]}\abs{f(g_n(x))-f_n(g_n(x))}\leq 2\varepsilon.
+\end{equation}
+\subsection{2017年度}
+問題は
+\begin{quote}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/H29innsi.pdf}
+\end{quote}
+を見よ．
+\subsubsection*{[1]}
+(1) 略．
+
+(2) 結果だけ書く：
+\begin{equation}
+    P^{-1}AP=\begin{bmatrix}
+        1 & & \\
+         & 2 & \\
+         & & 3
+    \end{bmatrix},\quad \text{where}\quad P=\begin{bmatrix}
+        1 & 0 & 1 \\
+        0 & 1 & 0 \\
+        -1 & 0 & 1 
+    \end{bmatrix}
+\end{equation}
+
+(3) $C_{V}(A)=\qty{X\in V\mid XA=AX}=W$と書く．$C_{V}(P^{-1}AP)=P^{-1}WP\cong W$だが，$P^{-1}AP$は相異なる固有値を持つ対角行列であるから，$C_{V}(P^{-1}AP)$は対角行列全体．したがって$\dim W=3$．線形写像$\Rset[t]\to W,\quad f(t)\mapsto f(X)$を考察する．kernelは$A$の最小多項式$(t-1)(t-2)(t-3)$で生成されるイデアルである．準同型定理より
+\begin{equation}
+    \Rset^3 \cong \Rset[t]/((t-1)(t-2)(t-3))\cong \Rset[A]\subset W 
+\end{equation}
+である．$\dim W=3$だったので$W=\Rset[A]$を得る．
+\subsubsection*{[2]}
+$\Im(A^{n})\subset \Im(A^{n+1})$が示されれば，逆の包含は明らかなので結論が従う．部分空間の列
+\begin{equation}
+    \Im(A^{n+1})\subset \Im(A^{n})\subset \cdots\subset \Im(A^{2})\subset \Im(A)\subset \Im(A^0)=\Cset^n
+\end{equation}
+を考えると，$\dim \Cset^n=n$より，ある$k\in\qty{0,1,\ldots,n}$で$\Im(A^{k+1})=\Im(A^k)$となる．よって
+\begin{equation}
+    \Im(A^{n+1})=\Im(A^{n-k}\cdot A^{k+1})=\Im(A^{n-k}\cdot A^{k})=\Im(A^n)
+\end{equation}
+を得る．
+\subsubsection*{[3]}
+(1) 
+\begin{equation}
+    \mathcal{O}=\qty{U\subset \Rset\mid \forall x\in U\ \exists U(a,r)\in \mathcal{B}\ \text{s.t. }x\in U(a,r)\subset U}
+\end{equation} 
+が$\Rset$の位相であることが示されれば，$\mathcal{B}$がその開基であることは明らかである．省略．
+
+(2) 「$x\in U\in \mathcal{O}$ならば$-x\in U$」であることに注意する．すると$1,-1\in\Rset$は$\mathcal{O}$の開集合で分離できない．
+
+(3) $\mathcal{O}$は通常のEuclid位相$\mathcal{O}_{\Rset}$よりも弱い位相であることから従う．
+
+(4) $[0,1]$は$\mathcal{O}_{\Rset}$の位相でコンパクトであるから，$\mathcal{O}$でもコンパクトである．$-1\in \Rset\setminus[0,1]$だが$1\notin \Rset\setminus[0,1]$である．よって$\Rset\setminus[0,1]$は開集合ではない．
+\subsubsection*{[4]}
+非負値単調非増加数列$\qty{a_n}_{n}$について，
+\begin{equation}
+    \text{$\sum_{n}a_n$が収束する}\iff \text{$\sum_{n}2^n a_{2^n}$が収束する}
+\end{equation}
+であることに注意する．よって$\sum_{n\geq2}1/(n^p\log n)$が収束することは$\sum_{n}2^n\cdot 1/(2^{np}n)=\sum_{n}n^{-1}2^{(1-p)n}$が収束することと同値であり，d'Alembert's ratio testよりこれは$p>1$と同値．
+
+(2) 仮定より，十分大きな$N\in\Nset$があり，任意の$n,m\geq N$に対して$\sup_{x\in\Rset}\abs{f_m(x)-f_n(x)}\leq 1$となる．各$f_n$は多項式であるから，$n\geq N$に対して，$f_n$の次数は$n$によらない定数であり，$d\geq1$について，$f_n\ (n\geq N)$の$d$次の係数は$n$によらない．$f_n$がある$f$に一様収束するということから定数項はある実数に収束し，したがって$f$は多項式となる．
+
+\subsubsection*{[5]}
+(1)\ $\varepsilon>0$とする．仮定より，$\delta_1>0$があり
+\begin{equation}
+    \abs{f(x)-f(y)}\leq \varepsilon\quad (x,y\in [1-\delta_1,1))
+\end{equation}
+となる．$f$は有界閉区間$[0,1-\delta_1/2]$で一様連続であるから，ある$\delta_2>0$に対して
+\begin{equation}
+    \abs{f(x)-f(y)}\leq \varepsilon\quad (x,y\in [0,1-\delta_1/2],\ \abs{x-y}\leq \delta_2)
+\end{equation}
+となる．さて，$x,y\in[0,1),\ 0\leq y-x\leq \min\qty{\delta_1/2,\delta_2}$とする．もし$x\in [0,1-\delta_1]$ならば$y\in[0,1-\delta_1/2]$であるから$\abs{x-y}\leq \delta_2$とあわせて$\abs{f(x)-f(y)}\leq\varepsilon$である．$x\in [1-\delta_1,1)$ならば$y\in[1-\delta_1,1)$でもあるから$\abs{f(x)-f(y)}\leq\varepsilon$である．
+
+(2) $\limsup_{x\to 1-0}f(x)>t>s>\liminf_{x\to1-0}f(x)$となる$s,t$を取る．すると，任意の$x\in[0,1)$に対して，$y,z\in(x,1)$があり，$f(y)<s<t<f(z)$となる．よって$f(z)-f(y)>t-s>0$．これは$f$が一様連続ではないことを示している．
+
+(3)
+\subsection{2018年度}
+問題は
+\begin{quote}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/H30innsi.pdf}
+\end{quote}
+を見よ．
+\subsection{2019年度}
+問題は
+\begin{quote}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/H31innsi.pdf}
+\end{quote}
+を見よ．
+\subsection{2020年度}
+問題は
+\begin{quote}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/2020innsi.pdf}
+\end{quote}
+を見よ．
+\subsection{2021年度}
+問題は
+\begin{quote}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/2021innsi.pdf}
+\end{quote}
+を見よ．
+\subsection{2022年度}
+問題は
+\begin{quote}
+    \url{}
+\end{quote}
+を見よ．
+\subsection{2023年度}
+問題は
+\begin{quote}
+    \url{}
+\end{quote}
+を見よ．
+\subsection{2024年度}
+問題は
+\begin{quote}
+    \url{}
+\end{quote}
+を見よ．
+
+
+\end{document}
