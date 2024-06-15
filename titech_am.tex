@@ -547,7 +547,7 @@ $\Im(A^{n})\subset \Im(A^{n+1})$が示されれば，逆の包含は明らかな
 \begin{equation}
     \text{$\sum_{n}a_n$が収束する}\iff \text{$\sum_{n}2^n a_{2^n}$が収束する}
 \end{equation}
-であることに注意する．よって$\sum_{n\geq2}1/(n^p\log n)$が収束することは$\sum_{n}2^n\cdot 1/(2^{np}n)=\sum_{n}n^{-1}2^{(1-p)n}$が収束することと同値であり，d'Alembert's ratio testよりこれは$p>1$と同値．
+であることに注意する．よって$\sum_{n\geq2}1/(n^p\log n)$が収束することは$\sum_{n}2^n\cdot 1/(2^{np}n)=\sum_{n}n^{-1}2^{(1-p)n}$が収束することと同値であり，これは$\sum_{n}2^n\cdot 2^{-n}2^{(1-p)2^{n}}=\sum_{n}2^{(1-p)2^n}$が収束することと同値でこれは$p>1$と同値．
 
 (2) 仮定より，十分大きな$N\in\Nset$があり，任意の$n,m\geq N$に対して$\sup_{x\in\Rset}\abs{f_m(x)-f_n(x)}\leq 1$となる．各$f_n$は多項式であるから，$n\geq N$に対して，$f_n$の次数は$n$によらない定数であり，$d\geq1$について，$f_n\ (n\geq N)$の$d$次の係数は$n$によらない．$f_n$がある$f$に一様収束するということから定数項はある実数に収束し，したがって$f$は多項式となる．
 
@@ -564,19 +564,84 @@ $\Im(A^{n})\subset \Im(A^{n+1})$が示されれば，逆の包含は明らかな
 
 (2) $\limsup_{x\to 1-0}f(x)>t>s>\liminf_{x\to1-0}f(x)$となる$s,t$を取る．すると，任意の$x\in[0,1)$に対して，$y,z\in(x,1)$があり，$f(y)<s<t<f(z)$となる．よって$f(z)-f(y)>t-s>0$．これは$f$が一様連続ではないことを示している．
 
-(3)
+(3) 仮定より$(1-t)^\alpha f'(t)$は$[0,1]$上の連続関数に一意に拡張され，とくに有界である．$M=\sup_{t\in [0,1)}(1-t)^\alpha \abs{f'(t)}<\infty$とおく．$x,y\in [0,1)$に対して
+\begin{align}
+    \abs{f(x)-f(y)}=\abs{\int_{x}^{y} (1-t)^{-\alpha}(1-t)^\alpha f'(t)\,dt}\leq M\abs{\int_{x}^{y}(1-t)^{-\alpha}\,dt}=\frac{M}{1-\alpha}\abs{(1-x)^{1-\alpha}-(1-y)^{1-\alpha}} 
+\end{align}
+より一様連続性が従う．
 \subsection{2018年度}
 問題は
 \begin{quote}
     \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/H30innsi.pdf}
 \end{quote}
 を見よ．
+\subsubsection*{[1]}
+(1) 略．(2) $T(x^3)=3x^3+3x^2y,\ T(x^2y)=x^3+3x^2y+2xy^2,\ T(xy^2)=2xy^2+3xy^2+y^3,\ T(y^3)=3xy^2+3y^3$より$T$の行列表示は
+\begin{equation}
+    A=\begin{bmatrix}
+        3 & 1 & 0 & 0 \\
+        3 & 3 & 2 & 0 \\
+        0 & 2 & 3 & 3 \\
+        0 & 0 & 1 & 3 
+    \end{bmatrix}
+\end{equation}
+である．固有多項式を頑張って計算すると
+\begin{equation}
+    \det(\lambda - T)=\lambda(\lambda-2)(\lambda-4)(\lambda-6)
+\end{equation}
+であり，各$\lambda\in\qty{0,2,4,6}$に対応する固有空間$V_{\lambda}$は
+\begin{equation}
+    V_{0}=\langle(x-y)^3\rangle,\quad V_{2}=\langle (x+y)(x-y)^2\rangle,\quad V_{4}=\langle (x+y)^2(x-y)\rangle,\quad V_{6}=\langle(x+y)^3\rangle
+\end{equation}
+よって$V=V_{0}\oplus V_{2}\oplus V_{4}\oplus V_{6}$の基底が得られた．
+\subsubsection*{[2]}
+(1) $\ker f$の補空間$W_{0}$を取る．つまり$V=\ker f\oplus W_{0}$である．$W_{0}$は$r$次元で$f|_{W_{0}}$は単射($W_{0}\cap \ker f=0$である)．
+
+(2) $W_{0}$の基底$w_1,\ldots,w_r$を取る．与えられた$x\in\Rset^n$を$x=v+w\ (v\in\ker f,\ w\in W_{0})$と分解せよ．このとき$W'=\langle v+w_1,\ldots,v+w_r\rangle$とおくと$v\in W'$，よって$x\in W_{0}+W'$である．$W'\in S$であることも簡単にわかる．
+\subsubsection*{[3]}
+(1) 略．(2) $(0,0)$と$(1,0)$が開集合で分離できない．(3) 易しい．(4) $\mathcal{O}$から定まる位相の開集合系は
+\begin{equation}
+    \qty{C\subset X\mid (0,0)\in C}\cup \mathcal{P}(\qty{(1,0),(-1,0),(0,1),(0,-1)})
+\end{equation}
+であることに注意する．$Q\subset X$が可算ならば$Q\subset \qty{(0,0)}$は$Q$を含む閉集合であるから$\overline{Q}\cup Q\cup \qty{(0,0)}$．$X$は非可算集合なので$\overline{Q}=X$とはなり得ない．
+
+\subsubsection*{[4]}
+(1) $\varepsilon>0$とせよ．仮定より$K>0$があり，
+\begin{equation}
+    \abs{\alpha-f(x)}<\varepsilon \quad (\forall x\geq K)
+\end{equation}
+となる．またこのことから$f$は有界なので$M\coloneq \sup_{[0,\infty)}\abs{f}$とおく($\varepsilon=1$としたときの$K$を$K_1$としたとき，$f$は有界閉区間$[0,K_1]$で連続なので，$\sup_{[0,\infty)}\abs{f}\leq \sup_{[0,K_1]}\abs{f}+1+\abs{\alpha}<\infty$)．
+\begin{equation}
+    \abs{\alpha-g(t)}\leq \abs{\frac{1}{t}\int_{0}^t (\alpha-g(t))\,dx}\leq \frac{1}{t}\qty{\int_{0}^K \abs{\alpha-f(x)}\,dx+\int_{K}^t\abs{\alpha-f(x)}\,dx}\leq \frac{(\abs{\alpha}+M)K}{t}+\frac{\varepsilon(t-K)}{t}
+\end{equation}
+そこで$t\to\infty$とすれば
+\begin{equation}
+    \limsup_{t\to\infty}\abs{\alpha-g(t)}\leq \varepsilon 
+\end{equation}
+$\varepsilon$は任意なので$\limsup_{t\to\infty}\abs{\alpha-g(t)}=0$を得る．
+
+\subsubsection*{[5]}
+$(x+y)/2$まわりのTaylor展開を考える．
+\begin{align}
+    f(x)&=f\qty(\frac{x+y}{2})+\frac{x-y}{2}f\qty(\frac{x+y}{2})+\frac{(x-y)^2}{8}f''\qty(\frac{x+y}{2})+\int^{x}_{\frac{x+y}{2}}dt\int^{t}_{\frac{x+y}{2}}ds\qty(f''(s)-f''\qty(\frac{x+y}{2})),\\
+    f(y)&=f\qty(\frac{x+y}{2})+\frac{y-x}{2}f\qty(\frac{x+y}{2})+\frac{(y-x)^2}{8}f''\qty(\frac{x+y}{2})+\int^{y}_{\frac{x+y}{2}}dt\int^{t}_{\frac{x+y}{2}}ds\qty(f''(s)-f''\qty(\frac{x+y}{2}))
+\end{align}
+である．辺々足して
+\begin{equation}
+    f(x)-2f\qty(\frac{x+y}{2})+f(y)=\frac{(x-y)^2}{4}f''\qty(\frac{x+y}{2})+\qty(\int^{x}_{\frac{x+y}{2}}dt\int^{t}_{\frac{x+y}{2}}ds+\int^{y}_{\frac{x+y}{2}}dt\int^{t}_{\frac{x+y}{2}}ds)\qty(f''(s)-f''\qty(\frac{x+y}{2}))
+\end{equation}
+を得る．両辺を$(x-y)^2/4$で割って$x,y\to a$とすれば結論が得られる．具体的には次のようにする：任意の$\varepsilon>0$に対して$\delta>0$があり，$\abs{s-a}\leq \delta$に対して$\abs{f''(x)-f''(s)}< \varepsilon$となる．そこで$a-\delta<x<a<y<a+\delta$ならば，
+\begin{equation}
+    \abs{\int^{x}_{\frac{x+y}{2}}dt\int^{t}_{\frac{x+y}{2}}ds\qty(f''(s)-f''\qty(\frac{x+y}{2}))}\leq 2\varepsilon\cdot \int^{x}_{\frac{x+y}{2}}dt\int^{t}_{\frac{x+y}{2}}ds=\frac{(x-y)^2\varepsilon}{2}
+\end{equation}
+など．
 \subsection{2019年度}
 問題は
 \begin{quote}
     \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/H31innsi.pdf}
 \end{quote}
 を見よ．
+
 \subsection{2020年度}
 問題は
 \begin{quote}
@@ -589,6 +654,44 @@ $\Im(A^{n})\subset \Im(A^{n+1})$が示されれば，逆の包含は明らかな
     \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/2021innsi.pdf}
 \end{quote}
 を見よ．
+\subsubsection*{[1]}
+(1) $D=D_1$は
+\begin{equation}
+    D(e^x)=e^x,\quad D(xe^x)=e^x+xe^x,\quad e^{2x}=2e^{2x} 
+\end{equation}
+を満たすので，$D,\ D_n=D^n$の行列表示は
+\begin{equation}
+    D=\begin{bmatrix}
+        1 & 1 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 2 
+    \end{bmatrix},\quad D_n=\begin{bmatrix}
+        1 & n & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 2^n  
+    \end{bmatrix}\quad (n\geq0)
+\end{equation}
+である．$\qty{D_i}_{0\leq i\leq 2}$が一次独立であることを示そう：$a_i\in\Rset,\ a_0D_0+a_1D_1+a_2D_2=0$は
+\begin{equation}
+    a_0+a_1+a_2=a_1+2a_2=a_0+2a_1+4a_2=0 
+\end{equation}
+と同値でこれは$a_0=a_1=a_2=0$と同値．
+
+(2) $n\geq 3$に対して
+\begin{equation}
+    D_n=(2^n-2n)D_0+(-2^{n+1}+3n+2)D_1+(2^n-n-1)D_2 
+\end{equation}
+であるから$\qty{D_i}_{0\leq i\leq 2}$が
+$\mathop{\mathrm{span}}\qty{D_n\mid n\geq0}$の基底を与える．
+
+(3)\ 普通に
+\begin{equation}
+    f(x)=\qty(\frac{1}{2}-\frac{n}{4})e^x+\frac{1}{2}xe^x+\frac{1}{1+2^n}e^{2x}
+\end{equation}
+\subsubsection*{[2]}
+(1) $A_n=\qty{n,n+1,n+2,\ldots}$．(2) 閉集合の族$\qty{A_{\lambda}}_{\lambda\in\Lambda}$が($\ast$)を満たすことは，開集合たち$U_\lambda=X\setminus A_\lambda$が「$\emptyset\neq F\subset \Lambda$が有限ならば$\bigcup_{\lambda\in F}U_{\lambda}\neq X$．かつ$\bigcup_{\lambda\in\Lambda}U_{\lambda}=X$．」このことから明らか．(3) $X$をコンパクト空間，$Y\subset X$をその閉集合とする．$Y$の任意の閉集合の族は$\qty{A_{\lambda}\cap Y}_{\lambda\in\Lambda},\ A_{\lambda}$は$X$の閉集合という形をしている．今$Y$は$X$の閉集合より$A_{\lambda}\cap Y$もそう．よって$Y$の閉集合族は($\ast$)を満たし得ない．
+\subsubsection*{[3]}
+(1) $(a,b)=(2,0)$．(2) $(a,b)=(4,0)$．(3) $(a,b)=(3,0)$．
 \subsection{2022年度}
 問題は
 \begin{quote}
