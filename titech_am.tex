@@ -21,6 +21,8 @@
 \newcommand{\opensub}{\underset{\text{open}}{\subset}}
 \newcommand{\closedsub}{\underset{\text{closed}}{\subset}}
 \newcommand{\transpose}[1]{\prescript{t\!}{}{#1}}
+\DeclareMathOperator*{\interior}{\mathrm{Int}}
+\DeclareMathOperator*{\closure}{\mathrm{Cl}}
 \mathtoolsset{showonlyrefs=true}
 \numberwithin{equation}{section}
 \usepackage{physics}
@@ -565,9 +567,9 @@ $\Im(A^{n})\subset \Im(A^{n+1})$が示されれば，逆の包含は明らかな
 (2) $\limsup_{x\to 1-0}f(x)>t>s>\liminf_{x\to1-0}f(x)$となる$s,t$を取る．すると，任意の$x\in[0,1)$に対して，$y,z\in(x,1)$があり，$f(y)<s<t<f(z)$となる．よって$f(z)-f(y)>t-s>0$．これは$f$が一様連続ではないことを示している．
 
 (3) 仮定より$(1-t)^\alpha f'(t)$は$[0,1]$上の連続関数に一意に拡張され，とくに有界である．$M=\sup_{t\in [0,1)}(1-t)^\alpha \abs{f'(t)}<\infty$とおく．$x,y\in [0,1)$に対して
-\begin{align}
+\begin{equation}
     \abs{f(x)-f(y)}=\abs{\int_{x}^{y} (1-t)^{-\alpha}(1-t)^\alpha f'(t)\,dt}\leq M\abs{\int_{x}^{y}(1-t)^{-\alpha}\,dt}=\frac{M}{1-\alpha}\abs{(1-x)^{1-\alpha}-(1-y)^{1-\alpha}} 
-\end{align}
+\end{equation}
 より一様連続性が従う．
 \subsection{2018年度}
 問題は
@@ -599,11 +601,11 @@ $\Im(A^{n})\subset \Im(A^{n+1})$が示されれば，逆の包含は明らかな
 
 (2) $W_{0}$の基底$w_1,\ldots,w_r$を取る．与えられた$x\in\Rset^n$を$x=v+w\ (v\in\ker f,\ w\in W_{0})$と分解せよ．このとき$W'=\langle v+w_1,\ldots,v+w_r\rangle$とおくと$v\in W'$，よって$x\in W_{0}+W'$である．$W'\in S$であることも簡単にわかる．
 \subsubsection*{[3]}
-(1) 略．(2) $(0,0)$と$(1,0)$が開集合で分離できない．(3) 易しい．(4) $\mathcal{O}$から定まる位相の開集合系は
+(1) 略．(2) $(0,0)$と$(1,0)$が開集合で分離できない．(3) 易しい．(4) $\mathcal{O}$から定まる位相の閉集合系は
 \begin{equation}
     \qty{C\subset X\mid (0,0)\in C}\cup \mathcal{P}(\qty{(1,0),(-1,0),(0,1),(0,-1)})
 \end{equation}
-であることに注意する．$Q\subset X$が可算ならば$Q\subset \qty{(0,0)}$は$Q$を含む閉集合であるから$\overline{Q}\cup Q\cup \qty{(0,0)}$．$X$は非可算集合なので$\overline{Q}=X$とはなり得ない．
+であることに注意する．$Q\subset X$が可算ならば$Q\cup \qty{(0,0)}$は$Q$を含む閉集合であるから$\overline{Q}\subset Q\cup \qty{(0,0)}$．$X$は非可算集合なので$\overline{Q}=X$とはなり得ない．
 
 \subsubsection*{[4]}
 (1) $\varepsilon>0$とせよ．仮定より$K>0$があり，
@@ -641,13 +643,132 @@ $(x+y)/2$まわりのTaylor展開を考える．
     \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/H31innsi.pdf}
 \end{quote}
 を見よ．
+\subsubsection*{[1]}
+(1) $A^{12}=(A^3)^4=O$である．
 
+(2) $A$の最小多項式，固有多項式をそれぞれ$\varphi(X),\ \Phi(X)$とおく．(1)より$\varphi\mid X^{12}$であるから$\varphi=X^k$の形である．$\Phi\mid \varphi^4$であるから$\Phi=X^4$となる．Cayley--Hamiltonの定理より$\varphi\mid \Phi=X^4$．これは$A^4=O$であることを示している．
+
+(3) 
+\begin{equation}
+    O=A^6=(A^3)^2=\begin{bmatrix}
+        0 & a & d & f \\
+          & 0 & b & e \\
+          &   & 0 & c \\
+          &   &   & 0 
+    \end{bmatrix}^2=\begin{bmatrix}
+        0 & 0 & ab & ae+cd \\
+          & 0 & 0  & bc \\
+          &   & 0  & 0 \\
+          &   &    & 0 
+    \end{bmatrix}
+\end{equation}
+より$ab=0$である．
+
+\subsubsection*{[2]}
+
+\subsubsection*{[3]}
+(1) $(0,0),\ (0,1)\in\Rset^2$は$\mathcal{O}'$の開集合で分離できない．
+
+(2) $A\subset\Rset^2,\ (0,0)\notin A$のとき$\interior_{\mathcal{O}'}(A)=\emptyset$．
+
+(3) $A\subset \Rset^2,\ (0,0)\in A$のとき$\closure_{\mathcal{O}'}(A)=\Rset^2$．
+
+(4) $(\Rset^2,\ \mathcal{O}')$は連結である．$X=U\cup V,\ U,V\in\mathcal{O}',',\ U\cap V=\emptyset$とする．一般性を失わず$(0,0)\in U$としてよい．すると$(0,0)\notin V$より$V=\emptyset$である．
+
+(5) $f\colon (\Rset^2,\mathcal{O}')\to(\Rset^2,\mathcal{O}')$を同相写像とする．$f(0,0)\neq(0,0)$だと仮定しよう．$\varepsilon>0$で$f(0,0)\notin B_\varepsilon=\qty{p\in \Rset^2\mid \abs{p}<\varepsilon}$となるものを取る．$f$は連続で$B_{\varepsilon}\in\mathcal{O}'$より$f^{-1}(B_{\varepsilon})\in\mathcal{O}'$であり，かつ$(0,0)\notin f^{-1}(B_{\varepsilon})$であるから$f^{-1}(B_{\varepsilon})=\emptyset$となる．これは$f$が全単射であることに反する．
+
+\subsubsection*{[4]}
+(1) $F\colon D\to \widetilde{D},\ F(u,v)=(x(u,v),\ y(u,v))$は$F\circ F^{-1}=\mathrm{id}_{\widetilde{D}},\ F^{-1}\circ F=\mathrm{id}_{D}$を満たすので，chain ruleよりJacobi行列$JF$について$(JF)(JF^{-1})=I$が成り立つ．行列式を取って結論を得る．
+
+(2) $\widetilde{E}=[1,2]\times [-2,2]$とし$F\colon E\to \widetilde{E}$を$F(x,y)=(u(x,y),v(x,y))=(xy,y-x^2)$で定める．
+\begin{equation}
+    \frac{\partial(u,v)}{\partial(x,y)}=\det\begin{bmatrix}
+        y & x \\
+        -2x & 1 
+    \end{bmatrix}=y+2x^2\neq0\quad \text{in $E$}
+\end{equation}
+である．$F$は全単射かつ$C^1$級で$F^{-1}$も$C^1$級(逆関数定理より)．よって
+\begin{align}
+    \iint_{E}\qty(\frac{1}{x}+\frac{2x}{y})\,dxdy&=\int_1^2du\int_{-2}^{2}dv\qty(\frac{1}{x}+\frac{2x}{y})\frac{\partial(x,y)}{\partial(u,v)}\\
+    &=\int_1^2du\int_{-2}^{2}\qty(\frac{1}{x}+\frac{2x}{y})\frac{\partial(x,y)}{\partial(u,v)}\\
+    &=\int_{1}^2du\int_{-2}^2dv\frac{1}{u}\\
+    &=4\log2
+\end{align}
+
+\subsubsection*{[5]}
+(1) 帰納的に$0\leq f_n(x)\leq 2,\ (n\in\Nset,\ x\in I)$がわかる．よって
+\begin{align}
+    f_{n+1}(x)-f_n(x)&=\sqrt{f_n(x)+2}-f_n(x)\\
+    &=\frac{f_n(x)+2-(f_n(x))^2}{\sqrt{f_n(x)+2}+f_n(x)}\\
+    &\geq \frac{1}{4}(f_n(x)+1)(2-f_n(x))\\
+    &\geq0 
+\end{align}
+である．
+
+(2) 
+\begin{align}
+    2-f_{n+1}(x)&=2-\sqrt{f_n(x)+2}\\
+    &=\frac{2-f_n(x)}{2+\sqrt{f_n(x)+2}}\\
+    &\leq \frac{1}{2}(2-f_n(x)) 
+\end{align}
+である．よって
+\begin{equation}
+    0\leq 2-f_n(x)\leq \qty(\frac{1}{2})^{n-1}(2-f_1(x))\leq \qty(\frac{1}{2})^{n-1}\cdot 2\to0 \ (n\to\infty)
+\end{equation}
+
+(3)\ $f$は定数関数$2$に$[0,1]$上一様収束する．よって2．
 \subsection{2020年度}
 問題は
 \begin{quote}
     \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/2020innsi.pdf}
 \end{quote}
 を見よ．
+\subsubsection*{[1]}
+はい．
+\begin{align}
+    \abs{\int_{a}^{b}f(x)\,dx-\frac{b-a}{N}\sum_{k=1}^N f(x_k)}
+    &=\abs{\sum_{k=1}^N \int_{x_{k-1}}^{x_k}f(x)\,dx-\sum_{k=1}^N \int_{x_{k-1}}^{x_k} f(x_k)\,dx}\\
+    &\leq \sum_{k=1}^N \int_{x_{k-1}}^{x_k}\abs{f(x)-f(x_k)}\,dx\\
+    &\leq \sum_{k=1}^N \int_{x_{k-1}}^{x_k}dx\,\abs{\int_{0}^{1}\frac{d}{dt}f(tx+(1-t)x_k)\,dt}\\
+    &\leq \sum_{k=1}^N \int_{x_{k-1}}^{x_k}dx\int_{0}^{1}dt\,\abs{x-x_k}\abs{f'(tx+(1-t)x_k)}\\
+    &\leq \sum_{k=1}^N \int_{x_{k-1}}^{x_k}dx\,K\frac{b-a}{N}\\
+    &=N\cdot\frac{b-a}{N}\cdot K\frac{b-a}{N}=\frac{K(b-a)^2}{N}
+\end{align}
+\subsubsection*{[2]}
+$n,m\in\Nset,\ m<n$に対して
+\begin{align}
+    \abs{\frac{a_n}{n}-\alpha}
+    &= \abs{\frac{1}{n}\qty(a_m+\sum_{k=m}^{n-1}(a_{k+1}-a_k))-\alpha}\\
+    &=\abs{\frac{a_m-m\alpha}{n}+\frac{1}{n}\sum_{k=m}^{n-1}(a_{k+1}-a_k-\alpha)}\\
+    &\leq \frac{\abs{a_m}+m\abs{\alpha}}{n}+\frac{1}{n}\sum_{k=m}^{n-1}\abs{a_{k+1}-a_k-\alpha}\\
+    &\leq \frac{\abs{a_m}+m\abs{\alpha}}{n}+\frac{n-m}{n}\sup_{k\geq m}\abs{a_{k+1}-a_k-\alpha}
+\end{align}
+となる．$\limsup_{n\to\infty}$をとって
+\begin{equation}
+    \limsup_{n\to\infty}\abs{\frac{a_n}{n}-\alpha}\leq \sup_{k\geq m}\abs{a_{k+1}-a_k-\alpha}
+\end{equation}
+である．$m\to\infty$として結論を得る．
+
+(2) 答えは$\beta/2$．$n,m\in\Nset,\ m<n$に対して
+\begin{align}
+    \abs{\frac{a_n}{n^2}-\frac{\beta}{2}}
+    &=\abs{\frac{\beta}{2}\qty(\qty(1-\frac{m}{n})\qty(1+\frac{m-1}{n})-1)+\frac{1}{n^2}\sum_{k=m}^{n-1}(a_{k+1}-a_{k}-k\beta)}\\
+    &\leq \frac{\abs{\beta}}{2}\abs{\qty(1-\frac{m}{n})\qty(1+\frac{m-1}{n})-1}+\frac{1}{n}\sum_{k=m}^{n-1}\abs{\frac{a_{k+1}-a_{k}}{k}-\beta} 
+\end{align}
+あとは同様．
+
+\subsubsection*{[3]}
+(1) 答えは$\qty{(0,0)}$．$Y\subset X$を，$\qty{(0,0)}\subsetneq Y$となるものとする．もし$Y=\qty{(0,0),\ (0,1)}$ならば，$Y$の開集合$U=\qty{(0,0)},\ V=\qty{(0,1)}$が$Y$を分割する．もし$Y\neq \qty{(0,0),\ (0,1)}$の場合，$p=(1/n_0,y_0)\in Y,\ n_0\in\Nset,\ 0\leq y_0\leq 1$を取る．
+\begin{equation}
+    U=\qty{(1/n_0,y)\mid 0\leq y\leq 1},\quad V=Y\setminus U 
+\end{equation}
+が$Y$を分割する$Y$の開集合である．
+
+(2) ない．
+
+\subsubsection*{[4]}
+
+\subsubsection*{[5]}
 \subsection{2021年度}
 問題は
 \begin{quote}
@@ -695,19 +816,70 @@ $\mathop{\mathrm{span}}\qty{D_n\mid n\geq0}$の基底を与える．
 \subsection{2022年度}
 問題は
 \begin{quote}
-    \url{}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/2022innsi.pdf}
 \end{quote}
 を見よ．
+\subsubsection*{[1]}
+固有多項式は
+\begin{equation}
+    (\lambda-1)^2(\lambda+1)(\lambda^2+\lambda+1)
+\end{equation}
+である．
+
+固有値は$1,\ -1,\ (-1+\sqrt{-3})/2\eqcolon \omega_{\pm}$である．各固有空間$V_{\lambda}$は
+\begin{equation}
+    V_{1}=\langle\bm{v_1}+\bm{v_3}+\bm{v_5},\ \bm{v_2}+\bm{v_4}\rangle,\quad V_{-1}=\langle\bm{v_2}-\bm{v_4}\rangle,\quad V_{\omega_{\pm}}=\langle\bm{v_1}+\omega_{\pm}\omega \bm{v_3}+\omega_{\mp}\bm{v_5}\rangle
+\end{equation}
+という基底を持つ．よって$f_\sigma$の最小多項式は
+\begin{equation}
+    (\lambda-1)(\lambda+1)(\lambda^2+\lambda+1)
+\end{equation}
+と求まる．
+\subsubsection*{[2]}
+$\ker f$の$V$における補空間$W$を取る．つまり$V=\ker f\oplus W$かつ$\ker f \cap W=0$．そこで$g=\mathrm{id}_{\ker f}\oplus f|_{W},\ h=0_{\ker f}\oplus \mathrm{id}_{W}$とおけばよい．
+
+\subsubsection*{[3]}
+(1) いいえ．(2) はい．(3) はい(多分．なぜ？)．(4) いいえ．
+
+\subsubsection*{[4]}
+(1) $f_{n}|_{[0,1]}$は$[0,1]$上の一様有界かつ同程度一様連続な関数列である．よってAscoli--Arzelàの定理より$f_n$は$[0,1]$上一様収束する部分列を持つが，$f$は周期1を持つので$\Rset$上一様収束する．
+
+(2) 同様にAscoli--Arzelàの定理より．
+
+\subsubsection*{[5]}
+(1) $\pi/t$．
+
+(2) 答えは0．$x\in[a,b]$に対して$tf(x)/(t^2+x^2)\to0\ (t\to0)$であり
+\begin{equation}
+    \abs{\frac{t}{t^2+x^2}f(x)}\leq \norm{f}_{L^\infty([a,b])}\frac{1}{x^2} \in L^1([a,b])\quad (0<t<1) 
+\end{equation}
+である($0\notin [a,b]$に注意せよ．)．dominated convergenceより問題の積分は0に収束する．
+
+(3) $\widetilde{f}=\begin{cases}
+    f & (\text{on $[a,b]$})\\
+    0 & (\text{outside $[a,b]$})
+\end{cases}$とおく．十分小さな$\delta>0$に対して
+\begin{align}
+    \abs{\pi f(0)-\int_{a}^b \frac{tf(x)}{t^2+x^2}\,dx}
+    &=\abs{\int_{-\infty}^{\infty}\frac{t(\widetilde{f}(0)-\widetilde{f}(x))}{t^2+x^2}\,dx}\\
+    &\leq \int_{-\delta}^{\delta}\frac{t}{t^2+x^2}\abs{f(0)-f(x)}\,dx + \int_{\Rset\setminus(-\delta,\delta)}\frac{t}{t^2+x^2}\abs{\widetilde{f}(0)-\widetilde{f}(x)}\,dx\\
+    &\leq \pi\sup_{x\in (-\delta,\delta)}\abs{f(0)-f(x)}+2\norm{f}_{L^\infty([a,b])}\qty(\pi-2\arctan\frac{\delta}{t})
+\end{align}
+となる．$\limsup_{t\to+0}$をとって
+\begin{equation}
+    \limsup_{t\to +0}\abs{\pi f(0)-\int_{a}^b \frac{tf(x)}{t^2+x^2}\,dx}\leq \pi\sup_{x\in(-\delta,\delta)}\abs{f(0)-f(x)}
+\end{equation}
+を得る．$\delta\to0$として結論を得る．
 \subsection{2023年度}
 問題は
 \begin{quote}
-    \url{}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/2023innsi.pdf}
 \end{quote}
 を見よ．
 \subsection{2024年度}
 問題は
 \begin{quote}
-    \url{}
+    \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/2024innsi.pdf}
 \end{quote}
 を見よ．
 
