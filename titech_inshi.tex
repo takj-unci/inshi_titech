@@ -12,7 +12,7 @@
 \usepackage{mathrsfs}
 \usepackage{tikz}
 \usetikzlibrary{cd}
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{3}
 \newcommand{\Rset}{\mathbb{R}}
 \newcommand{\Nset}{\mathbb{N}}
 \newcommand{\Zset}{\mathbb{Z}}
@@ -734,6 +734,7 @@ $(x+y)/2$まわりのTaylor展開を考える．
     &\leq \sum_{k=1}^N \int_{x_{k-1}}^{x_k}dx\,K\frac{b-a}{N}\\
     &=N\cdot\frac{b-a}{N}\cdot K\frac{b-a}{N}=\frac{K(b-a)^2}{N}
 \end{align}
+追記：$f$は$C^1$級ではないので議論を修正しなければならないが，平均値の定理を使えばなんとでもなる．
 \subsubsection*{[2]}
 $n,m\in\Nset,\ m<n$に対して
 \begin{align}
@@ -767,8 +768,25 @@ $n,m\in\Nset,\ m<n$に対して
 (2) ない．
 
 \subsubsection*{[4]}
-
+(a)ならば(b)は明らか．(b)を仮定する．$f$が同型でも零写像でもないと仮定する．すると，$0\neq x\in V,\ \alpha\in V^\ast$があり，
+\begin{equation}
+    f(x)=0,\quad f^\ast(\alpha)\neq0 
+\end{equation}
+となる．ただし$V^\ast$は$V$の双対空間であり，$f^\ast\in \mathop{\mathrm{End}}(V^\ast)$は
+\begin{equation}
+    f^\ast(\beta)=\beta\ast f\quad(\beta\in V^\ast)
+\end{equation}
+で定まる．$g\in \mathop{\mathrm{End}}(V)$を次で定める：
+\begin{equation}
+    g(v)=\alpha(v)x
+\end{equation}
+このとき
+\begin{equation}
+    f(g(v))=\alpha(v)f(x)=0,\quad g(f(v))=\alpha(f(v))x=f^\ast(\alpha)(v)x\quad (v\in V)
+\end{equation}
+だが，(b)の仮定より任意の$v\in V$に対して$f^\ast(\alpha)(v)x=0$したがって$f^\ast(\alpha)=0$となる．よって矛盾．
 \subsubsection*{[5]}
+追記予定．
 \subsection{2021年度}
 問題は
 \begin{quote}
@@ -876,6 +894,63 @@ $\ker f$の$V$における補空間$W$を取る．つまり$V=\ker f\oplus W$か
     \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/2023innsi.pdf}
 \end{quote}
 を見よ．
+\subsubsection*{[1]}
+(1) $W\in \mathcal{S}$とせよ．このとき任意の$n\in\Nset$に対して$W=\varphi^n(W)\subset \varphi(V)$なので$W\subset W_0$を得る．
+
+(2) $V\supset \varphi(V)\supset \varphi^2(V)\supset\cdots$という部分空間の系列を考える．$V$は有限次元なので，ある$N\in\Nset$に対して$\varphi^N(V)=\varphi^{N+1}(V)$となる．このとき$\varphi^{n}=\varphi^{n+1}(V)\ (n\geq N)$となるので$W_0=\varphi^N(V)$である．よって$\varphi(W_0)=\varphi^{N+1}(V)=W_0$であり，$\varphi|_{W_0}\colon W_0\to W_0$は全射なので(有限次元性より)同型．
+
+(3) $K=\Rset,\ V=\Rset^{\oplus\Nset},\ \varphi((a_1,a_2,\ldots))=(a_2,a_3,\ldots)$．
+
+\subsubsection*{[2]}
+
+\subsubsection*{[3]}
+(1) いいえ．(2) はい．(3)の答えは
+\begin{equation}
+    \overline{B}=\qty{(x,y)\in\Rset^2\mid \text{($x\leq 1/\sqrt{2}$かつ$y\leq 1/\sqrt{2}$)または($x\geq -1/\sqrt{2}$かつ$y\geq -1/\sqrt{2}$)}}
+\end{equation}
+(4) 謎．
+
+\subsubsection*{[4]}
+(1) $1<a<2$のとき，($\abs{\sin x}\leq \abs{x}$に注意して)
+\begin{equation}
+    \int_{0}^\infty \abs{\frac{\sin x}{x^{\alpha}}}\,dx\leq \int_{0}^{1}x^{1-\alpha}\,dx+\int_{1}^\infty x^{-\alpha}\,dx\leq \frac{1}{2-\alpha}+\frac{1}{1-\alpha}<\infty 
+\end{equation}
+より従う．
+
+(2) $0<a\leq 1$のとき，$1<M,N$に対して部分積分より
+\begin{align}
+    \abs{\int_M^N \frac{\sin x}{x^\alpha}\,dx}
+    &=\abs{\frac{\cos M}{M^\alpha}-\frac{\cos N}{N^\alpha}-\alpha\int_{M}^{N}x^{-\alpha-1}\cos x\,dx}\\
+    &\leq \frac{2}{M^\alpha}+\frac{2}{N^\alpha}\\
+    &\to 0 \quad (M,N\to\infty)
+\end{align}
+なので$\int_{0}^1(\sin x)/x^\alpha\,dx$は収束する．$\int_0^1(\sin x)/x^\alpha\,dx$は(1)と同様に絶対収束する．
+
+(3) 
+\begin{equation}
+    \int_{1}^\infty \abs{\frac{\sin x}{x^\alpha}}\,dx=\sum_{k=1}^\infty \int_{k\pi}^{(k+1)\pi}\frac{\abs{\sin x}}{x^\alpha}\,dx\geq \sum_{k=1}^\infty \frac{1}{(k\pi)^\alpha}\int_{k\pi}^{(k+1)\pi}\abs{\sin x}\,dx=\sum_{k=1}^\infty \frac{2}{(k\pi)^\alpha}=\infty
+\end{equation}
+\subsubsection*{[5]}
+(1) $n\geq 2$に対して$1/(nk)^{nk}\leq 1/2^n$である．
+
+(2) $I_{n,k}=\int_{0}^1 x^k (\log x)^n\,dx$とおく．部分積分より
+\begin{equation}
+    I_{n,k}=\int_{0}^1\qty(\frac{x^{k+1}}{k+1})'(\log x)^n=-\int_{0}^1\frac{x^{k+1}}{k+1}\cdot n(\log x)^{n-1}\frac{1}{x}\,dx=-\frac{n}{k+1}I_{n-1,k}
+\end{equation}
+よって 
+\begin{equation}
+    I_{n,n}=(-1)^n\frac{n!}{(n+1)^n}I_{0,n}=(-1)^n\frac{n!}{(n+1)^{n+1}}
+\end{equation}
+である．
+
+(3) 
+\begin{align}
+    \int_{0}^{1}x^{x}\,dx&=\int_0^1 e^{x\log x}\,dx\\
+    &=\int_{0}^1 \sum_{n\geq 0}\frac{(x\log x)^n}{n!}\\
+    &=\sum_{n\geq0}\frac{1}{n!}\int_{0}^1 (x\log x)^n\,dx\\
+    &=\sum_{n\geq 0}\frac{(-1)^n}{(n+1)^{n+1}}\\
+    &=S(1)-2S(2)
+\end{align}
 \subsection{2024年度}
 問題は
 \begin{quote}
@@ -883,5 +958,144 @@ $\ker f$の$V$における補空間$W$を取る．つまり$V=\ker f\oplus W$か
 \end{quote}
 を見よ．
 
+\section{午後}
+主に解析系の問題を解いていく．
+\subsection{2023年度}
+\subsection{2024年度}
+\subsubsection*{[5]}
+(1) $Z$を$f$の$c$内部の零点全体の集合とする．積分路の変形により
+\begin{equation}
+    \frac{1}{2\pi i}\int_{c}\frac{f'}{f}\,dz=\frac{1}{2\pi i}\sum_{z_0\in Z}\int_{\partial B_{\rho}(z_0)}\frac{f'}{f}\,dz 
+\end{equation}
+である．ただし$\rho$は十分小さな正の数．$z_0\in Z$に対して，$f$の零点$z_0$の位数を$m$とする：$f(z)=(z-z_0)\varphi(z)$であり，$\varphi$は$D$で正則，$\varphi(z_0)\neq0$と書ける．
+\begin{equation}
+    f'(z)=m(z-z_0)^{m-1}\varphi(z)+(z-z_0)^m\varphi'(z)
+\end{equation}
+であるから
+\begin{equation}
+    \frac{f'(z)}{f(z)}=\frac{m}{z-z_0}+\frac{\varphi'(z)}{\varphi(z)}
+\end{equation}
+である．いま$\varphi(z_0)\neq0$より$\varphi'/\varphi$は$B_{\rho}(z_0)$で正則だから，
+\begin{equation}
+    \frac{1}{2\pi i}\int_{\partial B_{\rho}(z_0)}\frac{f'}{f}\,dz=m 
+\end{equation}
+である．
 
+(2) 開球$B_R=B_{R}(z_0)\subset\subset D$に対して，$f$が$D$内で正則であることを示す．$c$を$B_R$内の閉曲線に対して
+\begin{equation}
+    \int_{c}f_n\,dz=0 
+\end{equation}
+が成り立つ(Cauchyの定理)．$f_n$は$c$上$f$に一様収束するので
+\begin{equation}
+    \int_{c}f\,dz=0 
+\end{equation}
+となる．Moreraの定理より$f$が正則であることが従う．Cauchyの積分の公式より
+\begin{equation}
+    f_n'(z)=\frac{1}{2\pi i}\int_{\partial B_R}\frac{f_n(\zeta)}{(\zeta-z)^2}\,d\zeta,\quad f'(z)=\frac{1}{2\pi i}\int_{\partial B_R}\frac{f(\zeta)}{(\zeta-z)^2}\,d\zeta,\quad (z\in B_R)
+\end{equation}
+である．よって任意の$0<\rho<R$に対して
+\begin{equation}
+    \sup_{z\in B_\rho}\abs{f'(z)-f_n'(z)}\leq \abs{\frac{1}{2\pi i}\int_{B_R}\frac{f(\zeta)-f_n(\zeta)}{(\zeta-z)^2}\,dz}\leq \frac{2\pi R}{2\pi(R-\rho)^2}\sup_{\zeta\in B_R}\abs{f(\zeta)-f_n(\zeta)}\to 0 \quad (n\to\infty)
+\end{equation}
+を得る．よって$f_n'$は$f$に$D$内で広義一様収束する．
+
+(3) 背理法で示す．$f$が定数ではなく，かつ単射でもないとする：$f(z_1)=f(z_2),\ z_1\neq z_2\in D$．このとき$g_n(z)=f_n(z)-f_n(z_1)$とおくと$g_n$は$g(z)=f(z)-f(z_1)$に$D$上広義一様収束する．また$g_n$は$\widetilde{D}=D\setminus\qty{z_1}$上nonzeroである．よって$B=B_\rho(z_2)\subset\subset \widetilde{D}$に対して
+\begin{equation}
+    \frac{1}{2\pi i}\int_{\partial B}\frac{g_n'}{g_n }\,dz =0 \quad (n\geq 1)
+\end{equation}
+だが，$g(z_2)=0$より
+\begin{equation}
+    \frac{1}{2\pi i}\int_{\partial B}\frac{g'}{g}\,dz\geq 1 
+\end{equation}
+である．$g_n'/g_n$は$\partial B$上$g'/g$に一様収束するのでこれは矛盾である．
+
+\subsubsection*{[6]}
+(1) 正しい．$\norm{(f-f_n)1_{\Rset\setminus E_n}}_1\to0$より，ある部分列$f_{n_k}$が存在して
+\begin{equation}
+    (f-f_{n_k})1_{\Rset\setminus E_{n_k}}\to 0\quad (\text{a.e. in $\Rset$})
+\end{equation}
+となる．
+\begin{equation}
+    E\coloneq \liminf_{k\to \infty} E_{n_k} =\bigcup_{k\geq1}\bigcap_{l\geq k}E_{n_l}
+\end{equation}
+とおくと$\mu(E)=0$である．$x\notin E$ならば，ある$k\geq 1$があり，任意の$l\geq k$に対して$x\notin E_{n_l}$となる．よって
+\begin{equation}
+    \abs{f(x)-f_{n_k}(x)}\leq \abs{f(x)}|1-1_{\Rset\setminus E_{n_k}}|+\abs{f(x)-f_{n_k}(x)}1_{\Rset\setminus E_{n_k}}\to 0\quad (k\to\infty )
+\end{equation}
+となる．
+
+(2) 正しい．Hölderの不等式より
+\begin{equation}
+    \norm{f-f_n}_{1}\leq \norm{(f-f_n)1_{\Rset\setminus E_n}}_1+\norm{f_n(1_{\Rset\setminus E_n}-1)}_{1}\leq \norm{(f-f_n)1_{\Rset\setminus E_n}}_1+\norm{f_n}_2 \mu(E_n)^{1/2}\to0 
+\end{equation} 
+
+\subsubsection*{[7]}
+$f\in C(D),\ x\in D$に対して
+\begin{align}
+    \abs{T_nf_k(x)}&\leq \int_{D}\abs{x-y}^{-1}\Psi_n(x-y)\abs{f(y)}\,dy\\
+    &\leq \norm{f}\int_{\qty{y\in D\mid \abs{x-y}\geq 1/n}}n\cdot 1\,dy\\
+    &\leq \pi n \norm{f} 
+\end{align}
+よって$\norm{T_nf}\leq \pi n\norm{f}$を得る．よって$T_n$は$C(D)$から$C(D)$への有界線形作用素であり，とくに$C(D)$の(一様)有界列$\qty{f_k}_k,\ M=\sup_{k}\norm{f_k}<\infty$に対して$\qty{T_nf_k}_k$は一様有界である．さらに$x,z\in D$に対して
+\begin{align}
+    \abs{T_nf_k(x)-T_nf_k(z)}&\leq \int_{D}\abs{\Phi_n(x,y)-\Phi_n(z,y)}\abs{f_kernelは(y)}\,dy\\
+    &\leq 2\pi M\sup_{y\in D}\abs{\Phi_n(x,y)-\Phi_n(z,y)}
+\end{align}
+だが，$\Phi_n\colon D\times D\to \Rset$はコンパクト集合上連続より一様連続であることに注意すると，
+\begin{equation}
+    \limsup_{\delta\to +0}\sup_{x,z\in D,\ \abs{x-z}<\delta}\abs{T_nf_k(x)-T_nf_k(z)}\leq 2\pi M\limsup_{\delta\to+0}\sup_{x,y,z\in D,\ \abs{x-z}<\delta}\abs{\Phi_n(x,y)-\Phi(z,y)}=0 
+\end{equation}
+を得る．よって$\qty{T_nf_k}_k$は$D$上の一様有界かつ同程度一様連続関数列であるから一様収束する部分列を持つ．したがって$T_n$はコンパクト作用素である．
+
+(2) $f\in C(D),\ x\in D$に対して 
+\begin{align}
+    \abs{Tf(x)-T_nf(x)}
+    &\leq \int_{D}\abs{x-y}^{-1}\qty(1-\Psi_{n}(x-y))\abs{f(y)}\,dy\\
+    &\leq \norm{f}\int_{\qty{y\in D\mid \abs{x-y}\leq 2/n}}\abs{x-y}^{-1}\,dy\\
+    &\leq \frac{4\pi}{n}\norm{f}
+\end{align}
+であるから，
+\begin{equation}
+    \norm{T-T_n}_{\mathcal{L}(C(D))}=\sup_{f\in C(D),\ \norm{f}\leq 1}\sup_{x\in D}\abs{Tf(x)-T_nf(x)}\leq \frac{4\pi}{n}\to0\quad (n\to 0)
+\end{equation}
+よってコンパクト作用素のノルム収束極限として$T$はコンパクト作用素である．
+\subsubsection*{[8]}
+(1) 部分積分により，$u\in C^2([-1,1])$と$h\in X_0$に対して
+\begin{equation}
+    \int_{-1}^{1} u(h''+h'+h)\,dx=\int_{-1}^{1} (u''-u'+u)h\,dx 
+\end{equation}
+である．よって次を示せばよい：$h\in C([-1,1])$が
+\begin{equation}
+    \int_{-1}^{1}fh\,dx=0 \quad (\forall h\in X_0)
+\end{equation}
+を満たすならば$f\equiv 0$である．
+\begin{equation}
+    \eta(x)=\begin{cases}
+        \exp\qty(-\frac{1}{1-x^2}) & (\abs{x}<1) \\
+        0 & (\abs{x}\geq 1)
+    \end{cases},\quad \eta_n(x)=n\eta(nx)\quad (n\geq 1)
+\end{equation}
+とおくと$\eta_n\in C_c^\infty(B_{1/n}),\ \eta\geq0,\ \int \eta_n=1$である．$x_0\in(-1,1)$を固定する．$h(x)=\eta_n(x-x_0)$は，$h\in C_c^\infty(B_{1/n}(x_0))$より，$n$が十分大きければ$X_0$の元である．よって
+\begin{align}
+    \abs{f(x_0)}&=\abs{f(x_0)-\int_{B_{1/n}(x_0)}fh\,dx}\\
+    &=\int_{B_{1/n}(x_0)}\abs{f(x_0)-f(x)}\eta_n(x-x_0)\,dx\\
+    &\leq \sup_{x\in B_{1/n}(x_0)}\abs{f(x_0)-f(x)}\\
+    &\to 0\quad (n\to\infty )
+\end{align}
+であるから$f(x_0)=0\quad (x_0\in(-1,1))$が示された．
+
+(2) $u(x)=\frac{2a}{\sqrt{3}}e^{x/2}\sin\frac{\sqrt{3}}{2}x$．
+
+(3) $u(x)=\begin{cases}
+    \frac{2}{\sqrt{3}}e^{x/2}\sin \frac{\sqrt{3}}{2}x & (x\geq 0)\\
+    0 & (x\leq 0)
+\end{cases}$が答え．以下見つけ方：$u=0\ (x\leq 0)$の形で探す．部分積分より，$h\in X_0$に対して
+\begin{equation}
+    \int_{-1}^{1}u(h''+h'+h)\,dx=\int_{0}^{1}u(h''+h'+h)\,dx=-u(0)h(0)+u'(0)h(0)-u(0)h'(0)+\int_{0}^{1}(u''-u'+u)h\,dx 
+\end{equation}
+となる．よって問題の条件を満たす$u$は，
+\begin{equation}
+    u(0)=0,\ u'(0)=1,\quad u''-u'+u=0\ (x\geq0)
+\end{equation}
+を満たすものでよい．
 \end{document}
