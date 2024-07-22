@@ -476,25 +476,37 @@ $f$はコンパクト空間からHausdorff空間への連続全単射である�
 で同様．$[0,1]$で$0<\exists m\leq \abs{\sin r/r}\leq 1$に注意せよ．
 
 \subsubsection*{[5]}
-(1) まず$f,g$は連続関数の一様収束極限として連続である．$\varepsilon>0$とせよ．次を満たす$\delta>0$がある：任意の$x\in\Rset$に対して
+(1) まず$f,g$は連続関数の一様収束極限として連続である．$\delta>0$を固定する．ある$N$以上の任意の$n$について$\abs{a-a_n}<\delta$となる．よって$n\geq N$に対して
 \begin{equation}
-    \abs{a-x}\leq \delta\Longrightarrow \abs{f(a)-f(x)}\leq \varepsilon 
+    \abs{f(a)-f_n(a_n)}\leq \abs{f(a)-f(a_n)}+\abs{f(a_n)-f_n(a_n)}\leq \sup_{b\in \Rset,\ \abs{a-b}<\delta}\abs{f(a)-f(b)}+\sup_{b\in\Rset}\abs{f(b)-f_n(b)}
 \end{equation}
-$a_n\to a\ (n\to\infty)$より，$N\in\Nset$があり任意の$n\geq N$について$\abs{a-a_n}\leq \delta$かつ$\sup_{x\in\Rset}\abs{f(x)-f_{n}(x)}\leq \varepsilon$，よって
+$\limsup_{n\to\infty}$を取って($f_n$の一様収束性より)
 \begin{equation}
-    \abs{f(a)-f_n(a_n)}\leq \abs{f(a)-f(a_n)}+\abs{f(a_n)-f_{n}(a_n)}\leq 2\varepsilon.
+    \limsup_{n\to\infty} \abs{f(a)-f(a_n)}\leq \sup_{b\in\Rset,\ \abs{a-b}<\delta}\abs{f(a)-f(b)}+0
 \end{equation}
+$\limsup_{\delta\to+0}$を取って($f$の点$a$での連続性より)
+\begin{equation}
+    \limsup_{n\to\infty}\abs{f(a)-f_n(a_n)}\leq \limsup_{\delta\to+0}\sup_{b\in\Rset,\ \abs{a-b}<\delta}\abs{f(a)-f(b)}=0
+\end{equation}
+を得る．
 
-(2) $\varepsilon>0$とせよ．$f\circ g$は$[0,1]$で一様連続であるから，次を満たす$\delta>0$がある：任意の$x,y\in[0,1],\ \abs{x-y}\leq\delta$に対して$\abs{f(g(x))-f(g(y))}\leq\varepsilon$．$g_n$が$g$に一様収束することから，ある$N\in\Nset$について，任意の$n\geq N$に対して$\sup_{x\in[0,1]}\abs{g(x)-g_n(x)}\leq \delta$，よって
+(2) $g_n$は一様収束列なので一様有界である．よって，$M\coloneq\sup_{n\geq1}\sup_{x\in[0,1]}\abs{g_n(x)}+\sup_{x\in[0,1]}\abs{g(x)}<\infty$となる．$f$は有界閉区間$[-M,M]$上一様連続である．$\delta>0$を固定する．$N\in\Nset$があり，$\sup_{n\geq N}\sup_{x\in[0,1]}\abs{g(x)-g_n(x)}<\delta$となる．よって
 \begin{equation}
-    \sup_{x\in[0,1]}\abs{f(g(x))-f(g_n(x))}\leq \varepsilon 
+    \sup_{n\geq N}\sup_{x\in[0,1]}\abs{f(g(x))-f(g_n(x))}\leq \sup_{a,b\in[-M,M],\ \abs{a-b}<\delta}\abs{f(a)-f(b)}
 \end{equation}
-となる．
+よって
+\begin{equation}
+    \limsup_{n\to\infty}\sup_{x\in[0,1]}\abs{f(g(x))-f(g_n(x))}\leq \sup_{a,b\in[-M,M],\ \abs{a-b}<\delta}\abs{f(a)-f(b)}
+\end{equation}
+となり，$\delta\to0$とすることで結論を得る($f$の$[-M,M]$における一様連続性より)．
 
-(3)\ $\varepsilon>0$とせよ．(2)と，$f$は$f_n$に一様収束することから，$N\in\Nset$があり，任意の$n\geq N$に対して$\sup_{x\in[0,1]}\abs{f(g(x))-f(g_n(x))}\leq \varepsilon$かつ$\sup_{x\in[0,1]}\abs{f(x)-f_n(x)}\leq \varepsilon$．よって
-\begin{equation}
-    \sup_{x\in[0,1]}\abs{f(g(x))-f_n(g_n(x))}\leq \sup_{x\in[0,1]}\abs{f(g(x))-f(g_n(x))}+\sup_{x\in[0,1]}\abs{f(g_n(x))-f_n(g_n(x))}\leq 2\varepsilon.
-\end{equation}
+(3) 
+\begin{align}
+    &\quad \limsup_{n\to\infty}\sup_{x\in[0,1]}\abs{f(g(x))-f_n(g_n(x))}\\
+    &\leq \limsup_{n\to\infty}\sup_{x\in[0,1]}\abs{f(g(x))-f(g_n(x))}+\limsup_{n\to\infty}\sup_{x\in[0,1]}\abs{f(g_n(x))-f_n(g_n(x))}\\
+    &\leq 0+\limsup_{n\to\infty}\sup_{a\in\Rset}\abs{f(a)-f_n(a)}\\
+    &\leq 0+0
+\end{align}
 \subsection{2017年度}
 問題は
 \begin{quote}
@@ -608,20 +620,25 @@ $\Im(A^{n})\subset \Im(A^{n+1})$が示されれば，逆の包含は明らかな
 であることに注意する．$Q\subset X$が可算ならば$Q\cup \qty{(0,0)}$は$Q$を含む閉集合であるから$\overline{Q}\subset Q\cup \qty{(0,0)}$．$X$は非可算集合なので$\overline{Q}=X$とはなり得ない．
 
 \subsubsection*{[4]}
-(1) $\varepsilon>0$とせよ．仮定より$K>0$があり，
+(1) $f$は有界なので$M\coloneq \sup_{[0,\infty)}\abs{f}$とおく．$0<s<t$に対して
+\begin{align}
+    \abs{\alpha-g(t)}&\leq \abs{\frac{1}{t}\int_{0}^t (\alpha-g(t))\,dx}\\
+    &\leq \frac{1}{t}\qty{\int_{0}^s \abs{\alpha-f(x)}\,dx+\int_{s}^t\abs{\alpha-f(x)}\,dx}\\
+    &\leq \frac{(\abs{\alpha}+M)s}{t}+\frac{(t-s)}{t}\sup_{x\geq s}\abs{\alpha-f(x)}
+\end{align}
+$\limsup_{t\to\infty}$を取ると
 \begin{equation}
-    \abs{\alpha-f(x)}<\varepsilon \quad (\forall x\geq K)
+    \limsup_{t\to\infty}\abs{\alpha-g(t)}\leq \sup_{x\geq s}\abs{\alpha-f(x)}
 \end{equation}
-となる．またこのことから$f$は有界なので$M\coloneq \sup_{[0,\infty)}\abs{f}$とおく($\varepsilon=1$としたときの$K$を$K_1$としたとき，$f$は有界閉区間$[0,K_1]$で連続なので，$\sup_{[0,\infty)}\abs{f}\leq \sup_{[0,K_1]}\abs{f}+1+\abs{\alpha}<\infty$)．
-\begin{equation}
-    \abs{\alpha-g(t)}\leq \abs{\frac{1}{t}\int_{0}^t (\alpha-g(t))\,dx}\leq \frac{1}{t}\qty{\int_{0}^K \abs{\alpha-f(x)}\,dx+\int_{K}^t\abs{\alpha-f(x)}\,dx}\leq \frac{(\abs{\alpha}+M)K}{t}+\frac{\varepsilon(t-K)}{t}
-\end{equation}
-そこで$t\to\infty$とすれば
-\begin{equation}
-    \limsup_{t\to\infty}\abs{\alpha-g(t)}\leq \varepsilon 
-\end{equation}
-$\varepsilon$は任意なので$\limsup_{t\to\infty}\abs{\alpha-g(t)}=0$を得る．
+$s\to\infty$として結論を得る．
 
+(2) 答えは$\alpha/2$．$0<s<t$に対して
+\begin{align}
+    \abs{\frac{\alpha}{2}-h(t)}&= \frac{1}{t^2}\abs{\int_{0}^tx(\alpha-f(x))\,dx}\\
+    &\leq \frac{1}{t}\qty{\int_0^s \abs{\alpha-f(x)}\,dx+\int_s^t \abs{\alpha-f(x)}\,dx} \\
+    &\leq \cdots 
+\end{align}
+あとは同様．
 \subsubsection*{[5]}
 $(x+y)/2$まわりのTaylor展開を考える．
 \begin{align}
@@ -772,11 +789,7 @@ $n,m\in\Nset,\ m<n$に対して
 \begin{equation}
     f(x)=0,\quad f^\ast(\alpha)\neq0 
 \end{equation}
-となる．ただし$V^\ast$は$V$の双対空間であり，$f^\ast\in \mathop{\mathrm{End}}(V^\ast)$は
-\begin{equation}
-    f^\ast(\beta)=\beta\ast f\quad(\beta\in V^\ast)
-\end{equation}
-で定まる．$g\in \mathop{\mathrm{End}}(V)$を次で定める：
+となる．ただし$V^\ast$は$V$の双対空間であり，$f^\ast\in \mathop{\mathrm{End}}(V^\ast)$は$f$の双対写像．$g\in \mathop{\mathrm{End}}(V)$を次で定める：
 \begin{equation}
     g(v)=\alpha(v)x
 \end{equation}
@@ -846,7 +859,7 @@ $\mathop{\mathrm{span}}\qty{D_n\mid n\geq0}$の基底を与える．
 
 固有値は$1,\ -1,\ (-1+\sqrt{-3})/2\eqcolon \omega_{\pm}$である．各固有空間$V_{\lambda}$は
 \begin{equation}
-    V_{1}=\langle\bm{v_1}+\bm{v_3}+\bm{v_5},\ \bm{v_2}+\bm{v_4}\rangle,\quad V_{-1}=\langle\bm{v_2}-\bm{v_4}\rangle,\quad V_{\omega_{\pm}}=\langle\bm{v_1}+\omega_{\pm}\omega \bm{v_3}+\omega_{\mp}\bm{v_5}\rangle
+    V_{1}=\langle\bm{v_1}+\bm{v_3}+\bm{v_5},\ \bm{v_2}+\bm{v_4}\rangle,\quad V_{-1}=\langle\bm{v_2}-\bm{v_4}\rangle,\quad V_{\omega_{\pm}}=\langle\bm{v_1}+\omega_{\pm}\bm{v_3}+\omega_{\mp}\bm{v_5}\rangle
 \end{equation}
 という基底を持つ．よって$f_\sigma$の最小多項式は
 \begin{equation}
@@ -961,6 +974,166 @@ $\ker f$の$V$における補空間$W$を取る．つまり$V=\ker f\oplus W$か
 \section{午後}
 主に解析系の問題を解いていく．
 \subsection{2023年度}
+\subsubsection*{[5]}
+(1) 任意の$\rho>0$に対して，$N=N_{\rho}$を，$(N!)^{1/N}>2\rho/R$となるくらい大きく取れば，$\abs{z}<\rho$に対して
+\begin{equation}
+    \sum_{n=0}^\infty \abs{\frac{a_n}{n!}z^n}\leq \sum_{n< N}\frac{\abs{a_n}}{n!}\rho^n+\sum_{n\geq N}\abs{a_n}\qty(\frac{R}{2})^n<\infty 
+\end{equation}
+これは任意の$\rho>0$に対して$F(z)$が$\abs{z}<\rho$で絶対収束することを示している．
+
+(2), (3) Cauchyの積分公式より
+\begin{equation}
+    a_n=\frac{1}{2\pi i}\int_{\abs{u}=r}\frac{f(u)}{u^{n+1}}\,du 
+\end{equation}
+が成り立っている．
+\begin{align}
+    F(z)&=\sum_{n\geq0}\frac{a_n}{n!}z^n\\
+    &=\sum_{n\geq0}\frac{z^n}{2\pi i n!}\int_{\abs{u}=r}\frac{f(u)}{u^{n+1}}\,du\\
+    &=\frac{1}{2\pi i}\int_{\abs{u}=r}\frac{f(u)}{u}\sum_{n\geq0}\frac{1}{n!}\qty(\frac{z}{\zeta})^n\\
+    &=\frac{1}{2\pi i}\int_{\abs{u}=r}\frac{f(u)}{u}e^{z/u}\,du 
+\end{align}
+\subsubsection*{[6]}
+(1) いいえ．$f_n(x)=x^{-1/p}/n$とおくと
+\begin{equation}
+    \int_{I}\abs{f_n(x)}\,dx=\frac{1}{n}\frac{1}{1-p^{-1}}\to 0\quad (n\to0) 
+\end{equation}
+だが，$f_n\notin L^p$である．
+
+(2) 正しい．部分列に移って
+\begin{equation}
+    \norm{f_n-f_{n+1}}_{L^1(I)}\leq 2^{-n}
+\end{equation}
+だとしてよい．
+\begin{equation}
+    g_n(x)\coloneq\sum_{k=1}^{n-1}\abs{f_k(x)-f_{k+1}(x)}
+\end{equation}
+とおくと，
+\begin{equation}
+    \int_{I}g_n\,dx\leq \sum_{k=1}^{n-1}2^{k-1}\leq 1 
+\end{equation}
+$g_n$は単調増加なのである可測関数$g$に収束するが，Fatouの補題より
+\begin{equation}
+    \int_{I}g\,dx\leq \liminf\int_{I}g_n\,dx\leq 1 
+\end{equation}
+なので$g\in L^1(I)$である．とくに$g<\infty\ \text{a.e. in $I$}$．したがって
+\begin{equation}
+    \abs{f_n(x)-f_m(x)}\leq \sum_{k=m}^{n-1}\abs{f_{k+1}(x)-f_k(x)}=g_n(x)-g_m(x)\to 0 \quad \text{a.e. in $I$}\quad(m,n\to\infty)
+\end{equation}
+なので$f$はa.e.でCauchy列であるからある$f^\ast$に収束する．$\norm{f-f_n}_{L^1}\to0$であったから$f=f^\ast$ a.e.である．
+
+(3) 正しい．任意の部分列$\qty{n_k}_k$について，$\norm{f-f_{n_k}}_{L^1}\to0\ (k\to\infty)$だから，更なる部分列$\qty{k_l}_l$があり$f_{n_{k_l}}\to f$ a.e.となる．$g$は連続より$g(f_{n_{k_l}}(x))\to g(f(x))$ a.e.である．さらに$\abs{g\circ f_{n_{k_l}}}\leq \sup\abs{g}<\infty$なので，$L^p$-variant of dominated convergenceより($I$は測度有限に注意せよ)
+\begin{equation}
+    \norm{g(f(x))-g(f_{n_{k_{l}}}(x))}_{L^p}\to0\ (l\to\infty)    
+\end{equation}
+を得る．
+\subsubsection*{[7]}
+$M=\sup\abs{f}$とおく．
+
+(1) $F'(t)=-e^{-\lambda t}f(t)$であることを示す．
+\begin{align}
+    \abs{\frac{F(t+h)-F(t)}{h}+e^{\lambda t}f(t)}
+    &=\abs{-\frac{1}{h}\int_{t}^{t+h}(e^{-\lambda s}f(s)-e^{-\lambda t}f(t))\,ds}\\
+    &\leq \frac{1}{\abs{h}}\abs{\int_{t}^{t+h}\qty(\abs{f(s)}(e^{-\lambda t}-e^{-\lambda s})+e^{-\lambda t}\abs{f(s)-f(t)})\,ds}\\
+    &\leq M\sup_{s\in[t,t+h]}\abs{e^{-\lambda t}-e^{-\lambda s}}+\sup_{s\in[t,t+h]}\abs{f(s)-f(t)}\\
+    &\to0\quad (h\to0)
+\end{align}
+より従う．
+
+(2) $G(t)=\int_0^t e^{\lambda s}f(s)\,ds$とおくと$G'(t)=e^tf(t)$である．
+\begin{align}
+    \abs{F(t)}&\leq M\int_{t}^\infty e^{-\lambda s}\,ds=\frac{M}{\lambda}e^{-\lambda t},\\
+    \abs{G(t)}&\leq M\int_{0}^{t}e^{\lambda s}\leq \frac{M}{\lambda}e^{\lambda t} 
+\end{align}
+に注意する．
+\begin{equation}
+    y(t)=-\frac{1}{2\lambda}\qty(e^{\lambda t}F(t)+e^{-\lambda t}G(t))
+\end{equation}
+より
+\begin{equation}
+    \abs{y(t)}\leq \frac{1}{2\lambda}\qty(e^{\lambda t}\frac{M}{\lambda}e^{-\lambda t}+e^{-\lambda t}\frac{M}{\lambda}e^{\lambda t})=\frac{M}{\lambda^2} <\infty 
+\end{equation}
+なので$y$は有界．以下$y$が(A)を満たすことを確認する：
+\begin{align}
+    y'&=-\frac{1}{2\lambda}\qty(e^{\lambda t}(\lambda F+F')+e^{-\lambda t}(-\lambda G+G'))\\
+    y''&=-\frac{1}{2\lambda}\qty(e^{\lambda t}\qty(\lambda^2F+2\lambda F'+F'')+e^{-\lambda t}\qty(\lambda^2G-2\lambda G'+G''))\\
+    &=-\frac{1}{2\lambda}\qty(\lambda^2\qty(e^{\lambda t}F+e^{-\lambda t}G)+2\lambda\qty(e^{\lambda t}F'-e^{-\lambda t}G')+\qty(e^{\lambda t}F''+e^{-\lambda t}G''))
+\end{align}
+ここで
+\begin{equation}
+    -\frac{1}{2\lambda}\qty(e^{\lambda t}F+e^{-\lambda t}G)=y,
+\end{equation}
+\begin{equation}
+    F'=-e^{-\lambda t}f(t),\quad G'=e^{\lambda t}f(t),
+\end{equation}
+\begin{equation}
+    F''=e^{-\lambda t}(\lambda f-f'),\quad G''=e^{\lambda t}(\lambda f+f')
+\end{equation}
+より
+\begin{equation}
+    y''=\lambda^2 y+f 
+\end{equation}
+を得る．
+
+(3) (A)の解は，$y$と斉次方程式$x''-\lambda^2x=0$の一般解の和で表される：
+\begin{equation}
+    x(t)=Ae^{\lambda t}+Be^{-\lambda t}+y(t)
+\end{equation}
+$x(0)=0$より，
+\begin{equation}
+    A+B+\int_{0}^\infty e^{-\lambda s}f(s)\,ds=0 
+\end{equation}
+である．また，$x$が$[0,\infty)$で有界であるには
+\begin{equation}
+    A=0
+\end{equation}
+でなければならない．よって
+\begin{equation}
+    x(t)=\int_{0}^\infty \qty(e^{-\lambda\abs{s-t}}-e^{-\lambda(s+t)})f(s)\,ds
+\end{equation}
+が求める解．
+
+\subsubsection*{[8]}
+(1) $K^\ast$が閉であること：$x\in H$に対して$\alpha_x\colon H\to \Rset,\ \alpha_x(y)=(x,y)$は連続であるから，
+\begin{equation}
+    K^\ast=\bigcap_{x\in K} \qty{y\in H\mid (x,y)\leq 0}=\bigcap_{x\in K} \alpha_{x}^{-1}((-\infty,0])
+\end{equation}
+は閉である．$\alpha,\beta\geq0,\ y,z\in K^\ast$に対して，
+\begin{equation}
+    (x,\alpha y+\beta z)=\alpha(x,y)+\beta(x,z)\leq 0\quad (x\in K)
+\end{equation}
+となるから$\alpha y+\beta z\in K^\ast$．
+
+(2) straight forward.
+
+(3) $s=\inf_{\xi\in K}\norm{x-z}$とおく．任意の$k\in\Nset$に対して$\xi_k\in K$があり，
+\begin{equation}
+    s^2\leq \norm{\xi_k-z}<s^2+\frac{1}{n}
+\end{equation}
+となる．$\qty{\xi_k}_k$がCauchy列であることを示そう：$k,l\in\Nset$に対して
+\begin{align}
+    \norm{\xi_k-\xi_l}^2
+    &=2\norm{\xi_k-z}^2+2\norm{\xi_l-z}^2-4\norm{\frac{\xi_k+\xi_l}{2}-z}^2\\
+    &\leq 2\qty(s^2+\frac{1}{k})+2\qty(s^2+\frac{1}{l})-4s^2\\
+    &\leq \frac{2}{k}+\frac{2}{l}\\
+    &\to0\quad (k,l\to\infty)
+\end{align}
+である($K$は閉凸錐なので$(\xi_k+\xi_l)/2\in K$である)．よって$\qty{\xi_k}_k$はある$x\in K$に収束する．$\norm{x-z}=s$である．
+
+(4) $\xi\in K,\ \alpha,\beta\geq0$に対して$\alpha x+\beta\xi\in K$であるから
+\begin{equation}
+    \norm{x-z}^2\leq \norm{\alpha x+\beta \xi-z}^2 
+\end{equation}
+が成り立つ．$\alpha=1$としてみると，
+\begin{equation}
+    0\leq \norm{x+\beta\xi-z}^2-\norm{x-z}^2=\beta(\beta\norm{\xi}^2-2(y,\xi))
+\end{equation}
+を得る．$\beta\to +0$とすることで$(y,\xi)\leq 0$を得る．よって$y\in K^\ast$である．
+
+一方で，$\beta=0$とすると，
+\begin{equation}
+    0\leq \norm{\alpha x-z}^2-\norm{x-z}^2=\qty(\alpha-1)\qty((\alpha+1)\norm{x}^2-2(x,z))
+\end{equation}
+である．$\alpha\to1\pm 0$とすることで$(x,z)=\norm{x}^2$つまり$(x,y)=0$を得る．
 \subsection{2024年度}
 \subsubsection*{[5]}
 (1) $Z$を$f$の$c$内部の零点全体の集合とする．積分路の変形により
