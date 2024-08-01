@@ -5,6 +5,7 @@
 \usepackage{luatexja}
 \usepackage{amsmath,amsfonts,amssymb,ascmac}
 \usepackage{bm}
+\usepackage{bbm}
 \usepackage{url}
 \usepackage{xurl}
 \usepackage{mathtools}
@@ -18,11 +19,13 @@
 \newcommand{\Zset}{\mathbb{Z}}
 \newcommand{\Qset}{\mathbb{Q}}
 \newcommand{\Cset}{\mathbb{C}}
+\newcommand{\1}{\mathbbm{1}}
 \newcommand{\opensub}{\underset{\text{open}}{\subset}}
 \newcommand{\closedsub}{\underset{\text{closed}}{\subset}}
 \newcommand{\transpose}[1]{\prescript{t\!}{}{#1}}
 \DeclareMathOperator*{\interior}{\mathrm{Int}}
 \DeclareMathOperator*{\closure}{\mathrm{Cl}}
+\DeclareMathOperator*{\supp}{\mathrm{supp}}
 \mathtoolsset{showonlyrefs=true}
 \numberwithin{equation}{section}
 \usepackage{physics}
@@ -799,7 +802,41 @@ $n,m\in\Nset,\ m<n$に対して
 \end{equation}
 だが，(b)の仮定より任意の$v\in V$に対して$f^\ast(\alpha)(v)x=0$したがって$f^\ast(\alpha)=0$となる．よって矛盾．
 \subsubsection*{[5]}
-追記予定．
+(1) 固有値は$\pm 1$．$\lambda=\pm1$に対応する固有空間を$W_{\lambda}$と書くことにすれば
+\begin{equation}
+    W_{1}=\langle1,\ (-2x+b)^2\rangle ,\quad W_{-1}=\langle-2x+b,\ (-2x+b)^3\rangle
+\end{equation}
+
+(2) $\varphi_{a,b}$の固有値全体の集合は$\qty{a^k\mid 0\leq k\leq d}$．
+
+(3) $\varphi_{a,b}$が対角化可能であるための条件は，「$a\neq 1$または$b=0$」．これを示す．
+
+$a\neq 1$ならば，$((a-1)x+b)^k\ (k=0,1,\ldots,d-1)$は固有値$a^k$に属する固有ベクトルであり，すべて一次独立である．
+
+$b=0$ならば，$x^k\ (k=0,1,\ldots,d-1)$は固有値$a^k$に属する固有ベクトルであり，すべて一次独立である．
+
+$a=1$かつ$b\neq0$の場合，
+\begin{equation}
+    f_k(x)=\frac{1}{k!}\frac{x}{b}\qty(\frac{x}{b}-1)\cdots\qty(\frac{x}{b}-k+1)\quad (k\geq0)
+\end{equation}
+とおくと$f_k\ (0\leq k\leq d-1)$は一次独立であり，
+\begin{align}
+    \varphi_{1,b}f_{k}(x)&=\frac{1}{k!}\qty(\frac{x}{b}+1)\frac{x}{b}\cdots\qty(\frac{x}{b}-k+2)\\
+    &=\frac{1}{k!}\frac{x}{b}\qty(\frac{x}{b}-1)\cdots\qty(\frac{x}{b}-k+1)+\frac{1}{(k-1)!}\frac{x}{b}\cdots\qty(\frac{x}{b}-k+2)\\
+    &=f_{k}(x)+f_{k-1}(x)
+\end{align}
+となる．よってこの基底によって$\varphi_{1,b}$はJordan細胞
+\begin{equation}
+    \begin{bmatrix}
+        1 & 1 & 0 & \cdots & 0 & 0 \\
+        0 & 1 & 1 & \cdots & 0 & 0 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+        0 & 0 & 0 & \cdots & 1 & 1 \\
+        0 & 0 & 0 & \cdots & 0 & 1 \\
+    \end{bmatrix}
+\end{equation}
+で表現される．よって対角化可能ではない．
+
 \subsection{2021年度}
 問題は
 \begin{quote}
@@ -970,9 +1007,504 @@ $\ker f$の$V$における補空間$W$を取る．つまり$V=\ker f\oplus W$か
     \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/2024innsi.pdf}
 \end{quote}
 を見よ．
+\subsubsection*{[1]}
+(1) 
+\begin{align}
+    A^2&=\begin{bmatrix}
+        1+(n-1)a^2 & 2a+(n-2)a^2 & \cdots & 2a+(n-2)a^2 \\ 
+        2a+(n-2)a^2 & 1+(n-1)a^2 & \cdots & 2a+(n-2)a^2 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        2a+(n-2)a^2 & 2a+(n-2)a^2 & \cdots & 1+(n-1)a^2
+    \end{bmatrix}\\
+    &=(na-2(n-1))A+(a-1)(na-(n-1))I
+\end{align}
+がわかる．$A$はスカラー行列ではないので最小多項式$\varphi$は1次式ではなく，
+\begin{equation}
+    \varphi(x)=x^2-(na-2(a-1))x-(a-1)(na-(a-1))
+\end{equation}
+がわかる．
+
+(2) $\varphi(x)=(x+a-1)(x-na+a-1)$より$A$の固有値は$-a+1,\ na-a+1$．
+
+(3) $a$が1とも$-1/(n-1)$とも異なる場合，$A$は正則なので$\rank A=n$．
+
+$a=1$の場合，簡単に$\rank A=1$．
+
+$a=-1/(n-1)$の場合，$A$を基本変形を施して
+\begin{equation}
+    \begin{bmatrix}
+        0 & 0 & 0 & \cdots & 0 \\
+        0 & 1 & -1/(n-1) & \cdots & -1/(n-1) \\
+        0 & -q/(n-1) & 1 & \cdots & -1/(n-1) \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & -1/(n-1) & -1/(n-1) & \cdots & 1
+    \end{bmatrix}
+\end{equation}
+とできるが，右下の行列は一番最初の場合より$\rank=n-1$である．よって$\rank=n-1$．
+
+\subsubsection*{[2]}
+(1) $f\colon M_n(\Rset)\to\Rset$を線形写像とする．このとき行列$A=(A_{ij})_{i,j}$を$a_{ij}=f(E_{ji})$で定める．ここで$E_{ij}$は$(i,j)$-成分だけ1で他が0の行列を表す．$f(X)=\tr(AX)$であることを示そう．線形写像は基底の行き先で決まるので$X=E_{ij}$について示せばよい．
+\begin{equation}
+    \tr(AE_{ij})=\sum_{k,l}A_{kl}(E_{ij})_{lk}=A_{ji}=f(E_{ij})
+\end{equation}
+よりよい($E_{ij}$の$(l,k)$-成分を$(E_{ij})_{li}$で表す)．
+
+(2) 答えは$g(X)=c\tr(X),\ c\in\Rset$．$g(X)=\tr(CX),\ C\in M_n(\Rset)$が$g(AB)=g(BA)\ (\forall A,B\in M_n(\Rset))$を満たすとする．つまり
+\begin{equation}
+    \tr(CAB)=\tr(CBA)\quad (\forall A,B\in M_n(\Rset)).
+\end{equation}
+とくに$A=E_{st},\ B=E_{uv}$とおくと，
+\begin{equation}
+    \sum_{i,j,k}C_{ij}(E_{st})_{jk}(E_{uv})_{ki}=\sum_{i,j,k}C_{ij}(E_{uv})_{jk}(E_{st})_{ki}
+\end{equation}
+したがって$C_{vs}\delta_{tu}=C_{tu}\delta_{vs}$，つまり
+\begin{equation}
+    v\neq s\Longrightarrow C_{vs}=0;\quad v=s,\ t=u\Longrightarrow C_{uu}=C_{vv}
+\end{equation}
+である．これは$C$がスカラー行列であることを示している．
+
+(3) 答えは$n^2-1$次元．包含写像$\iota\colon V\to M_n(\Rset)$の双対写像
+\begin{equation}
+    \iota^\ast\colon M_n(\Rset)^\ast\to V^\ast,\quad \iota^\ast(f)=f\circ \iota=f|_{V}  
+\end{equation}
+を考える．$\iota$は単射より$\iota^\ast$は全射．また(2)より$\ker\iota^\ast$は$\tr$で生成されるので1次元．よって準同型定理より$V^\ast$は$n^2-1$次元である．
+
+\subsubsection*{[3]}
+(1) $X\ni x\mapsto(x,f(x))\in Y$は連続なので像を制限しても$X\to \Gamma(f)$は連続である．連結空間の全射連続写像の像として$\Gamma(f)$は連結．
+
+(2) $x\in f^{-1}(A)$とする．このとき$(x,f(x))\in p_Y^{-1}(A)\cap\Gamma(f)$より，$x=p_X(x,f(x))\in p_X(p_Y^{-1}(A)\cap \Gamma(f))$．
+
+逆に$x\in p_X(p_Y^{-1}(A)\cap \Gamma(f))$とする．このとき，ある$y\in Y$があり$(x,y)\in p_{Y}^{-1}(A)\cap \Gamma(f)$．よって$f(x)=y\in A$となる．
+
+(3) $C\subset X\times Y$を閉集合とする．このとき$p_X(C)$が$X$の閉集合であることを示す．$x\in X\setminus p_X(C)$とする．つまり任意の$y\in Y$に対して$(x,y)\notin C$．$C$は$X\times Y$の閉集合なので，$X,Y$それぞれの開集合$U_y\subset X,\ V_y\subset Y$があり，
+\begin{equation}
+    (x,y)\in U_y\times V_y\subset (X\times Y)\setminus C 
+\end{equation}
+となる．$\qty{V_y}_{y\in Y}$は$Y$の開被覆なので，コンパクト性より有限部分被覆$V_{y_1},\ldots,V_{y_n}$が存在する．
+\begin{equation}
+    U\coloneq U_{y_1}\cap\cdots\cap U_{y_n} 
+\end{equation}
+は$X$の開集合であり，$U\subset X\setminus p_X(C)$である：$x\in U$を固定する．任意の$y\in Y$について，ある$i$に対して$y\in V_{y_i}$となる．$(x,y)\in U_{y_i}\cap V_{y_i}\subset (X\times Y)\setminus C$となり，$y\in Y$は任意なので$x\notin p_X(C)$．
+
+(4) $f$が連続だとする．$(x,y)\in (X\times Y)\setminus \Gamma(f)$だとする．このとき$y\neq f(x)$である．$Y$はHausdorff空間なので，開集合$U,V\subset Y$があり，$f(x)\in U,\ y\in V,\ U\cap V=\emptyset$となる．$f$は連続より$f^{-1}(U)\times V$は$X\times Y$の開集合であり，$f^{-1}(U)\times V\subset (X\times Y)\setminus \Gamma(f)$となる．
+
+逆に$\Gamma(f)$が閉だとする．このとき任意の閉集合$A\subset Y$に対して
+\begin{equation}
+    f^{-1}(A)=p_X(p_{Y}^{-1}(A)\cap \Gamma(f)) 
+\end{equation}
+は，(2), (3)より$X$の閉集合である．
+
+\subsubsection*{[4]}
+
+\subsubsection*{[5]}
+
+
+
 
 \section{午後}
 主に解析系の問題を解いていく．
+\subsection{2018年度}
+
+\subsection{2019年度}
+\subsubsection*{[5]}
+(1-1) 次の\textbf{鏡像原理}を思い出す：$D_1$を上半平面$\mathbb{H}$内の領域とし，$\partial D_1\cap \Rset$はある開区間$I$を含むとする．$f\in C(D_1\cup I)$は$D_1$内で正則で，$f(x)\in\Rset\ (x\in I)$ならば，$f$は$D_1\cup I\cup D_2$まで正則に拡張される．ここで$D_2=\qty{z\in\Cset\mid \overline{z}\in D_1}$．
+
+問題の解答に戻る．鏡像原理より，$f$は$\qty{z\in \Cset\mid \mathrm{Re}(z)>0}$まで正則に，$\qty{z\in\Cset\mid \mathrm{Re}(z)\geq0}\setminus\qty{0}$まで連続に拡張される．さらに$g(z)=if(iz)$に対して鏡像原理を用いることで，$f$は$\Cset\setminus\qty{0}$にまで正則に拡張される．条件3より，$0$は$f$の除去可能特異点である(Riemannの除去可能定理)．よって$f$は$\Cset$上の正則関数$F$に拡張される．
+
+(1-2) したがって，$\lim_{z\to0}f(z)$は存在する．
+\begin{equation}
+    \lim_{z\to0}f(z)=\lim_{x\to+0}f(x)=\lim_{r\to+0}f(re^{i\pi/2})\in \Rset\cap(i\Rset)=\qty{0}
+\end{equation}
+より$\lim_{z\to0}f(z)=0$を得る．
+
+(2) 単連結領域$\Lambda(\theta_0)$は$0$を含まないので，$z^{2\theta_0/\pi}=e^{\frac{2\theta_0}{\pi}\log z}$の一価な分枝が取れる．$g(z)=f(z^{2\theta_0/\pi})$は$\Lambda(\pi/2)$上定義されるので，(1)に帰着する．
+\subsubsection*{[6]}
+(1) (a) $\varepsilon=1>0$に対して$K>0$があり，
+\begin{equation}
+    \sup_{n\in\Nset}\int_{\qty{\abs{f_n}\geq K}}\abs{f_n}\,d\mu<1
+\end{equation}
+となる．一方，
+\begin{equation}
+    \sup_{n\in\Nset}\int_{\qty{\abs{f_n}\leq K}}\abs{f_n}\,d\mu\leq K\cdot\mu(X)
+\end{equation}
+である．よって
+\begin{equation}
+    \sup_{n\in\Nset}\int_{X}\abs{f_n}\,d\mu\leq 1+K\mu(X)
+\end{equation}
+を得る．
+
+(b) 任意の$A\in\mathcal{B},\ K>0$に対して，
+\begin{align}
+    \int_{A}\abs{f_n}\,d\mu&=\int_{A\cap \qty{\abs{f_n}\geq K}}\abs{f_n}\,d\mu+\int_{A\cap\qty{\abs{f_n}\leq K}}\abs{f_n}\,d\mu\\
+    &\leq \int_{\qty{\abs{f_n}\geq K}}\abs{f_n}\,d\mu+K\mu(A)
+\end{align}
+である．よって，
+\begin{equation}
+    \limsup_{\delta\to+0}\sup_{A\in\mathcal{B},\ \mu(A)<\delta}\sup_{n\in\Nset}\int_{A}\abs{f_n}\,d\mu\leq \sup_{n\in\Nset}\int_{\abs{f_n}\geq K}\abs{f_n}\,d\mu 
+\end{equation}
+である．$K\to\infty$として結論を得る．
+
+(2) まず，
+\begin{equation}
+    M\coloneq \sup_{f\in\mathcal{C}}\int_{X}\abs{f}^p\,d\mu\geq \sup_{f\in\mathcal{C} }\int_{\qty{\abs{f}\geq K}}K^p\,d\mu=K^p\sup_{f\in \mathcal{C}}\mu(\qty{\abs{f}\geq K})
+\end{equation}
+である．$p'$を$p$のHölder共役指数として($p^{-1}+p'^{-1}=1$)
+\begin{align}
+    \int_{\qty{\abs{f}\geq K}}\abs{f}\,d\mu&=\int_{X}\abs{f}\cdot \1_{\qty{\abs{f}\geq K}}\\
+    &\leq \qty(\int_{X}\abs{f}^p\,d\mu)^{1/p}\mu\qty(\qty{\abs{f}\geq K})^{1/p'}\\
+    &\leq \frac{M}{K^p}
+\end{align}
+となる．したがって
+\begin{equation}
+    \limsup_{K\to\infty}\sup_{f\in \mathcal{C}}\int_{\qty{\abs{f}\geq K}}\abs{f}\,d\mu=0
+\end{equation}
+を得る．
+\subsubsection*{[7]}
+(1) $x\in H$に対して，Besselの不等式より
+\begin{equation}
+    \sum_{n=1}^\infty\abs{\langle x,e_n\rangle}^2\leq \norm{x}^2
+\end{equation}
+である．よって$\langle x,e_n\rangle\to0\ (n\to\infty)$である．
+
+(2) 
+\begin{equation}
+    \norm{n^{-\alpha}\sum_{j=1}^n e_n}^2=n^{-2\alpha}\cdot n=n^{1-2\alpha}\to0\quad (n\to\infty)
+\end{equation}
+
+(3) $x\in H,\ m<n$に対して
+\begin{align}
+    \abs{\langle x,\ n^{-1/2}\sum_{j=1}^n e_j\rangle}&\leq n^{-1/2}\qty(\sum_{j=1}^m\abs{\langle x,e_j\rangle}+\sum_{j=m+1}^n \abs{\langle x,e_j\rangle})\\
+    &\leq n^{-1/2}\qty(m\norm{x}+\qty(\sum_{j=m+1}^n \abs{\langle x,e_j\rangle}^2)^{1/2}(n-m)^{1/2})\\
+    &=n^{-1/2}m\norm{x}+\qty(1-\frac{n}{n})^{1/2}\qty(\sum_{j=m+1}^n \abs{\langle x,e_j\rangle}^2)
+\end{align}
+よって 
+\begin{equation}
+    \limsup_{n\to\infty}\abs{\langle x,\ n^{-1/2}\sum_{j=1}^n e_j\rangle}\leq \qty(\sum_{j=m+1}^{\infty} \abs{\langle x,e_j\rangle}^2)
+\end{equation}
+である．$m\to\infty$として結論を得る．
+
+\subsubsection*{[8]}
+(1) $u$は狭義単調増加であることに注意する．
+
+$t_0$を極大延長可能時刻，つまり$t_0=\sup\qty{t>0\mid \text{$u$は$[0,t)$で定義される}}$とする．
+\begin{equation}
+    \frac{u'(t)}{f(u(t))}=1
+\end{equation}
+より，
+\begin{equation}
+    \int_{0}^{u(t)}\frac{dx}{f(x)}=t 
+\end{equation}
+である．もし$t_0<\infty$ならば，$\lim_{t\to t_0-0}u(t)=\infty$である\footnote{もし$\lim_{t\to t_0-0}u(t)<\infty$ならば，$f$は$[0,t_0]$に拡張され，さらに局所解の存在より$[0,t_0+\varepsilon)\ (\exists\varepsilon>0)$に拡張される．これは極大性に矛盾．}．よって
+\begin{equation}
+    \infty=\int_{t\to t_0-0}\int_{0}^{u(t)}\frac{dx}{f(x)}=t_0<\infty 
+\end{equation}
+となり矛盾．
+\begin{equation}
+    \limsup_{t\to\infty}\int_{0}^{u(t)}\frac{dx}{f(x)}=\infty 
+\end{equation}
+より$u(t)\to\infty\ (t\to\infty)$．
+
+(2) もし$u_T\coloneq \lim_{t\to T-0}u(t)<\infty$ならば，
+\begin{equation}
+    \int_{0}^{u_T}\frac{dx}{f(x)}=T=\int_{0}^{\infty}\frac{dx}{f(x)}
+\end{equation}
+これは$f>0$に反する．
+
+(3) $L=\limsup_{x\to\infty}\frac{f(x)}{x}<\infty$とすると，ある$M>0$について，$\frac{f(x)}{x}\leq L\ (\forall x\geq M)$となる．
+
+もし$u\leq M\ (\forall t\geq0)$ならば，$e^{-t}u(t)\to0\ (t\to\infty)$である．
+
+ある$t_0>0$について$u(t)\geq M\ (\forall t>t_0)$ならば，
+\begin{equation}
+    \qty{e^{-Lt}u(t)}'=e^{-Lt}(u'(t)-Lu(t))=e^{-Lt}(f(u(t))-Lu(t))\leq 0
+\end{equation}
+である．よって
+\begin{equation}
+    e^{-Lt}u(t)\leq e^{-Lt_0}u(t_0)\quad (t\geq t_0)
+\end{equation}
+したがって$e^{-2Lt}u(t)\leq e^{-L(t_0+t)}u(t_0)\to 0\ (t\to\infty)$．
+\subsection{2020年度}
+\subsubsection*{[5]}
+(1) $I=1/(1-\lambda)$．(2) $z+z^2e^{-2019z}$など．
+
+\subsubsection*{[6]}
+(1) $\qty{a_n}_n\in l^1$とする．このとき$a_n\to0$であるから$\qty{n\mid \abs{a_n}\geq 1}$は有限集合である．よって
+\begin{equation}
+    \sum_{n=1}^\infty \abs{a_n}^p=\sum_{n\colon \abs{a_n}\geq 1}\abs{a_n}^p+\sum_{n\colon \abs{a_n}\leq 1}\abs{a_n}^p \leq \sum_{n\colon \abs{a_n}\geq 1}\abs{a_n}^p+\sum_{n\colon \abs{a_n}\leq 1}\abs{a_n}<\infty 
+\end{equation}
+となる．
+
+(2) $\alpha>1/2$のとき，$\qty{a_n}_n\in l^2$に対してHölderの不等式より 
+\begin{equation}
+    \norm{T_\alpha \qty{a_n}_n}_{l^1}=\sum_{n\geq1} n^{-\alpha}\abs{a_n}\leq \qty(\sum_{n\geq 1}n^{-2\alpha})^{1/2}\norm{\qty{a_n}_n}_{l^2}
+\end{equation}
+だからである．
+
+(3) 答えはNo．$a_n=1/(n^{1/2}\log n)\ (n\geq 2)$とおくと$\qty{a_n}_n\in l^2$だが，$T_{1/2}\qty{a_n}_n\notin l^1$である．
+
+(4) $N=1,2,\ldots$に対して$T^{(N)}_{\alpha}\colon l^2\to l^1$を
+\begin{equation}
+    \qty(T^{(N)}_{\alpha}\qty{a_n}_n)_n=\begin{cases}
+        n^{-\alpha}a_n & (n=1,\ldots,N) \\
+        0 & (n>N)
+    \end{cases}
+\end{equation}
+と定める．$T^{(N)}_{\alpha}$はfinite rank (像が有限次元)であるからコンパクト作用素．一方，
+\begin{equation}
+    \norm{(T_{\alpha}-T^{(N)}_{\alpha})\qty{a_n}_n}_{l^1}=\sum_{n\geq N+1}n^{-\alpha}\abs{a_n}\leq \qty(\sum_{n\geq N+1}n^{-2\alpha})^{1/2}\norm{\qty{a_n}_{n}}_{l^2}
+\end{equation}
+であるから，
+\begin{align}
+    \norm{T_{\alpha}-T^{(N)}_{\alpha}}_{\mathcal{L}(l^2,l^1)}
+    &=\sup_{\qty{a_n}_n\in l^2,\ \norm{\qty{a_n}_{n}}_{l^2}
+    \leq 1}\norm{(T_{\alpha}-T^{(N)}_{\alpha})\qty{a_n}_n}_{l^1}\\
+    &\leq \qty(\sum_{n\geq N+1}n^{-2\alpha})^{1/2}\to0\quad (N\to\infty)
+\end{align}
+である．よって，$T_\alpha$は，コンパクト作用素$T_{\alpha}^{(N)}$の作用素ノルム$\norm{\bullet}_{\mathcal{L}(l^2,l^1)}$に関する極限としてコンパクト作用素である．
+\subsubsection*{[7]}
+(1) 正しくない．$I_n=[-1/n,1/n]$として$f_n(x)=\1_{\Rset\setminus I_n}/x^3$とおくと$f_n\in L^1(\Rset)$は$f(x)=1/x^3$にほとんど至る所収束する．例えば$\varphi(x)=\begin{cases}
+    1-\abs{x} & (\abs{x}\leq 1) \\
+    0 & (\abs{x}>1)
+\end{cases}$とおくと，
+\begin{equation}
+    \int_{\Rset}f_n\varphi=0\quad (n\geq 1)
+\end{equation}
+である．一方$f\varphi$は可積分ではない．
+
+(2) 正しい．$A=\qty{x\in\Rset\mid f_n(x)\nrightarrow f(x)}$として,
+$n\geq1,\ \varepsilon>0$に対して
+\begin{equation}
+    A_{n,\varepsilon}=\qty{x\in\Rset\mid \abs{f(x)-f_n(x)}\geq \varepsilon}
+\end{equation}
+とおく．
+\begin{equation}
+    A=\bigcup_{\varepsilon\in \Qset_{>0}}\bigcap_{n\in\Nset}\bigcup_{m\geq n}A_{m,\varepsilon}
+\end{equation}
+である．今$m(A)=0$なので，測度の単調収束定理より任意の$\varepsilon>0$に対して
+\begin{equation}
+    0=m(A\cap[-1/\varepsilon,1/\varepsilon])\geq m\qty(\bigcap_{n\in\Nset}\bigcup_{m\geq n}A_{m,\varepsilon}\cap[-1/\varepsilon,1/\varepsilon])=\lim_{n\to\infty}m\qty(\bigcup_{m\geq n}A_{m,\varepsilon}\cap[-1/\varepsilon,1/\varepsilon])
+\end{equation}
+である．
+
+(3) 正しい．$\Phi$は連続なので$\Phi\circ f_n$は$\Phi\circ f$にほとんど至るところ収束する．一方$\int_{\Rset}\Phi(f_n(x))\,dx\to0$より，ある部分列$\Phi\circ f_{n_k}$は0にほとんど至るところ収束する．よって$\Phi\circ f=0$ a.e.を得る．
+
+(4) 正しい．$\Psi(x,f_n(x))$は$\Psi(x,f(x))$にa.e.で収束する．
+\begin{equation}
+    K\coloneq \mathop{\mathrm{pr}}(\supp\Psi)=\qty{x\in\Rset\mid \exists y\in\Rset \text{ s.t. }(x,y)\in \supp\Psi}
+\end{equation}
+とおくと
+\begin{equation}
+    \abs{\Psi(x,f_n(x))}\leq M\1_{K}
+\end{equation}
+である．ここで$M=\sup_{\Rset^2}\abs{\Psi}$．今$K$はコンパクトなので$M\1_{K}$は可積分．よってdominated convergenceにより結論が得られる．
+
+\subsection*{[8]}
+(1) $f(t)=\int_{0}^{t}u(s)\,ds$とおくと，$u$は$C^1$級で$u(t)\leq f(t)+c$．
+\begin{equation}
+    \qty{e^{-t}(f(t)+c)}'=e^{-t}\qty(u(t)-f(t)-c)\leq 0
+\end{equation}
+となるので$e^{-t}(f(t)+c)$は単調非増加．$t=0$での値を考えて$e^{-t}(f(t)+c)\leq c$を得る．よって
+\begin{equation}
+    u(t)\leq f(t)+c\leq ce^t 
+\end{equation}
+
+(2) $f(t)=\int_{0}^t(s+1)^{-1}u(s)\,ds$とおくと$u(t)\leq f(t)+(t+1)^2$である．
+\begin{equation}
+    \qty{\frac{f(t)}{t+1}}'=\frac{f'(t)(t+1)-f(t)}{(t+1)^2}=\frac{u(t)-f(t)}{(t+1)}^2\leq 1 
+\end{equation}
+より$(t+1)^{-1}f(t)\leq t$を得る．よって
+\begin{equation}
+    u(t)\leq f(t)+(t+1)^2\leq t(t+1)+(t+1)^2=2t^2+3t+1
+\end{equation}
+である．
+
+(3) $f(t)=\int_{0}^tu(s)^2\,ds$とおき，$u(t)\geq f(t)+1$となる$u$があったとする．このとき$0<t<1$に対して$g(t)=(1-t)f(t)-t$とおくと，
+\begin{equation}
+    g'(t)=-f(t)+(1-t)f'(t)-1\geq -f(t)+(1-t)(1+f(t))^2-1=(1+f(t))g(t)\geq g(t)
+\end{equation}
+であり，よって
+\begin{equation}
+    \qty{e^{-t}g(t)}'=e^{-t}(g'-g)\geq0 
+\end{equation}
+を得る．$g(0)=f(0)=0$より$g(t)\geq 0$を得る．これは
+\begin{equation}
+    f(t)\geq \frac{t}{1-t}\quad (0<t<1)
+\end{equation}
+であることを示している．よって
+\begin{equation}
+    u(t)\geq \frac{t}{1-t}+1
+\end{equation}
+であり，$t\to1-0$の極限で$u(t)\to+\infty$となる．これは矛盾．
+\subsection{2021年度}
+\subsubsection*{[5]}
+(ii)ならば(i)は，留数定理による．(i)ならば(ii)を示す．まず次を示す：($\diamondsuit$)「$g\in C(\overline{D})$が有理型で境界には極を持たず，任意の多項式$P$に対して
+\begin{equation}
+    \int_{C}P(z)g(z)\,dz=0 
+\end{equation}
+ならば，$g$は正則である」．$z_1,\ldots,z_k$が$g$の$m_1,\ldots,m_k$位の極であるとする．このとき
+\begin{equation}
+    P(z)=(z-z_1)^{m_1-1}(z-z_2)^{m_2}\cdots (z-z_k)^{m_k}=\frac{\prod_{j=1}^k(z-z_j)^{m_j}}{z-z_1}
+\end{equation}
+とおくと，留数定理より
+\begin{equation}
+    \int_{C}P(z)g(z)\,dz=\Residue(z_1,P(z)f(z))\neq0 
+\end{equation}
+である．これは矛盾．
+
+さて，$f$が(i)を満たすとする．このとき$g(z)=f(z)-1/(2\pi iz)$は有理型で，($\diamondsuit$)の仮定を満たす．よって$g$は正則であり，$f=g+1/(2\pi iz)$は(ii)を満たす．
+
+\subsubsection*{[6]}
+(1) 
+\begin{equation}
+    \int_{\Rset}(u_n(x)-a_1)^2(u_n(x)-a_2)^2\,dx\geq \int_{A_{\varepsilon,n}}\varepsilon^2\cdot \varepsilon^2\,dx=\varepsilon^4m(A_{\varepsilon,n})
+\end{equation}
+より
+\begin{equation}
+    m(A_{\varepsilon,n})\leq \frac{1}{\varepsilon^4}\int_{\Rset}(u_n(x)-a_1)^2(u_n(x)-a_2)^2\,dx\to0\quad (n\to\infty)
+\end{equation}
+を得る．
+
+(2) 
+\begin{equation}
+    A=\qty{x\in \Rset\,\middle|\, \liminf_{n\to\infty}\abs{u_n(x)-a_j}>0\ (j=1,2)}
+\end{equation}
+とおく．任意の$l\in\Zset$に対して$m(A\cap [l,l+1))=0$であることをいえばよい．
+\begin{equation}
+    A\cap[l,l+1)=\bigcup_{k\geq 1}\bigcup_{N\geq 1}\bigcap_{n\geq N}(A_{1/k,n}\cap [l,l+1))
+\end{equation}
+である．任意の$k,N\geq 1$に対して，測度の単調収束定理より
+\begin{equation}
+    m\left(\bigcap_{n\geq N}A_{1/k,n}\cap[l,l+1) \right)=\lim_{n\to\infty}m(A_{1/k,n}\cap[l,l+1))=0 
+\end{equation}
+なので結論を得る．
+
+(3) 偽らしい(未検証)．
+
+\subsubsection*{[7]}
+(1) $u\in X$に対して
+\begin{equation}
+    |Au(x)|\leq \int_{0}^{x}\abs{u(y)}\,dy\leq \norm{u}_{X}\quad (x\in [0,1])
+\end{equation}
+よって$\norm{Au}_{X}\leq \norm{u}_{X}$を得る．
+
+(2) 
+\begin{equation}
+    \abs{A^nu(x)}\leq \int_{0}^{x}dy_1\int_{0}^{y_1}dy_2\cdots\int_{0}^{y_{n-1}}dy_{n}\abs{u(y_{n})}\leq \frac{1}{n!}\norm{u}_{X}
+\end{equation}
+である．
+
+(3) 
+\begin{equation}
+    T_N=z\sum_{n=0}^N\qty(\frac{A}{z})^n 
+\end{equation}
+とおく．これは$\mathcal{L}(X)$のCauchy列である：実際，$N>M$に対して
+\begin{equation}
+    \norm{T_N-T_{M}}\leq \abs{z}\sum_{n=M+1}^N\frac{\norm{A^n}}{\abs{z}^n}\leq \abs{z}\sum_{n=M+1}^{N}\frac{1}{n!\abs{z}^n}\to0\quad (M,N\to\infty)
+\end{equation}
+よって$T_N$はある有界線形作用素$T$に作用素ノルムで収束する．$T$が求める逆作用素であることが確かめられる．
+\subsection{2022年度}
+\subsubsection*{[6]}
+(1) $k\in\Nset$に対して
+\begin{equation}
+    G_k\coloneq \qty{x\in X\mid \abs{g(x)}\geq k}
+\end{equation}
+とおく．
+\begin{equation}
+    \norm{g}_2^2\geq \int_{G_k}\abs{g}^2\geq k^2\mu(G_k)
+\end{equation}
+より$\mu(G_k)\leq \norm{g}_2^2/k^2$となる．$A\in \mathcal{F}$に対して
+\begin{equation}
+    \int_{A}\abs{g}^2=\int_{A\setminus G_k}\abs{g}^2+\int_{A\cap G_k}\abs{g}^2\leq k^2\mu(A)+\int_{X}\abs{g}^2\1_{G_k}
+\end{equation}
+なので，
+\begin{equation}
+    \limsup_{\delta\to+0}\sup_{A\in \mathcal{F},\ \mu(A)<\delta}\leq \int_{X}\abs{g}^2\1_{G_k}
+\end{equation}
+である．今，$g\in L^2(X)$より$\abs{g}<\infty\ (\text{$\mu$-a.e.})$であり，測度の単調収束定理より(測度有限に注意)
+\begin{equation}
+    \mu\qty(\bigcap_{k=1}^\infty G_k)=\lim_{k\to\infty}\mu(G_k)
+\end{equation}
+なので，$\abs{g}^2\1_{G_k}\to 0\ (\mu\text{-a.e.})$である．$\abs{g}^2\1_{G_k}\leq \abs{g}^2\in L^1$よりdominated convergenceが使えて
+\begin{equation}
+    \lim_{k\to\infty}\int_{X}\abs{g}^2\1_{G_k}=0 
+\end{equation}
+となる．これで示された．
+
+(2) $f_n$が零集合$A$を除いて$f$に一様収束しているとは，「任意の$k\geq 1$に対して$n_k\geq 1$があり$E_{n_k,k}\subset A$となることである」．
+
+(3) $f_n\to f\ $a.e. in $X$とは，
+\begin{equation}
+    \mu\qty(\limsup_{n\to\infty}E_{n,k})=0\quad (\forall k\geq 1)
+\end{equation}
+ということである．測度の単調収束定理より
+\begin{equation}
+    \lim_{N\to\infty}\mu\qty(\bigcap_{n\geq N}E_{n,k})=0.
+\end{equation}
+このことから求める$n_k$は作れる．
+
+(4) $g\in L^2(X)$とする．$\qty{f_n}_n$の任意の部分列$\qty{f_{n_k}}_k$に対してさらなる部分列$\qty{f_{n_{k_l}}}_l$が存在して，
+\begin{equation}
+    \lim_{l\to\infty}\int_{X}f_{n_{k_l}}g=\int_{X}fg 
+\end{equation}
+となることを示す．
+
+$\varepsilon>0$とする．(1)より，ある$\delta>0$が存在して，
+\begin{equation}
+    A\in \mathcal{F},\ \mu(A)<\delta\Longrightarrow \int_{A}\abs{g}^2\,d\mu<\varepsilon
+\end{equation}
+とできる．$f_{n_k}\to f$ a.e.より，ある部分列$\qty{k_l}_l$を取れば，
+\begin{equation}
+    \mu\qty(\bigcup_{l\geq1}E_{n_{k_l},l})<\delta 
+\end{equation}
+とできる．よって
+\begin{align}
+    \abs{\int_{X}(f-f_{n_{k_l}})g}&\leq \int_{E_{n_{k_l},l}}\abs{f-f_{n_{k_l}}}\abs{g}+\int_{X\setminus E_{n_{k_{l}},l}}\abs{f-f_{n_{k_l}}}\abs{g}\\
+    &\leq 2M^{1/2}\norm{g}_{L^2(E_{n_{k_l}})}+\norm{f-f_{n_{k_{l}}}}_{L^2(X\setminus E_{n_{k_{l}}})}\norm{g}_{L^2(X)}\\
+    &\leq 2M^{1/2}\varepsilon^{1/2}+\frac{1}{l}\mu(X)^{1/2}\norm{g}_{L^2(X)}
+\end{align}
+となる．$\limsup_{l\to\infty}$を取った後$\varepsilon\to0$とせよ．
+
+\subsubsection*{[7]}
+(1) $f\in L^r$に対して，Hölderの不等式より
+\begin{equation}
+    \abs{Tf(x)}=\abs{\int_{\Omega}K(x,y)f(y)\,dy}\leq \qty(\int_{\Omega}\abs{K(x,y)}^p\,dy)^{1/p}\qty(\int_{\Omega}\abs{f(y)}\,dy)^{1/r}
+\end{equation}
+である．なお，$K\in L^p(\Omega\times \Omega)$よりほとんどすべての$x\in \Omega$に対して$K(x,-)\in L^p(\Omega)$である(Fubiniの定理)．よって
+\begin{align}
+    \int_{\Omega}\abs{Tf(x)}^p\,dx&=\int_{\Omega}\,dx \qty(\int_{\Omega}\abs{K(x,y)}^p\,dy)\qty(\int_{\Omega}\abs{f(y)}\,dy)^{p/r}\\
+    &=\qty(\int_{\Omega\times \Omega}\abs{K(x,y)}\,dxdy)\qty(\int_{\Omega}\abs{f(y)}\,dy)^{p/r}
+\end{align}
+したがって$\norm{Tf}_{p}\leq \norm{K}_p\norm{f}_r$．
+
+(2) ほとんどすべての$x\in \Omega$に対して$K(x,-)\in L^p(\Omega)$であるから，そのような$x$に対して
+\begin{equation}
+    T_nf(x)=\int_{\Omega}K(x,y)f_n(y)\,dy \to \int_{\Omega}K(x,y)f(y)\,dy=Tf(x)
+\end{equation}
+
+(3) $L^r$はreflexiveであるから「$f_n\rightharpoonup f$ weakly in $L^r$ならば$Tf_n\to Tf$ strongly in $L^p$」を示せばよい．弱収束列は有界なので$M=\sup_{n}\norm{f_n}_r<\infty$．また(2)より$Tf_n\to Tf$ a.e. またa.e. $x\in \Omega$に対して
+\begin{equation}
+    \abs{Tf_n(x)}\leq \int_{\Omega}\abs{K(x,y)}\abs{f_n(y)}\,dy\leq M\norm{K(x,-)}_{p}
+\end{equation}
+であり，$K\in L^p(\Omega\times \Omega)$より右辺は($x$に関して)$L^p$に属する．よってdominated convergenceより$Tf_n\to Tf$ strongly in $L^p$が従う．
+\subsubsection*{[8]}
+$f(z)=1/(z^2\sin z)$の正方形領域$\qty{x+iy\mid \max\qty{\abs{x},\abs{y}}\leq (N+1/2)\pi}$における極は，$z=n\pi\ (n\in \Zset\cap\qty[-n,n])$である．極の位数は$0$でのみ$2$で，$n\pi\ (n\neq0)$では$1$．よって
+\begin{equation}
+    \Residue(0,f)=\lim_{z\to0}\frac{d^2}{dz^2}z^3f(z)=\lim_{z\to0}\frac{d^2}{dz^2}\frac{z}{\sin z}=\frac{1}{3},
+\end{equation}
+\begin{equation}
+    \Res(n\pi,f)=\lim_{z\to n\pi}(z-n\pi)f(z)=\lim_{z\to n\pi}\frac{z-n\pi}{z^2\sin z}=\frac{(-1)^n}{(n\pi)^2}\quad (n\neq0)
+\end{equation}
+であるから，留数定理より
+\begin{equation}
+    \frac{1}{2\pi i}\int_{C_N}\frac{dz}{z^2\sin z}=\frac{1}{3}+\frac{2}{\pi^2}\sum_{n=1}^N\frac{(-1)^n}{n^2}
+\end{equation}
+を得る．
+
+(2) 答えは$-\pi/6$．$C_N$上$\abs{\sin z}\geq 1$がわかる．よって
+\begin{equation}
+    \abs{\frac{1}{2\pi i}\int_{C_N}\frac{dz}{z^2\sin z}}\leq \frac{4(2N+1)\pi}{2\pi i}\cdot \frac{1}{\qty(\qty(N+1/2)\pi)^2}\to0\quad (N\to\infty)
+\end{equation}
+であるから，(1)の結果と合わせて結論を得る．
 \subsection{2023年度}
 \subsubsection*{[5]}
 (1) 任意の$\rho>0$に対して，$N=N_{\rho}$を，$(N!)^{1/N}>2\rho/R$となるくらい大きく取れば，$\abs{z}<\rho$に対して
