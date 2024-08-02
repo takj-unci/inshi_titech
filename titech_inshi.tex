@@ -904,8 +904,16 @@ $\mathop{\mathrm{span}}\qty{D_n\mid n\geq0}$の基底を与える．
 \end{equation}
 と求まる．
 \subsubsection*{[2]}
-$\ker f$の$V$における補空間$W$を取る．つまり$V=\ker f\oplus W$かつ$\ker f \cap W=0$．そこで$g=\mathrm{id}_{\ker f}\oplus f|_{W},\ h=0_{\ker f}\oplus \mathrm{id}_{W}$とおけばよい．
-
+$\ker(f),\ \mathop{\mathrm{Im}}(f)$の$V$における補空間$W,W'$を取る．つまり$V=\ker(f)+ W=\mathop{\mathrm{Im}}(f)+W'$かつ$\ker (f) \cap W=\mathop{\mathrm{Im}}(f)\cap W'=0$．次の可換図式を満たす$g_1,h$を取る：
+\begin{equation}
+    % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQA1EAX1PU1z5CKAEwVqdJq3Zde-bHgJEyIiQxZtEIAOo8+IDAqFFypVTXXSts-YcFLRZtVM0gAOm4C29HAAsIaMAe3n4ATp7AAJKe3NwAFABmAJQ8EjBQAObwRKAJoRCeSKYgOBBIYpIa7ME+-oE1YRFoobEA+sDa3CA0jPQARjCMAAoCisIgoVgZvjh6ufmFiMWlSADMFi7svt0gvQPDo8Zak9OzciB5BeU0K4jrJfRYjFsQEADWcxcL1yVliAAsGyqWg8AGMCBlPpdFoDfkgyA8ni93lDvksbn8EZZXAlUVdEBVbljNloMq1iDtGFgwK4oPQ4L50qluEA
+    \begin{tikzcd}
+      & V \arrow[dd, "\mathop{\mathrm{pr}}_{W}"'] \arrow[ldd, "h"'] \arrow[r, "f"] & V                                        \\
+      &                                                                            &                                          \\
+    V & W \arrow[l, hook] \arrow[r, "\cong"] \arrow[ruu, "g_1", dashed]            & \mathop{\mathrm{Im}}(f) \arrow[uu, hook]
+    \end{tikzcd}
+\end{equation}
+さらに同型$g_2\colon \ker(f)\to W'$がある．$g=g_1\oplus g_2\colon \ker(f)\oplus W$とおけばよい．
 \subsubsection*{[3]}
 (1) いいえ．(2) はい．(3) はい(多分．なぜ？)．(4) いいえ．
 
@@ -1095,11 +1103,49 @@ $a=-1/(n-1)$の場合，$A$を基本変形を施して
 は，(2), (3)より$X$の閉集合である．
 
 \subsubsection*{[4]}
+答えは$\beta>1,\ \alpha+\beta>2$．
 
+(i) 問題の級数が収束する条件は$\alpha+\beta>1$．
+
+(ii) このとき，級数$\sum_{n\geq 1}n^{-\alpha}(x+n)^{-\beta}$は$f(x)$に広義一様収束する．よって$f$は連続．
+
+(iii) 広義一様収束なので，任意の$R>0$に対して
+\begin{equation}
+    \int_{0}^{R}f(x)\,dx=\sum_{n\geq 1}\int_{0}^{R}\frac{1}{n^{\alpha}(x+n)^{\beta}}
+\end{equation}
+である．$\beta=1$の場合は
+\begin{equation}
+    \int_{0}^{R}f(x)\,dx=\sum_{n\geq 1}\frac{1}{n^\alpha}\log\qty(1+\frac{R}{n})\to\infty\ (R\to\infty)
+\end{equation}
+より広義積分は発散する．$\beta\neq 1$の場合
+\begin{equation}
+    \int_{0}^{R}f(x)\,dx=\sum_{n\geq 1}\frac{1}{(\beta-1)n^{\alpha}}\qty(\frac{1}{n^{\beta-1}}-\frac{1}{(R+n)^{\beta-1}})
+\end{equation}
+が$R\to\infty$で収束する条件は$\beta-1>0$かつ$\alpha+\beta-1>1$．
 \subsubsection*{[5]}
+(1) $\sqrt{a_na_{n+1}}\leq \frac{a_n+a_{n+1}}{2}$より．$a_n=1+2^{-n}+(-1)^{n-1}(1-2^{-n})$を考えれば逆は成り立たない．
 
-
-
+(2) $\varepsilon=1$に対して$\delta>0$があり，
+\begin{equation}
+    x,y\in [0,\infty),\ \abs{x-y}\leq \delta\Longrightarrow \abs{f(x)-f(y)}\leq 1 
+\end{equation}
+となる．よって$x\geq \delta$ならば
+\begin{equation}
+    \int_{x-\delta}^{x+\delta}\abs{f(x)-f(y)}\,dy\leq 2\delta
+\end{equation}
+一方
+\begin{equation}
+    \int_{x-\delta}^{x+\delta}\abs{f(x)-f(y)}\,dy\geq \abs{\int_{x-\delta}^{x+\delta}(f(x)-f(y))\,dy}\geq2\delta\abs{f(x)}-\abs{\int_{x-\delta}^{x+\delta}f(y)\,dy}\geq 2\delta\abs{f(x)}-2\sup_{[0,\infty)}\abs{F}
+\end{equation}
+よって
+\begin{equation}
+    \sup_{x\in[\delta,\infty)}\abs{f}\leq 1+\frac{1}{\delta}\sup_{[0,\infty)}\abs{F}
+\end{equation}
+を得る．
+\begin{equation}
+    \sup_{x\in[0,\infty)}\abs{f}\leq 1+\frac{1}{\delta}\sup_{[0,\infty)}\abs{F}+\sup_{[0,\delta]}\abs{f}<\infty 
+\end{equation}
+である．
 
 \section{午後}
 主に解析系の問題を解いていく．
@@ -1152,7 +1198,7 @@ $a=-1/(n-1)$の場合，$A$を基本変形を施して
 \begin{align}
     \int_{\qty{\abs{f}\geq K}}\abs{f}\,d\mu&=\int_{X}\abs{f}\cdot \1_{\qty{\abs{f}\geq K}}\\
     &\leq \qty(\int_{X}\abs{f}^p\,d\mu)^{1/p}\mu\qty(\qty{\abs{f}\geq K})^{1/p'}\\
-    &\leq \frac{M}{K^p}
+    &\leq \frac{M}{K^{p-1}}
 \end{align}
 となる．したがって
 \begin{equation}
@@ -1196,7 +1242,7 @@ $t_0$を極大延長可能時刻，つまり$t_0=\sup\qty{t>0\mid \text{$u$は$[
 \end{equation}
 である．もし$t_0<\infty$ならば，$\lim_{t\to t_0-0}u(t)=\infty$である\footnote{もし$\lim_{t\to t_0-0}u(t)<\infty$ならば，$f$は$[0,t_0]$に拡張され，さらに局所解の存在より$[0,t_0+\varepsilon)\ (\exists\varepsilon>0)$に拡張される．これは極大性に矛盾．}．よって
 \begin{equation}
-    \infty=\int_{t\to t_0-0}\int_{0}^{u(t)}\frac{dx}{f(x)}=t_0<\infty 
+    \infty=\lim_{t\to t_0-0}\int_{0}^{u(t)}\frac{dx}{f(x)}=t_0<\infty 
 \end{equation}
 となり矛盾．
 \begin{equation}
@@ -1249,7 +1295,7 @@ $t_0$を極大延長可能時刻，つまり$t_0=\sup\qty{t>0\mid \text{$u$は$[
         0 & (n>N)
     \end{cases}
 \end{equation}
-と定める．$T^{(N)}_{\alpha}$はfinite rank (像が有限次元)であるからコンパクト作用素．一方，
+と定める．$T^{(N)}_{\alpha}$はfinite-rank-operator (像が有限次元)であるからコンパクト作用素．一方，
 \begin{equation}
     \norm{(T_{\alpha}-T^{(N)}_{\alpha})\qty{a_n}_n}_{l^1}=\sum_{n\geq N+1}n^{-\alpha}\abs{a_n}\leq \qty(\sum_{n\geq N+1}n^{-2\alpha})^{1/2}\norm{\qty{a_n}_{n}}_{l^2}
 \end{equation}
@@ -1298,7 +1344,7 @@ $n\geq1,\ \varepsilon>0$に対して
 \end{equation}
 である．ここで$M=\sup_{\Rset^2}\abs{\Psi}$．今$K$はコンパクトなので$M\1_{K}$は可積分．よってdominated convergenceにより結論が得られる．
 
-\subsection*{[8]}
+\subsubsection*{[8]}
 (1) $f(t)=\int_{0}^{t}u(s)\,ds$とおくと，$u$は$C^1$級で$u(t)\leq f(t)+c$．
 \begin{equation}
     \qty{e^{-t}(f(t)+c)}'=e^{-t}\qty(u(t)-f(t)-c)\leq 0
