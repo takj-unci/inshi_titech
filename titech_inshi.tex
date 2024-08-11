@@ -51,11 +51,19 @@
 \date{\today}
 \maketitle
 \begin{abstract}
-    問題は
+    問題のリンク：
     \begin{quote}
         \url{https://www.math.titech.ac.jp/top/~jimu/Graduate/old-exam/innsi.html}
     \end{quote}
-    を見よ．
+    まだ解けていない問題：
+    \begin{itemize}
+        \item \hyperref[am_2019_2]{午前，2019[2]},
+        \item \hyperref[am_2022_3]{午前，2022[3](3)},
+        \item \hyperref[am_2023_3]{午前，2023[3](4)},
+        
+        \item \hyperref[pm_2016_7]{午後，2016[7]},
+        \item \hyperref[pm_2021_6]{午後，2021[6](3)},
+    \end{itemize}
 \end{abstract}
 \tableofcontents
 
@@ -684,7 +692,7 @@ $(x+y)/2$まわりのTaylor展開を考える．
 \end{equation}
 より$ab=0$である．
 
-\subsubsection*{[2]}
+\subsubsection*{[2]}\label{am_2019_2}
 
 \subsubsection*{[3]}
 (1) $(0,0),\ (0,1)\in\Rset^2$は$\mathcal{O}'$の開集合で分離できない．
@@ -914,7 +922,7 @@ $\ker(f),\ \mathop{\mathrm{Im}}(f)$の$V$における補空間$W,W'$を取る．
     \end{tikzcd}
 \end{equation}
 さらに同型$g_2\colon \ker(f)\to W'$がある．$g=g_1\oplus g_2\colon \ker(f)\oplus W$とおけばよい．
-\subsubsection*{[3]}
+\subsubsection*{[3]}\label{am_2022_3}
 (1) いいえ．(2) はい．(3) はい(多分．なぜ？)．(4) いいえ．
 
 \subsubsection*{[4]}
@@ -979,7 +987,7 @@ $\ker(f),\ \mathop{\mathrm{Im}}(f)$の$V$における補空間$W,W'$を取る．
     \qty[\sqrt{a^{m-1}b}\sin\frac{k\pi}{n+1},\ \sqrt{a^{m-2}b^2}\sin\frac{2\pi}{n+1},\ \cdots,\ \sqrt{ab^{m-1}}\sin \frac{n\pi}{n+1}]
 \end{equation}
 である．
-\subsubsection*{[3]}
+\subsubsection*{[3]}\label{am_2023_3}
 (1) いいえ．(2) はい．(3)の答えは
 \begin{equation}
     \overline{B}=\qty{(x,y)\in\Rset^2\mid \text{($x\leq 1/\sqrt{2}$かつ$y\leq 1/\sqrt{2}$)または($x\geq -1/\sqrt{2}$かつ$y\geq -1/\sqrt{2}$)}}
@@ -1269,11 +1277,11 @@ $f(x)<1$ならば$g_n(x)\1_{\qty{f<1}}(x)\leq (f(x))^n\to0$なので$g_n\1_{\qty
 
 $g_n\1_{\qty{f=1}}=\abs{\qty{f=1}}/2$より$\int_{\qty{f=1}}g_n=\abs{\qty{f=1}}/2$である．
 
-\subsubsection*{[7]}
+\subsubsection*{[7]}\label{pm_2016_7}
 {\color{red} まだ解けていない．}
 
 \subsubsection*{[8]}
-(1) 偏角の原理の証明問題．\hyperref[2024_pm_5]{2024年度問[5]}に同じ問題が出題されている．
+(1) 偏角の原理の証明問題．\hyperref[pm_2024_5]{2024年度問[5]}に同じ問題が出題されている．
 
 (2) $D_{\pm}=\qty{z\in\Cset\mid \abs{z\pm i/2}<1}$とおいたとき対称差$D_{+}\bigtriangleup D_{-}$を描けばよい．
 \subsection{2017年度}
@@ -1672,7 +1680,7 @@ $n\geq1,\ \varepsilon>0$に対して
 
 さて，$f$が(i)を満たすとする．このとき$g(z)=f(z)-1/(2\pi iz)$は有理型で，($\diamondsuit$)の仮定を満たす．よって$g$は正則であり，$f=g+1/(2\pi iz)$は(ii)を満たす．
 
-\subsubsection*{[6]}
+\subsubsection*{[6]}\label{pm_2021_6}
 (1) 
 \begin{equation}
     \int_{\Rset}(u_n(x)-a_1)^2(u_n(x)-a_2)^2\,dx\geq \int_{A_{\varepsilon,n}}\varepsilon^2\cdot \varepsilon^2\,dx=\varepsilon^4m(A_{\varepsilon,n})
@@ -1982,7 +1990,7 @@ $x(0)=0$より，
 \end{equation}
 である．$\alpha\to1\pm 0$とすることで$(x,z)=\norm{x}^2$つまり$(x,y)=0$を得る．
 \subsection{2024年度}
-\subsubsection*{[5]}\label{2024_pm_5}
+\subsubsection*{[5]}\label{pm_2024_5}
 (1) $Z$を$f$の$c$内部の零点全体の集合とする．積分路の変形により
 \begin{equation}
     \frac{1}{2\pi i}\int_{c}\frac{f'}{f}\,dz=\frac{1}{2\pi i}\sum_{z_0\in Z}\int_{\partial B_{\rho}(z_0)}\frac{f'}{f}\,dz 
@@ -2058,7 +2066,7 @@ $f\in C(D),\ x\in D$に対して
 \end{align}
 よって$\norm{T_nf}\leq \pi n\norm{f}$を得る．よって$T_n$は$C(D)$から$C(D)$への有界線形作用素であり，とくに$C(D)$の(一様)有界列$\qty{f_k}_k,\ M=\sup_{k}\norm{f_k}<\infty$に対して$\qty{T_nf_k}_k$は一様有界である．さらに$x,z\in D$に対して
 \begin{align}
-    \abs{T_nf_k(x)-T_nf_k(z)}&\leq \int_{D}\abs{\Phi_n(x,y)-\Phi_n(z,y)}\abs{f_kernelは(y)}\,dy\\
+    \abs{T_nf_k(x)-T_nf_k(z)}&\leq \int_{D}\abs{\Phi_n(x,y)-\Phi_n(z,y)}\abs{f_k(y)}\,dy\\
     &\leq 2\pi M\sup_{y\in D}\abs{\Phi_n(x,y)-\Phi_n(z,y)}
 \end{align}
 だが，$\Phi_n\colon D\times D\to \Rset$はコンパクト集合上連続より一様連続であることに注意すると，
