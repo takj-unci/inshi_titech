@@ -1,6 +1,6 @@
 \documentclass[a4j]{ltjsarticle}
 \usepackage{bookmark}
-
+\usepackage{xcolor}
 % 数式
 \usepackage{luatexja}
 \usepackage{amsmath,amsfonts,amssymb,ascmac}
@@ -960,7 +960,25 @@ $\ker(f),\ \mathop{\mathrm{Im}}(f)$の$V$における補空間$W,W'$を取る．
 (3) $K=\Rset,\ V=\Rset^{\oplus\Nset},\ \varphi((a_1,a_2,\ldots))=(a_2,a_3,\ldots)$．
 
 \subsubsection*{[2]}
+(1) $D_n(x;a,b)=xD_{n-1}(x;a,b)-abD_{n-2}(x;a,b)$がわかる．とくに$a_n=D_n(-2;1,1)$とおくと$a_n=-2a_{n-1}-a_{n-2}$．$a_1=-2,\ a_2=3$とあわせて$a_n=(-1)^{n}(n+1)$．
 
+(2) 帰納法．
+
+(3) $D_n(x;a,b)$は行列
+\begin{equation}
+    \begin{bmatrix}
+        0 & a & 0 & \cdots & 0 \\
+        b & 0 & a & \cdots & 0 \\
+        0 & b & 0 & \cdots & 0 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & 0 & \cdots & 0
+    \end{bmatrix}
+\end{equation}
+の固有多項式である．一方この行列は固有値$2\sqrt{ab}\cos(k\pi/(n+1))\ (k=1,2,\ldots,n)$を持ち，対応する固有ベクトルは
+\begin{equation}
+    \qty[\sqrt{a^{m-1}b}\sin\frac{k\pi}{n+1},\ \sqrt{a^{m-2}b^2}\sin\frac{2\pi}{n+1},\ \cdots,\ \sqrt{ab^{m-1}}\sin \frac{n\pi}{n+1}]
+\end{equation}
+である．
 \subsubsection*{[3]}
 (1) いいえ．(2) はい．(3)の答えは
 \begin{equation}
@@ -1149,8 +1167,263 @@ $a=-1/(n-1)$の場合，$A$を基本変形を施して
 
 \section{午後}
 主に解析系の問題を解いていく．
-\subsection{2018年度}
+\subsection{2015年度}
+\subsubsection*{[5]}
+結論：$A_n\to -2$，$B_n$は収束しない．$f_n(x)=(nx^2\cos x)/(1+nx),\ g_n(x)=(nx\cos x)/(1+nx^2)$とおく．
 
+$f_n\to x\cos x$ a.e.である．また$f_n(x)\leq x\in L^1([0,\pi])$．よってdominated convergenceが適用できて
+\begin{equation}
+    A_n=\int_{0}^{\pi}f_n(x)\,dx\to \int_{0}^{\pi}x\cos x\,dx=-2
+\end{equation}
+を得る．
+
+$B_n=\int_{0}^{\pi}g_n(x)\,dx$が発散することを示す．$g_n\to (\cos x)/x$ a.e.に注意する．積分区間を$\int_{0}^{\pi/3}+\int_{\pi/3}^{\pi}$に分ける．$\abs{g_n(x)}\leq 1/x\leq 3/\pi\ (x\in[\pi/3,\pi])$より$\int_{\pi/3}^{\pi}g_n(x)\,dx$は収束する．一方
+\begin{equation}
+    \int_{0}^{\pi/3}g_n(x)\,dx\geq \int_{0}^{\pi/3}\frac{nx}{1+nx^2}\cdot\frac{1}{2}\,dx=\frac{1}{4}\log\qty(1+\frac{n\pi^2}{9})\to\infty 
+\end{equation}
+である．
+
+\subsubsection*{[7]}
+(1) 関数$1/(1+z^{2n+1})$の閉曲線$C_R=\partial D_R$上の線積分を考える．ただし
+\begin{equation}
+    D_R=\qty{re^{i\theta}\in \Cset\mid 0\leq r\leq R,\ 0\leq\theta\leq 2\pi/(2n+1)}.
+\end{equation}
+$D_R$における$1/(1+z^{2n+1})$の極は$\zeta=\exp(\pi i/(2n+1))$ただ1つで，$C_R$上にはない．留数定理より
+\begin{align}
+    \int_{C_R}\frac{dz}{1+z^{2n+1}}&=2\pi i\Residue(\zeta,1/(1+z^{2n+1}))\\
+    &=2\pi i\lim_{z\to\zeta}\frac{z-\zeta}{1+z^{2n+1}}\\
+    &=2\pi i\qty(\prod_{k=1}^{2n}(\zeta-\zeta^{2n+1}))^{-1}\\
+    &=2\pi i\zeta^{-2n}\qty(\prod_{k=1}^{2n}(1-\zeta^{2k}))^{-1}
+\end{align}
+である．今，$z^{2n+1}-1$の根は$z=\exp(2\pi k/(2n+1))=\zeta^{2k}\ (k=0,1,\ldots,2n)$であるから因数分解公式
+\begin{equation}
+    (z-1)(z^{2n}+\cdots+z+1)=z^{2n+1}-1=\prod_{k=0}^{2n}(z-\zeta^{2k})
+\end{equation}
+が成り立つ．両辺を$z-1$で割って$z\to1$の極限を考えると
+\begin{equation}
+    2n+1=\prod_{k=1}^{2n}(1-\zeta^{2k})
+\end{equation}
+を得る．したがって線積分の結果は
+\begin{equation}
+    \int_{C_R}\frac{dz}{1+z^{2n+1}}=\frac{2\pi i\zeta^{-2n}}{2n+1}=-\frac{2\pi i\zeta}{2n+1}
+\end{equation}
+を得る．さて，ここで線積分の経路を$C_R=I_R\cup \Gamma_R\cup J_{R}$,
+\begin{equation}
+    I_{R}=[0,R],\quad \Gamma_R=\qty{Re^{i\theta}\mid 0\leq \theta\leq 2\pi/(2n+1)},\quad J_R=\qty{r\zeta^2\mid 0\leq r\leq R}
+\end{equation}
+と分ける．
+\begin{equation}
+    \int_{J_R}\frac{dz}{1+z^{2n+1}}=\int_{R}^{0}\frac{\zeta^2dr}{1+r^{2n+1}}=-\zeta^2\int_{0}^{R}\frac{dx}{1+x^{2n+1}}
+\end{equation}
+\begin{equation}
+    \abs{\int_{\Gamma_R}\frac{dz}{1+z^{2n+1}}}\leq \frac{1}{R^{2n+1}-1}\cdot\frac{2\pi R}{n}\to 0\quad (R\to\infty)
+\end{equation}
+より，$R\to\infty$における極限で
+\begin{equation}
+    (1-\zeta^2)\int_{0}^{\infty}\frac{dx}{1+x^{2n+1}}=-\frac{2\pi i \zeta}{2n+1}
+\end{equation}
+が成り立つ．したがって
+\begin{equation}
+    \int_{0}^{\infty}\frac{dx}{1+x^{2n+1}}=\frac{\pi}{(2n+1)\qty(\zeta-\zeta^{-1})/(2i)}=\frac{\pi}{(2n+1)\sin(\pi/(2n+1))}
+\end{equation}
+が示された．
+
+(2) $\log\abs{\varphi(z)}$が$z$に関する調和関数であることが計算により分かる．
+
+\subsubsection*{[7]}
+(1) $h_1(x,t)=\sin x+2t^{1/2}\sin^2 x$.
+
+(2) $T<1/64$でよいことを帰納法で示す．$0<t<1/64$ならば$\abs{h_1(x,t)}\leq 1+2t^{1/2}\leq 2$なので$j=0,1$での成立はよい．$\norm{h_j}_{T}\leq 2$を仮定する．このとき$0<t<T$に対して
+\begin{equation}
+    \abs{h_{j+1}(x,t)}\leq \abs{h_0(x,t)}+\int_{0}^{t}\frac{\norm{h_j}_{T}^2}{(t-s)^{1/2}}\,ds\leq 1+2t^{1/2}\norm{h_j}_{T}^2\leq 1+2\cdot \frac{1}{64^{1/2}}\cdot 2^2\leq 2 
+\end{equation}
+を得る．よって$\norm{h_{j+1}}_{T}\leq 2$である．
+
+(3) $T<1/256$でよい．実際，$0<t<T$に対して
+\begin{align}
+    \abs{h_{j+1}(x,t)-h_{j}(x,t)}&\leq \int_{0}^{t}\frac{\abs{h_{j}(x,t)}^2-\abs{h_{j-1}(x,t)}^2}{(t-s)^{1/2}}\,ds\\
+    &\leq (\norm{h_j}_{T}+\norm{h_{j-1}}_{T})\norm{h_{j}-h_{j-1}}_{T}\cdot 2t^{1/2}\\
+    &\leq (2+2)\norm{h_{j}-h_{j-1}}_{T}\cdot 2t^{1/2}\\
+    &\leq \frac{1}{2}\norm{h_j-h_{j-1}}_{T}
+\end{align}
+となる．つまり$\norm{h_{j+1}-h_{j}}_{T}\leq \frac{1}{2}\norm{h_j-h_{j-1}}_{T}$．これを繰り返し用いて
+\begin{equation}
+    \norm{h_{j+1}-h_{j}}_{T}\leq \frac{1}{2}\norm{h_j-h_{j-1}}_{T}\leq \cdots\leq \frac{1}{2^{j}}(\norm{h_1}+\norm{h_0})\leq 2^{-j+2}
+\end{equation}
+を得る．よって，任意の$j<k$に対して
+\begin{equation}
+    \norm{h_j-h_{k}}_{T}\leq \sum_{i=j-1}^{k}\norm{h_{i+1}-h_{i}}_{T}\leq \sum_{i=j-1}^{k}2^{-i+2}=8(2^{-j}-2^{-k})\to0\quad (j,k\to\infty)
+\end{equation}
+である．
+\subsection{2016年度}
+\subsubsection*{[6]}
+(1) $\infty>\int_{\Rset}f\geq \int_{\Rset\setminus F_\alpha}f\geq \alpha\abs{\Rset\setminus F_{\alpha}}$より従う．
+
+(2) $x\in F_{\alpha}$ならば$g_n(x)\leq \frac{\alpha^n}{1+\alpha^n}\to 0$であり，$g_n\1_{F_{\alpha}}\leq f\in L^1$よりdominated convergenceが適用できる($0\leq y\leq 1$ならば$y^n/(1+y^n)\leq y$に注意せよ)．
+
+(3) $\int_{\Rset}=\int_{\qty{f>1}}+\int_{\qty{f<1}}+\int_{\qty{f=1}}$とわける．
+
+$g_n\1_{\qty{f>1}}\to 1$ a.e.かつ$g_n\1_{\qty{f>1}}\leq \1_{\qty{f>1}}\in L^1$ ((1)より)なので$\int_{\qty{f>1}}g_n\to \abs{\qty{f>1}}$を得る．
+
+$f(x)<1$ならば$g_n(x)\1_{\qty{f<1}}(x)\leq (f(x))^n\to0$なので$g_n\1_{\qty{f<1}}\to0$ a.e., また$g_n\1_{\qty{f<1}}\leq f\in L^1$なので$\int_{\qty{f<1}}g_n\to0$を得る．
+
+$g_n\1_{\qty{f=1}}=\abs{\qty{f=1}}/2$より$\int_{\qty{f=1}}g_n=\abs{\qty{f=1}}/2$である．
+
+\subsubsection*{[7]}
+{\color{red} まだ解けていない．}
+
+\subsubsection*{[8]}
+(1) 偏角の原理の証明問題．\hyperref[2024_pm_5]{2024年度問[5]}に同じ問題が出題されている．
+
+(2) $D_{\pm}=\qty{z\in\Cset\mid \abs{z\pm i/2}<1}$とおいたとき対称差$D_{+}\bigtriangleup D_{-}$を描けばよい．
+\subsection{2017年度}
+\subsubsection*{[7]}
+(1) $\abs{w}<m$ならば，
+\begin{align}
+    g(w)&=\frac{1}{2\pi i}\int_{\abs{\zeta}=r}\frac{\zeta f'(\zeta)}{f(\zeta)-w}\,d\zeta \\
+    &=\frac{1}{2\pi i}\int_{\abs{\zeta}=r}\frac{\zeta f'(\zeta)}{f(\zeta)}\frac{1}{1-w/f(\zeta)}\,d\zeta\\
+    &=\frac{1}{2\pi i}\sum_{k=0}^{\infty}\int_{\abs{\zeta}=r}\frac{\zeta f'(\zeta)}{f(\zeta)}\qty(\frac{w}{f(\zeta)})^k\,d\zeta \\
+    &=\sum_{k=0}^{\infty}\qty(\frac{1}{2\pi i}\int_{\abs{\zeta}=r}\frac{\zeta f'(\zeta)}{f(\zeta)^{k+1}}\,d\zeta)w^{k}
+\end{align}
+が成り立つ．なお，無限和と線積分の交換に円周$\abs{\zeta}=r$における一様収束性
+\begin{equation}
+    \limsup_{N\to\infty}\sup_{\abs{\zeta}=r}\abs{\frac{\zeta f'(\zeta)}{f(\zeta)}\frac{1}{1-w/f(\zeta)}-\frac{\zeta f'(\zeta)}{f(\zeta)}\sum_{k=0}^N \qty(\frac{w}{f(\zeta)})^k}\leq \limsup_{N\to\infty} \frac{r}{m}\qty(\sup_{\abs{\zeta}=r}\abs{f'})\sum_{k=N+1}^\infty\qty(\frac{\abs{w}}{m})^k=0 
+\end{equation}
+を用いた．よって$g$は整級数で表されるので正則．
+
+(2) $h(w)=\frac{1}{2\pi i}\int_{\abs{\zeta}=r}\frac{f'(\zeta)}{f(\zeta)-w}\,d\zeta$とおく．(1)と同様に$f$は$\abs{w}<m$で正則．一方偏角の原理により$h(w)$は$\abs{\zeta}<r$における$f(\zeta)=w$の解の個数を表す．とくに$h$は離散値を取り連続なので定数．仮定より$h(0)=1$なので$h\equiv 1$．
+
+(3) (2)より，$\abs{w}<m$に対して$\zeta f'(\zeta)/(f(\zeta)-w)$の$\abs{\zeta}<r$における極は，1位の極$z(w)$ただ1つである．よって
+\begin{equation}
+    h(w)=\frac{1}{2\pi i}\int_{\abs{\zeta}=r}\frac{\zeta f'(\zeta)}{f(\zeta)-w}\,d\zeta=\Residue(z(w),\ \zeta f'(\zeta)/(f(\zeta)-w))=\lim_{\zeta\to z(w)}(\zeta-z(w))\frac{\zeta f'(\zeta)}{f(\zeta)-w}=z(w).
+\end{equation}
+\subsubsection*{[8]}
+(1) $g_r\leq g$より，dominated convergenceの優関数として$g$が取れる．まず$r\to\infty$の極限を考える．$\abs{g}<\infty$ a.e. より$g_r(x)=\min\qty{g(x),\ r}\to g(x)$ a.e.より．次に$r\to+0$の極限は$g_r(x)\to 0 $ a.e.がわかる($g>0,\ =0$となる点をそれぞれ考えよ)．
+
+(2) 可測集合$A$および$r>0$に対して
+\begin{equation}
+    \int_{A}g\,d\lambda =\int_{A\cap\qty{g\leq r}}g\,d\lambda+\int_{A\cap\qty{g\geq r}}g\,d\lambda\leq r\mu(A)+\int_{\Rset}g\1_{\qty{g\geq r}}\,d\lambda 
+\end{equation}
+である．よって
+\begin{equation}
+    \limsup_{\delta\to+0}\sup_{\lambda(A)<\delta}\int_{A}g\,d\lambda\leq \int_{\Rset}g\1_{\qty{g\geq r}}\,d\lambda\quad (\forall r>0).
+\end{equation}
+今，$\abs{g}<\infty$ a.e.より$g(x)\1_{\qty{g\geq r}}(x)\to 0$ a.e. また$\abs{g}\1_{\qty{g\geq r}}\leq \abs{g}\in L^1$よりdominated convergenceが使えて
+\begin{equation}
+    \lim_{r\to\infty}\int_{\Rset}g\1_{\qty{g\geq r}}\,d\lambda=0
+\end{equation}
+を得る．
+
+(3) $r>0$に対して
+\begin{align}
+    \int_{\Rset}\abs{f-f_n}\,d\lambda&=\qty(\int_{\qty{\abs{f-f_n}\leq r}}+\int_{\qty{\abs{f-f_n}>r}})\abs{f-f_n}\,d\lambda\\
+    &\leq \int_{\Rset}\min\qty{\abs{f-f_n}, r}\,d\lambda+\int_{\qty{\abs{f-f_n}>r}} +2\int_{\qty{\abs{f-f_n}>r}}g\,d\lambda\\
+    &\leq 2\int_{\Rset}g_r\,d\lambda+2\int_{\qty{\abs{f-f_n}>r}}g\,d\lambda 
+\end{align}
+である．今，仮定より，任意の$\delta>0$に対して$N\in\Nset$があり$\lambda\qty(\qty{\abs{f-f_n}>r})<\delta\ (\forall n\geq N)$となる．よって$n\geq N$ならば
+\begin{equation}
+    \int_{\Rset}\abs{f-f_n}\,d\lambda\leq 2\int_{\Rset}g_r\,d\lambda+2\sup_{\lambda(A)<\delta}\int_{A}g\,d\lambda
+\end{equation}
+である．$\limsup_{n\to\infty}$としたあとに$r\to\infty,\ \delta\to+0$として結論を得る．
+
+\subsubsection*{[9]}
+(1) $x,y\in C(I),\ t\in[0,1]$に対して
+\begin{equation}
+    \abs{Sx(t)-Sy(t)}=\int_{0}^{t^2}\abs{A(s)}\abs{x(s)-y(s)}\,ds\leq \norm{A}\norm{x-y}
+\end{equation}
+より$\norm{Sx-Sy}\leq \norm{A}\norm{x-y}$を得る．
+
+(2) 
+\begin{align}
+    \abs{S^mx(t)-S^my(t)}&=\abs{\int_{0}^{t^2}ds_1\,(S^{m-1}x(s_1)-S^{m-1}y(s_1))}\\
+    &\leq \int_{0}^{t^2}ds_1\,\int_{0}^{s_1^2}ds_2\,\cdots\int_{0}^{s_{m-1}^2}ds_m \abs{A(s_m)}\abs{x(s_m)-y(s_m)}\\
+    &\leq \norm{x-y}\norm{A}\int_{0}^{1}ds_1\,\int_{0}^{s_1}ds_2\,\cdots\int_{0}^{s_{m-1}}ds_m\\
+    &=\norm{x-y}\norm{A}\frac{1}{m!}
+\end{align}
+より$\norm{A}/m_0!<1/2$くらい$m_0$を大きく取れば$m\geq m_0$に対して$\norm{S^mx-S^my}\leq \frac{1}{2}\norm{x-y}$となる．
+
+(3) $x_n\in C(I)$を，
+\begin{equation}
+    x_0=0,\quad x_{n+1}=Sx_n 
+\end{equation}
+により定める．つまり$x_n=S^nx_0$．任意の$n\geq m_0$に対して
+\begin{equation}
+    \norm{x_{n+1}-x_n}=\frac{1}{2}\norm{x_n-x_{n-1}}\leq \cdots \frac{1}{2}\norm{x_1-x_0}=\frac{\abs{\alpha}}{2^n}
+\end{equation}
+となる．よって$n>m\geq m_0$に対して
+\begin{equation}
+    \norm{x_n-x_m}\leq\sum_{k=m}^{n-1}\norm{x_{k+1}-x_k}\leq 2\abs{\alpha} (2^{-m}-2^{-n})\to0\quad (m,n\to\infty)
+\end{equation}
+となる．$C(I)$は完備なのでCauchy列$\qty(x_n)$はある$x\in C(I)$に収束する．
+\begin{equation}
+    \norm{Sx-x}\leq \norm{S(x-x_n)}+\norm{x_{n+1}-x}\leq M\norm{x-x_n}+\norm{x_{n+1}-x}\to0\quad (n\to\infty)
+\end{equation}
+より$Sx=x$を得る．$\xi$が他の固定点，$S\xi=\xi$だとする．このとき
+\begin{equation}
+    \norm{x-\xi}=\norm{S^{m_0}x-S^{m_0}\xi}\leq \frac{1}{2}\norm{x-\xi}
+\end{equation}
+より$x=\xi$．よって固定点は一意．
+\subsection{2018年度}
+\subsubsection*{[6]}
+(1) 
+\begin{equation}
+    \abs{\int_{L_{\pm}(R)}e^{-z^2/2}\,dz}=\abs{\int_{0}^{a}e^{-(R^2\pm 2Rti-t^2)/2}i\,dt}\leq \int_{0}^{a}e^{(-R^2+t^2)/2}\,dt\to0\quad (R\to\infty)
+\end{equation}
+
+(2) $D_R=\qty{z\mid \abs{\Re z}\leq R,\ 0\leq \Im z\leq a},\ I_R=[-R,R],\ J_R=\qty{s+ai\mid -R\leq s\leq R}$とおく．
+\begin{equation}
+    \int_{J_R}e^{-z^2/2}\,dz=\int_{-R}^{R}e^{-(s^2-a^2+2asi)/2}\,ds=e^{a^2/2}\int_{-R}^{R}e^{-s^2/2}\qty(\cos as-i\sin as)\,ds
+\end{equation}
+一方，
+\begin{equation}
+    0=\int_{\partial D_R}e^{-z^2/2}\,dz=\int_{-R}^{R}e^{-s^2/2}\,ds-e^{a^2/2}\int_{-R}^{R} e^{-s^2/2}(\cos as-i\sin as)\,ds+\qty(\int_{L_+}-\int_{L_-})e^{-z^2/2}\,dz
+\end{equation}
+なので，$R\to\infty$として実部を見ると
+\begin{equation}
+    \int_{-\infty}^{\infty}e^{-s^2/2}\cos as\,ds=\sqrt{2\pi}e^{-a^2/2}
+\end{equation}
+を得る．左辺の被積分関数は偶関数なので2で割って結論を得る．
+
+\subsubsection*{[7]} 
+(1) 
+\begin{equation}
+    \int_{X}e^{\lambda f(x)}\,d\mu(x)\geq \int_{\qty{x\mid f(x)>k}}e^{\lambda k}\,d\mu =e^{\lambda k}\mu(\qty{x\mid f(x)>k})
+\end{equation}
+より従う．
+
+(2) $f(x)=x$とすれば
+\begin{align}
+    e^{\lambda k}\mu((k,\infty))&\leq \int_{\Rset}e^{\lambda x}\,d\mu(x)\\
+    &=\int_{\Rset}e^{\lambda x}\frac{1}{\sqrt{2\pi}} e^{-x^2/2}\,dx \\
+    &=\frac{1}{\sqrt{2\pi}}e^{\lambda^2/2}\int_{\Rset}e^{-(x-\lambda)^2/2}\,dx  \\
+    &=e^{\lambda^2/2}
+\end{align}
+を得る．とくに$\lambda=k$として結論を得る．
+
+\subsubsection*{[8]}
+(1) $x(t)=e^{-2t}(x_0\cos t+(2x_0+x_1)\sin t)$.
+
+(2) $\bm{x}=\transpose{(x,\ x')}$は
+\begin{equation}
+    \bm{x}'=\begin{bmatrix}
+        0 & 1 \\
+        -5 & -4
+    \end{bmatrix}\bm{x}+\bm{g}(\bm{x}),\quad \bm{g}(x,y)=\begin{bmatrix}
+        0 \\
+        f(x,y)
+    \end{bmatrix}
+\end{equation}
+である．線形項について行列の固有値の実部はすべて負なので，次の補題より原点は局所漸近安定平衡点．
+\begin{lem}
+    $n$次元非線形自励系$u'=Au+g(u)$を考える．ただし$A\in \mathrm{M}_n(\Rset)$であり，$g\in C(\Rset^n;\Rset^n)$は局所Lipschitz連続かつ$g(p)=o(\bm{p})\ (p\to0)$を満たすものとする．このとき
+    \begin{equation}
+        \Lambda\coloneq \max{\Re \lambda\mid \text{$\lambda\in\Cset$は$A$の固有値}}<0
+    \end{equation}
+    ならば，自励系の平衡点$0$は指数安定である．
+\end{lem}
+\begin{proof}
+    {\color{red}追記予定．}
+\end{proof}
 \subsection{2019年度}
 \subsubsection*{[5]}
 (1-1) 次の\textbf{鏡像原理}を思い出す：$D_1$を上半平面$\mathbb{H}$内の領域とし，$\partial D_1\cap \Rset$はある開区間$I$を含むとする．$f\in C(D_1\cup I)$は$D_1$内で正則で，$f(x)\in\Rset\ (x\in I)$ならば，$f$は$D_1\cup I\cup D_2$まで正則に拡張される．ここで$D_2=\qty{z\in\Cset\mid \overline{z}\in D_1}$．
@@ -1466,11 +1739,7 @@ $n\geq1,\ \varepsilon>0$に対して
 \begin{equation}
     \limsup_{\delta\to+0}\sup_{A\in \mathcal{F},\ \mu(A)<\delta}\leq \int_{X}\abs{g}^2\1_{G_k}
 \end{equation}
-である．今，$g\in L^2(X)$より$\abs{g}<\infty\ (\text{$\mu$-a.e.})$であり，測度の単調収束定理より(測度有限に注意)
-\begin{equation}
-    \mu\qty(\bigcap_{k=1}^\infty G_k)=\lim_{k\to\infty}\mu(G_k)
-\end{equation}
-なので，$\abs{g}^2\1_{G_k}\to 0\ (\mu\text{-a.e.})$である．$\abs{g}^2\1_{G_k}\leq \abs{g}^2\in L^1$よりdominated convergenceが使えて
+である．今，$\abs{g}<\infty$ a.e.より$g(x)\1_{G_k}\to 0$ a.e.である．また$\abs{g}^2\1_{G_k}\leq \norm{g}^2\in L^2(X)$よりdominated convergenceが使えて
 \begin{equation}
     \lim_{k\to\infty}\int_{X}\abs{g}^2\1_{G_k}=0 
 \end{equation}
@@ -1713,7 +1982,7 @@ $x(0)=0$より，
 \end{equation}
 である．$\alpha\to1\pm 0$とすることで$(x,z)=\norm{x}^2$つまり$(x,y)=0$を得る．
 \subsection{2024年度}
-\subsubsection*{[5]}
+\subsubsection*{[5]}\label{2024_pm_5}
 (1) $Z$を$f$の$c$内部の零点全体の集合とする．積分路の変形により
 \begin{equation}
     \frac{1}{2\pi i}\int_{c}\frac{f'}{f}\,dz=\frac{1}{2\pi i}\sum_{z_0\in Z}\int_{\partial B_{\rho}(z_0)}\frac{f'}{f}\,dz 
