@@ -1812,7 +1812,7 @@ $\varepsilon>0$とする．(1)より，ある$\delta>0$が存在して，
 \subsubsection*{[8]}
 $f(z)=1/(z^2\sin z)$の正方形領域$\qty{x+iy\mid \max\qty{\abs{x},\abs{y}}\leq (N+1/2)\pi}$における極は，$z=n\pi\ (n\in \Zset\cap\qty[-n,n])$である．極の位数は$0$でのみ$2$で，$n\pi\ (n\neq0)$では$1$．よって
 \begin{equation}
-    \Residue(0,f)=\lim_{z\to0}\frac{d^2}{dz^2}z^3f(z)=\lim_{z\to0}\frac{d^2}{dz^2}\frac{z}{\sin z}=\frac{1}{3},
+    \Residue(0,f)=\frac{1}{2}\lim_{z\to0}\frac{d^2}{dz^2}z^3f(z)=\lim_{z\to0}\frac{d^2}{dz^2}\frac{z}{\sin z}=\frac{1}{6},
 \end{equation}
 \begin{equation}
     \Res(n\pi,f)=\lim_{z\to n\pi}(z-n\pi)f(z)=\lim_{z\to n\pi}\frac{z-n\pi}{z^2\sin z}=\frac{(-1)^n}{(n\pi)^2}\quad (n\neq0)
@@ -1823,7 +1823,7 @@ $f(z)=1/(z^2\sin z)$の正方形領域$\qty{x+iy\mid \max\qty{\abs{x},\abs{y}}\l
 \end{equation}
 を得る．
 
-(2) 答えは$-\pi/6$．$C_N$上$\abs{\sin z}\geq 1$がわかる．よって
+(2) 答えは$-\pi/12$．$C_N$上$\abs{\sin z}\geq 1$がわかる．よって
 \begin{equation}
     \abs{\frac{1}{2\pi i}\int_{C_N}\frac{dz}{z^2\sin z}}\leq \frac{4(2N+1)\pi}{2\pi i}\cdot \frac{1}{\qty(\qty(N+1/2)\pi)^2}\to0\quad (N\to\infty)
 \end{equation}
