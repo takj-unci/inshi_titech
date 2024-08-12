@@ -1271,11 +1271,11 @@ $D_R$における$1/(1+z^{2n+1})$の極は$\zeta=\exp(\pi i/(2n+1))$ただ1つ�
 
 (3) $\int_{\Rset}=\int_{\qty{f>1}}+\int_{\qty{f<1}}+\int_{\qty{f=1}}$とわける．
 
-$g_n\1_{\qty{f>1}}\to 1$ a.e.かつ$g_n\1_{\qty{f>1}}\leq \1_{\qty{f>1}}\in L^1$ ((1)より)なので$\int_{\qty{f>1}}g_n\to \abs{\qty{f>1}}$を得る．
+$g_n\1_{\qty{f>1}}\to \1_{\qty{f>1}}$ a.e.かつ$g_n\1_{\qty{f>1}}\leq \1_{\qty{f>1}}\in L^1$ ((1)より)なので$\int_{\qty{f>1}}g_n\to \abs{\qty{f>1}}$を得る．
 
 $f(x)<1$ならば$g_n(x)\1_{\qty{f<1}}(x)\leq (f(x))^n\to0$なので$g_n\1_{\qty{f<1}}\to0$ a.e., また$g_n\1_{\qty{f<1}}\leq f\in L^1$なので$\int_{\qty{f<1}}g_n\to0$を得る．
 
-$g_n\1_{\qty{f=1}}=\abs{\qty{f=1}}/2$より$\int_{\qty{f=1}}g_n=\abs{\qty{f=1}}/2$である．
+$g_n\1_{\qty{f=1}}=\frac{1}{2}\cdot\1_{\qty{f=1}}$より$\int_{\qty{f=1}}g_n=\abs{\qty{f=1}}/2$である．
 
 \subsubsection*{[7]}\label{pm_2016_7}
 {\color{red} まだ解けていない．}
@@ -1283,7 +1283,7 @@ $g_n\1_{\qty{f=1}}=\abs{\qty{f=1}}/2$より$\int_{\qty{f=1}}g_n=\abs{\qty{f=1}}/
 \subsubsection*{[8]}
 (1) 偏角の原理の証明問題．\hyperref[pm_2024_5]{2024年度問[5]}に同じ問題が出題されている．
 
-(2) $D_{\pm}=\qty{z\in\Cset\mid \abs{z\pm i/2}<1}$とおいたとき対称差$D_{+}\bigtriangleup D_{-}$を描けばよい．
+(2) $D_{\pm}=\qty{z\in\Cset\mid \abs{z\pm i/2}\leq 1}$とおいたとき対称差$D_{+}\bigtriangleup D_{-}$から境界を除いたものを描けばよい．
 \subsection{2017年度}
 \subsubsection*{[7]}
 (1) $\abs{w}<m$ならば，
@@ -1325,7 +1325,7 @@ $g_n\1_{\qty{f=1}}=\abs{\qty{f=1}}/2$より$\int_{\qty{f=1}}g_n=\abs{\qty{f=1}}/
 (3) $r>0$に対して
 \begin{align}
     \int_{\Rset}\abs{f-f_n}\,d\lambda&=\qty(\int_{\qty{\abs{f-f_n}\leq r}}+\int_{\qty{\abs{f-f_n}>r}})\abs{f-f_n}\,d\lambda\\
-    &\leq \int_{\Rset}\min\qty{\abs{f-f_n}, r}\,d\lambda+\int_{\qty{\abs{f-f_n}>r}} +2\int_{\qty{\abs{f-f_n}>r}}g\,d\lambda\\
+    &\leq \int_{\Rset}\min\qty{\abs{f-f_n}, r}\,d\lambda+2\int_{\qty{\abs{f-f_n}>r}}g\,d\lambda\\
     &\leq 2\int_{\Rset}g_r\,d\lambda+2\int_{\qty{\abs{f-f_n}>r}}g\,d\lambda 
 \end{align}
 である．今，仮定より，任意の$\delta>0$に対して$N\in\Nset$があり$\lambda\qty(\qty{\abs{f-f_n}>r})<\delta\ (\forall n\geq N)$となる．よって$n\geq N$ならば
@@ -1356,7 +1356,7 @@ $g_n\1_{\qty{f=1}}=\abs{\qty{f=1}}/2$より$\int_{\qty{f=1}}g_n=\abs{\qty{f=1}}/
 \end{equation}
 により定める．つまり$x_n=S^nx_0$．任意の$n\geq m_0$に対して
 \begin{equation}
-    \norm{x_{n+1}-x_n}=\frac{1}{2}\norm{x_n-x_{n-1}}\leq \cdots \frac{1}{2}\norm{x_1-x_0}=\frac{\abs{\alpha}}{2^n}
+    \norm{x_{n+1}-x_n}=\frac{1}{2}\norm{x_n-x_{n-1}}\leq \cdots \leq\frac{1}{2}\norm{x_1-x_0}=\frac{\abs{\alpha}}{2^n}
 \end{equation}
 となる．よって$n>m\geq m_0$に対して
 \begin{equation}
@@ -1366,7 +1366,7 @@ $g_n\1_{\qty{f=1}}=\abs{\qty{f=1}}/2$より$\int_{\qty{f=1}}g_n=\abs{\qty{f=1}}/
 \begin{equation}
     \norm{Sx-x}\leq \norm{S(x-x_n)}+\norm{x_{n+1}-x}\leq M\norm{x-x_n}+\norm{x_{n+1}-x}\to0\quad (n\to\infty)
 \end{equation}
-より$Sx=x$を得る．$\xi$が他の固定点，$S\xi=\xi$だとする．このとき
+より$Sx=x$を得る．$\xi$が他の固定点，つまり$S\xi=\xi$だとする．このとき
 \begin{equation}
     \norm{x-\xi}=\norm{S^{m_0}x-S^{m_0}\xi}\leq \frac{1}{2}\norm{x-\xi}
 \end{equation}
@@ -1423,9 +1423,9 @@ $g_n\1_{\qty{f=1}}=\abs{\qty{f=1}}/2$より$\int_{\qty{f=1}}g_n=\abs{\qty{f=1}}/
 \end{equation}
 である．線形項について行列の固有値の実部はすべて負なので，次の補題より原点は局所漸近安定平衡点．
 \begin{lem}
-    $n$次元非線形自励系$u'=Au+g(u)$を考える．ただし$A\in \mathrm{M}_n(\Rset)$であり，$g\in C(\Rset^n;\Rset^n)$は局所Lipschitz連続かつ$g(p)=o(\bm{p})\ (p\to0)$を満たすものとする．このとき
+    $n$次元非線形自励系$u'=Au+g(u)$を考える．ただし$A\in \mathrm{M}_n(\Rset)$であり，$g\in C(\Rset^n;\Rset^n)$は局所Lipschitz連続かつ$g(p)=o(p)\ (p\to0)$を満たすものとする．このとき
     \begin{equation}
-        \Lambda\coloneq \max{\Re \lambda\mid \text{$\lambda\in\Cset$は$A$の固有値}}<0
+        \Lambda\coloneq \max\qty{\Re \lambda\mid \text{$\lambda\in\Cset$は$A$の固有値}}<0
     \end{equation}
     ならば，自励系の平衡点$0$は指数安定である．
 \end{lem}
@@ -1576,7 +1576,7 @@ $t_0$を極大延長可能時刻，つまり$t_0=\sup\qty{t>0\mid \text{$u$は$[
         0 & (n>N)
     \end{cases}
 \end{equation}
-と定める．$T^{(N)}_{\alpha}$はfinite-rank-operator (像が有限次元)であるからコンパクト作用素．一方，
+と定める．$T^{(N)}_{\alpha}$はfinite-rank operator (像が有限次元)であるからコンパクト作用素．一方，
 \begin{equation}
     \norm{(T_{\alpha}-T^{(N)}_{\alpha})\qty{a_n}_n}_{l^1}=\sum_{n\geq N+1}n^{-\alpha}\abs{a_n}\leq \qty(\sum_{n\geq N+1}n^{-2\alpha})^{1/2}\norm{\qty{a_n}_{n}}_{l^2}
 \end{equation}
