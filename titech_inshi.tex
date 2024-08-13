@@ -1095,7 +1095,7 @@ $a=-1/(n-1)$の場合，$A$を基本変形を施して
     \begin{bmatrix}
         0 & 0 & 0 & \cdots & 0 \\
         0 & 1 & -1/(n-1) & \cdots & -1/(n-1) \\
-        0 & -q/(n-1) & 1 & \cdots & -1/(n-1) \\
+        0 & -1/(n-1) & 1 & \cdots & -1/(n-1) \\
         \vdots & \vdots & \vdots & \ddots & \vdots \\
         0 & -1/(n-1) & -1/(n-1) & \cdots & 1
     \end{bmatrix}
@@ -1201,6 +1201,52 @@ $a=-1/(n-1)$の場合，$A$を基本変形を施して
 
 \section{午後}
 主に解析系の問題を解いていく．
+\subsection{2014年度}
+\subsubsection*{[5]}
+(1) 答えは$\lim_{r\to 0}\int_{C_r(\theta)}z^n\,dz=\begin{cases}
+    i\theta & (n=-1)\\
+    0 & (n\geq0)
+\end{cases}$.
+
+(2) 答えは$2\pi i\sum_{j=1}^n \alpha_j$.
+
+\subsubsection*{[6]}
+(1) $e^{-x^n}\searrow 0$ a.e. $x\in[1,\infty)$に注意する．$f(x)(1-e^{-x^n})\to f(x)$ a.e. かつ$\abs{f(x)(1-e^{-x^n})}\leq \abs{f(x)}\in L^1$なので，dominated convergenceより結論を得る．
+
+(2) $f_M(x)=-\sum_{k=1}^M \frac{(-1)^k}{k!}f(x)x^{kn}$とおく．まず$f_M(x)\to f(x)(1-e^{-x^n})$ a.e. $x\in [1,\infty)$ as $M\to\infty$である．さらに固定された$N>0$に対して
+\begin{equation}
+    \abs{f_M(x)}\leq \sum_{k=1}^{\infty}\frac{1}{k!}\abs{f(x)}\leq (e^{N^n}-1)\abs{f(x)}\in L^1\quad (x\in[1,N])
+\end{equation}
+が成り立つので，dominated convergenceから帰結する．
+
+(3) $\varphi'(t)=-\int_{0}^{\infty}\frac{f(x)}{(x+t)^2}\,dx$であることを示す．$t\in(0,\infty),\ h\in\Rset,\ \abs{h}<\min\qty{1,t/2}$に対して簡単な計算により
+\begin{align}
+    \abs{\frac{\varphi(t+h)-\varphi(t)}{h}+\int_{0}^{\infty}\frac{f(x)}{(x+t)^2}\,dt}&\leq\int_{0}^{\infty}\frac{\abs{h}}{(x+h+t)(x+t)^2}\abs{f(x)}\,dx
+\end{align}
+である．$\frac{\abs{h}}{(x+h+t)(x+t)^2}\abs{f(x)}\to0$ a.e. as $h\to0$であり，$\frac{\abs{h}}{(x+h+t)(x+t)^2}\abs{f(x)}\leq 2\abs{f(x)}/t^3\in L^1$よりdominated convergenceが適用できる．
+
+$\varphi'$の連続性も同様．
+
+\subsubsection*{[8]}
+(1) (B)の同次化(BH)：$-x''=\lambda x,\ x(0)=x(\pi)=0$の解が0しかないことを示せばよい．
+\begin{enumerate}[(i)]
+    \item $\lambda>0$の場合，(BH)の一般解は$x=A\cos\sqrt{\lambda}t+B\sin \sqrt{\lambda}t$．$x(0)=x(\pi)=0$より$A=0,\ B\sin\sqrt{\lambda}\pi=0$．よって解は$x\equiv 0$であるか，$\lambda=k^2\ (k\in\Nset)$かつ$x=B\sin k\pi$．後者は仮定より棄却される．
+    \item $\lambda<0$の場合，(BH)の一般解は$x=A\cosh \sqrt{-\lambda}t+B\sinh \sqrt{-\lambda}t$．$x(0)=x(\pi)=0$より$A=0$かつ$B\sinh\sqrt{-\lambda}\pi=0$．よって$B=0$．
+    \item $\lambda=0$の場合，(BH)の一般解は$x=Ax+B$．$x(0)=x(\pi)=0$より$A=B=0$．
+\end{enumerate}
+
+(2) $-x''=n^2x+f,\ x(0)=x(\pi)=0$と仮定する．部分積分により
+\begin{align}
+    \int_{0}^{\pi}f(t)\sin nt\,dt&=\int_{0}^{\pi}(-x''-n^2x)\sin nt\,dt\\
+    &=n\int_{0}^{\pi}x'\cos nt\,dt-n^2\int_{0}^{\pi}x\sin nt\,dt\\
+    &=n^2\int_{0}^{\pi}x\sin nt\,dt-n^2\int_{0}^{\pi}x\sin nt\,dt\\
+    &=0
+\end{align}
+よって矛盾．
+
+(3) $x(t)=\sum_{k=1}^n \frac{c_k}{k^2-\lambda}\sin kt$.
+
+(4) $x_n$は$[0,\pi]$で一様Cauchy列である．
 \subsection{2015年度}
 \subsubsection*{[5]}
 結論：$A_n\to -2$，$B_n$は収束しない．$f_n(x)=(nx^2\cos x)/(1+nx),\ g_n(x)=(nx\cos x)/(1+nx^2)$とおく．
@@ -1304,7 +1350,7 @@ $f(x)<1$ならば$g_n(x)\1_{\qty{f<1}}(x)\leq (f(x))^n\to0$なので$g_n\1_{\qty
 $g_n\1_{\qty{f=1}}=\frac{1}{2}\cdot\1_{\qty{f=1}}$より$\int_{\qty{f=1}}g_n=\abs{\qty{f=1}}/2$である．
 
 \subsubsection*{[7]}
-相図を描けば明らか．
+相図を描けば明らか(だと思うのだが……)．
 
 \subsubsection*{[8]}
 (1) 偏角の原理の証明問題．\hyperref[pm_2024_5]{2024年度問[5]}に同じ問題が出題されている．
