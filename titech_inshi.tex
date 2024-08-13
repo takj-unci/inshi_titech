@@ -57,11 +57,9 @@
     \end{quote}
     まだ解けていない問題：
     \begin{itemize}
-        \item \hyperref[am_2019_2]{午前，2019[2]},
         \item \hyperref[am_2022_3]{午前，2022[3](3)},
         \item \hyperref[am_2023_3]{午前，2023[3](4)},
-        
-        \item \hyperref[pm_2016_7]{午後，2016[7]},
+    
         \item \hyperref[pm_2021_6]{午後，2021[6](3)},
     \end{itemize}
 \end{abstract}
@@ -693,7 +691,35 @@ $(x+y)/2$まわりのTaylor展開を考える．
 より$ab=0$である．
 
 \subsubsection*{[2]}\label{am_2019_2}
+(1) 固有値は$0,\ 2,\ -2$で，固有空間の次元はそれぞれ$3,\ 2,\ 1$．
 
+(2) まず$A,\ B$が共通の固有値$\lambda$を持つと仮定する．零でない$x\in \Cset^m,\ y\in \Cset^n$があり，
+\begin{equation}
+    Ax=\lambda x,\quad \transpose{B}y=\lambda y    
+\end{equation}
+となる．すると$X=x\transpose{y}\in M(m,n)$は零ではなく
+\begin{equation}
+    AX-XB=Ax\transpose{y}-x\transpose{y}B=\lambda x\transpose{y}-x\transpose{(\lambda y)}=0
+\end{equation}
+となる．
+
+次に$A$と$B$が共通の固有値を持たないと仮定する．このとき$A,\ B$の最小多項式$\varphi(T),\ \psi(T)\in \Cset[T]$は互いに素であるから，$u,v\in \Cset[T]$があり
+\begin{equation}
+    u\varphi+v\psi=1
+\end{equation}
+となる．さて，変数への$A$の代入によって多項式環$\Cset[T]$は$M(m,n)$に作用している．つまり
+\begin{equation}
+    \Cset[T]\times M(m,n)\ni(p,\ X)\mapsto p(A)X\in M(m,n)
+\end{equation}
+という作用がある．もし$X\in \ker f_{A,B}$，つまり$AX=XB$ならば任意の$p\in \Cset[T]$に対して
+\begin{equation}
+    p(A)X=X p(B)
+\end{equation}
+であるから，とくに
+\begin{equation}
+    X=EX=(u(A)\varphi(A)+v(A)\psi(A))X=Xv(B)\psi(B)=0 
+\end{equation}
+となる．これは$\ker f_{A,B}=0$であることを示している．
 \subsubsection*{[3]}
 (1) $(0,0),\ (0,1)\in\Rset^2$は$\mathcal{O}'$の開集合で分離できない．
 
@@ -1277,8 +1303,8 @@ $f(x)<1$ならば$g_n(x)\1_{\qty{f<1}}(x)\leq (f(x))^n\to0$なので$g_n\1_{\qty
 
 $g_n\1_{\qty{f=1}}=\frac{1}{2}\cdot\1_{\qty{f=1}}$より$\int_{\qty{f=1}}g_n=\abs{\qty{f=1}}/2$である．
 
-\subsubsection*{[7]}\label{pm_2016_7}
-{\color{red} まだ解けていない．}
+\subsubsection*{[7]}
+相図を描けば明らか．
 
 \subsubsection*{[8]}
 (1) 偏角の原理の証明問題．\hyperref[pm_2024_5]{2024年度問[5]}に同じ問題が出題されている．
@@ -1745,15 +1771,15 @@ $n\geq1,\ \varepsilon>0$に対して
 \end{equation}
 なので，
 \begin{equation}
-    \limsup_{\delta\to+0}\sup_{A\in \mathcal{F},\ \mu(A)<\delta}\leq \int_{X}\abs{g}^2\1_{G_k}
+    \limsup_{\delta\to+0}\sup_{A\in \mathcal{F},\ \mu(A)<\delta}\int_{A}\abs{g}^2\leq \int_{X}\abs{g}^2\1_{G_k}
 \end{equation}
-である．今，$\abs{g}<\infty$ a.e.より$g(x)\1_{G_k}\to 0$ a.e.である．また$\abs{g}^2\1_{G_k}\leq \norm{g}^2\in L^2(X)$よりdominated convergenceが使えて
+である．今，$\abs{g}<\infty$ a.e.より$g(x)\1_{G_k}\to 0$ a.e.である．また$\abs{g}^2\1_{G_k}\leq \abs{g}^2\in L^1(X)$よりdominated convergenceが使えて
 \begin{equation}
     \lim_{k\to\infty}\int_{X}\abs{g}^2\1_{G_k}=0 
 \end{equation}
 となる．これで示された．
 
-(2) $f_n$が零集合$A$を除いて$f$に一様収束しているとは，「任意の$k\geq 1$に対して$n_k\geq 1$があり$E_{n_k,k}\subset A$となることである」．
+(2) $f_n$が零集合$A$を除いて$f$に一様収束しているとは，「任意の$k\geq 1$に対して$n_k\geq 1$があり$E_{n_k,k}\subset A$となる」ことである．
 
 (3) $f_n\to f\ $a.e. in $X$とは，
 \begin{equation}
@@ -1812,7 +1838,7 @@ $\varepsilon>0$とする．(1)より，ある$\delta>0$が存在して，
 \subsubsection*{[8]}
 $f(z)=1/(z^2\sin z)$の正方形領域$\qty{x+iy\mid \max\qty{\abs{x},\abs{y}}\leq (N+1/2)\pi}$における極は，$z=n\pi\ (n\in \Zset\cap\qty[-n,n])$である．極の位数は$0$でのみ$2$で，$n\pi\ (n\neq0)$では$1$．よって
 \begin{equation}
-    \Residue(0,f)=\frac{1}{2}\lim_{z\to0}\frac{d^2}{dz^2}z^3f(z)=\lim_{z\to0}\frac{d^2}{dz^2}\frac{z}{\sin z}=\frac{1}{6},
+    \Residue(0,f)=\frac{1}{2}\lim_{z\to0}\frac{d^2}{dz^2}z^3f(z)=\frac{1}{2}\lim_{z\to0}\frac{d^2}{dz^2}\frac{z}{\sin z}=\frac{1}{6},
 \end{equation}
 \begin{equation}
     \Res(n\pi,f)=\lim_{z\to n\pi}(z-n\pi)f(z)=\lim_{z\to n\pi}\frac{z-n\pi}{z^2\sin z}=\frac{(-1)^n}{(n\pi)^2}\quad (n\neq0)
