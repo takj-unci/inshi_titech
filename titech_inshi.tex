@@ -1199,6 +1199,181 @@ $a=-1/(n-1)$の場合，$A$を基本変形を施して
 \end{equation}
 である．
 
+\subsection{2025年度}
+\subsubsection*{[1]}
+(1) direct calculationより$A$の最小多項式は
+\begin{equation}
+    \Phi(x)\coloneq x^5+ax^4+bx^3+cx^2+dx+e .
+\end{equation}
+
+(2) $E$ (単位行列)，$A,A^2,A^3,A^4$の第1列は，それぞれ
+\begin{equation}
+    \begin{bmatrix}
+        1 \\
+        0 \\
+        0 \\
+        0 \\
+        0
+    \end{bmatrix},\quad \begin{bmatrix}
+        0 \\
+        1 \\
+        0 \\
+        0 \\
+        0
+    \end{bmatrix},\quad \begin{bmatrix}
+        0 \\
+        0 \\
+        1 \\
+        0 \\
+        0
+    \end{bmatrix},\quad \begin{bmatrix}
+        0 \\
+        0 \\
+        0 \\
+        1 \\
+        0
+    \end{bmatrix},\quad \begin{bmatrix}
+        0 \\
+        0 \\
+        0 \\
+        0 \\
+        1
+    \end{bmatrix}
+\end{equation}
+となる．よって$E,A,\ldots,A^4$は$\Cset$上一次独立であるから$A$の最小多項式は$\Phi$と一致する．
+
+(3) $\Phi(x)=(x-\alpha_1)^{m_1}\cdots (x-\alpha_r)^{m_r},\ \alpha_i\in\Cset,\ m_i\geq1$と因数分解できたとするとき$A$のJordan標準形は
+\begin{equation}
+    \begin{bmatrix}
+        J(\alpha_1,m_1) \\
+         & \ddots \\
+         & & J(\alpha_r,m_r)
+    \end{bmatrix} ,\quad \text{where }J(\alpha_i,m_i)=\begin{bmatrix}
+        \alpha_i & 1 \\
+        & \alpha_i & 1 \\
+        & & \ddots & 1\\
+        & & & \alpha_i
+    \end{bmatrix}
+\end{equation}
+となることが(2)からわかる．
+\begin{equation}
+    (x-1)^2(x+1)^2(x-2)=x^5-2x^4-2x^3+4x^2-2 
+\end{equation}
+なので，答えは
+\begin{equation}
+    (a,b,c,d,e)=(-2,-2,4,1,2).
+\end{equation}
+
+\subsubsection*{[2]}
+(1) $A$の固有値は$3,\ (1\pm\sqrt{5})/2$；$B$の固有値は$-1,0,4$であることがわかる．$A$ (resp. $\transpose{B}$)の固有値$\lambda$ (resp. $\mu$)と対応する固有ベクトル$v$ (resp. $w$)に対して$X=v\transpose{w}$とおくと 
+\begin{equation}
+    f_{A,B}(X)=Av\transpose{w}B=(Av)\transpose{(\transpose{B}w)}=\lambda\mu X
+\end{equation}
+となるので，$\lambda \mu$は$f_{A,B}$の固有値である．これで$f_{A,B}$の9個の固有値がすべて尽くされているので，結局$f_{A,B}$の固有値は$0$ (3重)，$12,\ -3,\ 2(1\pm \sqrt{5}),\ (-1\pm\sqrt{5})/2$．この中で絶対値最大のものは$12$であるが，$A$の固有値$3$に対応する固有ベクトルとして$\transpose{(1,1,1)}$；$B$の固有値$4$に対応する固有ベクトルとして$\transpose{(1,2,1)}$が取れるので，$f_{A,B}$の固有値12に対応する固有ベクトルの1つとして
+\begin{equation}
+    \begin{bmatrix}
+        1\\
+        1\\
+        1
+    \end{bmatrix}\begin{bmatrix}
+        1 & 2 & 1 
+    \end{bmatrix}=\begin{bmatrix}
+        1 & 2 & 1\\
+        1 & 2 & 1\\
+        1 & 2 & 1
+    \end{bmatrix}
+\end{equation}
+を得る．
+
+(2) 答えは$9-rs$．正則行列$P_1,P_2,Q_1,Q_2$があり，
+\begin{equation}
+    \widetilde{A}\coloneq P_1AP_2=\begin{bmatrix}
+        E_r \\
+        & O_{3-r}
+    \end{bmatrix},\quad \widetilde{B}\coloneq Q_1BQ_2=\begin{bmatrix}
+        E_{s} \\
+        & O_{3-s}
+    \end{bmatrix}
+\end{equation}
+となる．
+\begin{equation}
+    f_{A,B}(X)=AXB=P_{1}^{-1}\cdot P_1AP_2\cdot P_2^{-1}XQ_{1}^{-1}\cdot Q_{1}BQ_{2}\cdot Q_{2}^{-1}=P_{1}^{-1}f_{\widetilde{A},\widetilde{B}}(P_2^{-1}XQ_{1}^{-1})Q_{2}^{-1}
+\end{equation}
+であるから$\rank f_{A,B}=\rank f_{\widetilde{A},\widetilde{B}}$．ここで行列単位$E_{ij}$に対して 
+\begin{equation}
+    f_{\widetilde{A},\widetilde{B}}(E_{ij})=\begin{cases}
+        E_{ij} & (1\leq i\leq r,\ 1\leq j\leq s)\\
+        O & (\text{otherwise})
+    \end{cases}
+\end{equation}
+なので，$\rank f_{A,B}=rs$．
+\subsubsection*{[3]}
+(1) 略．
+
+(2) 答えはNo. $U,V\in\mathcal{O},\ U\neq\emptyset,\ V\neq \emptyset$とする．このとき$\Rset\setminus U,\ \Rset\setminus V$は有界なので，$M>0$があり，
+\begin{equation}
+    \qty{x\in\Rset^2\mid \abs{x}\geq M}\subset U\cap V 
+\end{equation}
+となる．とくに$U\cap V\neq\emptyset$である．
+
+(3) 答えはYes. $U,V\in\mathcal{O},\ U\neq\emptyset,\ V\neq\emptyset$で，$A\subset U\cup V,\ U\cap V\cap A=\emptyset $となるものがあったとする．このとき$\Rset\setminus U,\ \Rset\setminus V$は有界なので，$M>0$があり
+\begin{equation}
+    \qty{x\in\Rset\mid \abs{x}\geq M}\subset U\cap V 
+\end{equation}
+となる．$A$は非有界なので$A\cap \qty{x\in\Rset\mid \abs{x}\geq M}\neq\emptyset$．これは矛盾である．
+
+(4) 答えはYes. $\qty{U_{\lambda}}_{\lambda\in\Lambda}\subset \mathcal{O}$を$\Rset$の開被覆とする．$\lambda_{0}\in\Lambda$を任意に固定する．このとき$\Rset\setminus U_{\lambda_{0}}$は$(\Rset,\mathcal{O}(\Rset^2))$の有界閉集合なので$\mathcal{O}(\Rset^2)$-コンパクト．よって有限部分開被覆が取れ，これと$U_{\lambda_{0}}$と合わせれば$\Rset^2$の有限部分開被覆となる．
+\subsubsection*{[4]}
+(1) $f$は全単射連続なので逆写像$f^{-1}\colon \Rset\to\Rset$が存在する．$g=f^{-1}$かつ$g$が連続であることを示す．$f$が狭義単調増加より$f(t)<x$と$t<f^{-1}(x)$が同値となることに注意すると，
+\begin{equation}
+    g(x)=\sup\qty{t\in\Rset\mid f(t)<x}=\sup\qty{t\in\Rset\mid t<f^{-1}(x)}=f^{-1}(x)
+\end{equation}
+を得る．とくに$g$は全単射かつ狭義単調増加．よって任意の$a<b$に対して
+\begin{equation}
+    g^{-1}((a,b))=(g^{-1}(a),g^{-1}(b))=(f(a),f(b))
+\end{equation}
+なので$g$は連続である．
+
+(2) $g$は広義単調増加であることが定義より分かる．つまり$y<x$ならば$g(y)\leq g(x)$であるから，
+\begin{equation}
+    \limsup_{y\to x-0}g(y)\leq g(x)
+\end{equation}
+を得る．以下$g(x)\leq \liminf_{y\to x-0}g(y)$を示す．$\varepsilon>0$とする．$g$の定義より$t_0\in\Rset$があり$f(t_0)<t<x$かつ$t_0\leq g(y)$となる．任意の$f(t_0)<y<x$に対して$g(y)\geq t_0$であるから，$g(x)<t_0+\varepsilon\leq g(y)+\varepsilon$．したがって
+\begin{equation}
+    g(x)\leq\limsup_{y\to x-0}g(y)+\varepsilon .
+\end{equation}
+$\varepsilon>0$は任意であるから結論を得る．
+
+(3) $f(t)=t^3-t$など．
+\subsubsection*{[5]}
+(1) $x=r\cos\theta,\ y=r\sin\theta,\ (r,\theta)\in[0,1]\times[\pi/4,\pi/2]$と置換する．
+\begin{align}
+    I(a)&=\iint_{D}x^be^{-\frac{ax^2}{x^2+y^2}}\,dxdy\\
+    &=\int_{0}^{1}\int_{\pi/4}^{\pi/2} r(r\cos\theta)^be^{-a\cos^2\theta}\,rdrd\theta\\
+    &=\int_{0}^{1}r^{1+b}\,dr\int_{\pi/4}^{\pi/2}\cos^b\theta\ e^{-a\cos^2\theta}\,d\theta
+\end{align}
+$t=\cos\theta$とおけば
+\begin{equation}
+    I(a)=\int_{0}^{1}r^{1+b}\int_{0}^{1/\sqrt{2}}\frac{t^b}{\sqrt{1-t^2}}e^{-at^2}\,dt 
+\end{equation}
+となる．よって$I(a)$が収束する条件は$b+1>0$で，
+\begin{equation}
+    I(a)=\frac{1}{b+2}\int_{0}^{1/\sqrt{2}}\frac{t^b}{\sqrt{1-t^2}}e^{-at^2}\,dt .
+\end{equation}
+
+(2) $\tau=at^2$と置換すると
+\begin{equation}
+    I(a)=\frac{1}{b+2}\int_{0}^{a/2}\frac{(s/a)^{b/2}}{\sqrt{1-s/a}}e^{-s}\,\frac{ds}{2\sqrt{as}}=\frac{1}{2(b+2)}a^{-(b+1)/2}\int_{0}^{a/2}\frac{s^{(b-1)/2}}{\sqrt{1-s/a}}e^{-s}\,ds 
+\end{equation}
+となる．よって
+\begin{equation}
+    a^{(b+1)/2}I(a)=\frac{1}{2(b+2)}\int_{\Rset}\frac{s^{(b-1)/2}}{\sqrt{1-s/a}}e^{-s}\1_{[0,a/2]}\,ds.
+\end{equation}
+ここで$\frac{s^{(b-1)/2}}{\sqrt{1-s/a}}e^{-s}\1_{[0,a/2]}\to0\ $a.e. $s\in\Rset$かつ$\frac{s^{(b-1)/2}}{\sqrt{1-s/a}}e^{-s}\1_{[0,a/2]}\leq \sqrt{2}s^{(b-1)/2}e^{-s}\in L^1(\Rset)$よりdominated convergenceが使えて
+\begin{equation}
+    \lim_{a\to\infty}a^{(b+1)/2}I(a)=\frac{1}{2(b+2)}\Gamma\qty(\frac{b+1}{2})
+\end{equation}
+を得る．
 \section{午後}
 主に解析系の問題を解いていく．
 \subsection{2014年度}
@@ -2198,4 +2373,117 @@ $f\in C(D),\ x\in D$に対して
     u(0)=0,\ u'(0)=1,\quad u''-u'+u=0\ (x\geq0)
 \end{equation}
 を満たすものでよい．
+
+\subsection{2025年度}
+\subsubsection*{[6]}
+(1)は(3)の主張を認めれば従うので，あとで示すことになる．
+
+(2) $f(z)$を$0$まわりでLaurent展開する：
+\begin{equation}
+    f(z)=\sum_{n\in\Zset}a_nz^n.
+\end{equation}
+Laurent展開級数は広義一様絶対収束であることに注意する．
+\begin{equation}
+    \abs{f(z)}^2=\sum_{n,m\in\Zset}a_n\overline{a_m}z^n\overline{z}^m.
+\end{equation}
+これを$\varepsilon\leq \abs{z}\leq 1$上積分すると
+\begin{align}
+    \infty>\norm{f}^2&\geq \int_{\varepsilon}^{1}\int_{0}^{2\pi}\abs{f(re^{i\theta})}\,rdrd\theta\\
+    &=\sum_{n,m\in\Zset}a_n\overline{a_m}\int_{\varepsilon}^{1}r^{n+m+1}\,dr\int_{0}^{2\pi}e^{i(n-m)\theta}\,d\theta\\
+    &=2\pi\sum_{n\in\Zset}\abs{a_n}^2\qty(\log\frac{1}{\varepsilon}+\sum_{n\neq-1}\frac{1-\varepsilon^{2n+2}}{2n+2})
+\end{align}
+最右辺が$\varepsilon\to+0$で有限となるには$a_n=0\ (n\leq -1)$でなければならない．
+
+(3) 平均値の定理
+\begin{equation}
+    f(z_0)=\frac{1}{2\pi}\int_{0}^{2\pi}f(z_0+\rho e^{i\theta})\,d\theta\quad (0\leq \rho\leq r)
+\end{equation}
+を思い出す．両辺を2乗してHölderの不等式などを用いると
+\begin{equation}
+    \abs{f(z_0)}^2\leq \qty(\frac{1}{2\pi}\int_{0}^{2\pi}\abs{f(z_0+\rho e^{i\theta})}\,d\theta)^2\leq\frac{1}{2\pi}\int_{0}^{2\pi}\abs{f(z_0+\rho e^{i\theta})}^2\,d\theta 
+\end{equation}
+を得る．両辺に$\rho$をかけて$[0,r]$上積分すると
+\begin{equation}
+    \frac{r^2}{2}\abs{f(z_0)}^2\leq \frac{1}{2\pi}\iint_{\abs{z-z_0}\leq r}\abs{f(z_0+\rho e^{i\theta})}\,rdrd\theta\leq\frac{\norm{f}^2}{2\pi} 
+\end{equation}
+を得る．
+
+(4) $L^2(D)$の完備性より，$f\in L^2(D)$があり$\norm{f-f_n}\to0$となることはわかる．この$f$が正則であることを示す．$\overline{B_{2R}}\subset D$となるballを取る．(3)より
+\begin{equation}
+    \limsup_{n,m\to\infty}\sup_{z\in B_R}\abs{f_m(z)-f_n(z)}^2\leq \frac{1}{\pi R^2}\limsup_{n,m\to\infty}\norm{f_n-f_m}^2=0
+\end{equation}
+であるから，$f_n$は$B_R$上ある正則関数$\widetilde{f}$に一様収束する．一方$f_n\to f$ in $L^2(D)$だったので$f=\widetilde{f}$ a.e. in $B_R$．$B_R$は任意なので$f$は正則関数とa.e.で一致する．
+
+\subsubsection*{[7]}
+(1) 答えは0．積分区間を$(0,\infty)=(0,\pi)\cup[\pi,\infty)$に分ける．$(0,\pi)$上$f(x)>0$ a.e.より$\frac{\arctan f(x)}{f(x)}<1$ a.e.であるから$\qty(\frac{\arctan f(x)}{f(x)})^n\to0$ a.e. 有限測度性から$1\in L^1([0,\pi])$なので，dominated convergenceより
+\begin{equation}
+    \int_{0}^{\pi}\qty(\frac{\arctan f(x)}{f(x)})^n\,dx\to0 
+\end{equation}
+がわかる．
+
+$[\pi,\infty)$上$\arctan f(x)\leq \pi/2$かつ$x/2<f(x)$より$\frac{\arctan f(x)}{f(x)}\leq \frac{\pi}{x}$である．よって
+\begin{equation}
+    \int_{\pi}^{\infty}\qty(\frac{\arctan f(x)}{f(x)})^n\,dx\leq\int_{\pi}^{\infty}\qty(\frac{\pi}{x})^n\,dx=\frac{\pi}{n-1}\to0
+\end{equation}
+を得る．
+
+(2) $F(x,t)=pt^{p-1}\1_{\qty(x,t)\mid \abs{f(x)}\geq t}\ ((x,t)\in [0,1]\cup(0,\infty))$とおく．Fubini--Tonelliの定理より
+\begin{equation}
+    \int_{0}^{1}dx\int_{0}^{\infty}dt\ F(x,t)=\int_{0}^{\infty}dt\int_{0}^{1}dx\ F(x,t)
+\end{equation}
+両辺の累次積分を実行することで
+\begin{equation}
+    \int_{0}^{1}\abs{f(x)}^p\,dx=\int_{0}^{\infty}pt^{p-1}m(\qty{x\mid \abs{f(x)}\geq t})\,dt
+\end{equation}
+を得る．
+
+(3) (2)の右辺と和$\sum_{n\geq 1}2^{np}m(\qty{x\mid \abs{f(x)}\geq 2^n})$がcomparableであることを示す．まず積分区間を$(0,\infty)=(0,2)\cup\bigcup_{n\geq 1}[2^n,2^{n+1})$と分けて，
+\begin{align}
+    \int_{0}^{\infty}t^{p-1}m(\qty{x\mid \abs{f(x)}\geq t})&\leq 2^{p-1}+\sum_{n\geq 1}2^n\cdot 2^{(n+1)(p-1)}m\qty(\qty{x\mid \abs{f(x)}\geq 2^n})\\
+    &\leq 2^{p-1}+2^{p-1}\sum_{n\geq 1}2^{np}m(\qty{x\mid \abs{f(x)}\geq 2^n})
+\end{align}
+を得る．また$(0,\infty)=(0,1)\cup\bigcup_{n\geq 1}[2^{n-1},2^n)$と分ければ
+\begin{align}
+    \int_{0}^{\infty}t^{p-1}m(\qty{x\mid \abs{f(x)}\geq t})&\geq 1+\sum_{n\geq 1}2^{n-1}\cdot 2^{(n-1)(p-1)}m(\qty{x\mid \abs{f(x)}\geq 2^n})\\
+    &=1+2^{-p}\sum_{n\geq 1}2^{np}m(\qty{x\mid \abs{f(x)}\geq 2^n})
+\end{align}
+を得る．
+\subsubsection*{[8]}
+$\norm{f}_{C^0}=\sup_{x\in I}\abs{f(x)},\ [f]_{C^{\alpha}}=\sup_{x,y\in I,\ x\neq y}\frac{\abs{f(x)-f(y)}}{\abs{x-y}^{\alpha}}$とおく．
+
+(1) $x\in I$に対して
+\begin{equation}
+    \abs{f(x)}\leq \abs{f(0)}+\abs{f(x)-f(0)}\leq \abs{f(0)}+[f]_{C^{\alpha}}\abs{x}^{\alpha}\leq \abs{f(0)}+[f]_{C^{\alpha}}=\norm{f}_{C^{\alpha}} 
+\end{equation}
+となる．よって$\norm{f}_{C^{0}}\leq \norm{f}_{C^\alpha}$を得る．
+
+(2) $f\in C^\alpha(I),\ x,y\in I$とする．このとき
+\begin{align}
+    \abs{f(x)-f(y)}&=\abs{f(x)-f(y)}^{1-\beta/\alpha}\abs{f(x)-f(y)}^{\beta/\alpha}\\
+    &\leq \qty(2\norm{f}_{C^{0}})^{1-\beta/\alpha}\qty([f]_{C^\alpha}\abs{x-y}^\alpha)^{\beta/\alpha}\\
+    &=2^{1-\beta/\alpha}\norm{f}_{C^0}^{1-\beta/\alpha}[f]_{C^{\alpha}}^{\beta/\alpha}\abs{x-y}^\beta 
+\end{align}
+を得る．とくに$f\in C^\beta(I)$であり，
+\begin{equation}
+    [f]_{C^\beta}\leq 2^{1-\beta/\alpha}\norm{f}_{C^0}^{1-\beta/\alpha}[f]_{C^\alpha}^{\beta/\alpha }
+\end{equation}
+を得る．
+
+(3) $K=\qty{f\in C^\beta(I)\mid \norm{f}_{C^\alpha}\leq 1}$とおく．$K$が点列コンパクトであることを示す．点列$\qty{f_n}\subset K$を取る．$\norm{f_n}_{C^0}\leq \norm{f_n}_{C^\alpha}\leq 1$より$f_n$は$I$上一様有界．さらに$x,y\in I$に対して
+\begin{equation}
+    \abs{f_n(x)-f_n(y)}\leq [f_n]_{C^\alpha}\abs{x-y}^{\alpha}\leq \abs{x-y}^{\alpha} 
+\end{equation}
+なので$f_n$は$I$上同程度一様連続．したがって，Ascoli--Arzelàの定理により$f\in C(I)$があり$\norm{f-f_n}_{C^0}\to0$となる．以下$f\in K$かつ$\norm{f-f_n}_{C^\beta}\to0$であることを示す．任意の$x,y\in I,\ x\neq $に対して
+\begin{equation}
+    \frac{f_n(x)-f_n(y)}{\abs{x-y}^\alpha}\leq 1
+\end{equation}
+であるから$n\to\infty$として
+\begin{equation}
+    \frac{f(x)-f(y)}{\abs{x-y}^{\alpha}}\leq1
+\end{equation}
+を得る．よって$f\in K$．また(2)で示した不等式を$f-f_n\in C^\alpha(I)$に適用して
+\begin{equation}
+    [f-f_n]_{C^\beta}\leq 2^{1-\beta/\alpha}\norm{f-f_n}_{C^0}^{1-\beta/\alpha}[f-f_n]_{C^\alpha}^{\beta/\alpha}\leq 2\norm{f-f_n}_{C^0}\to0
+\end{equation}
+を得る．これで$K$が点列コンパクトであることをが示された．
 \end{document}
