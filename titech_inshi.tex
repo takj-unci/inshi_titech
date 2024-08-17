@@ -2469,21 +2469,21 @@ $\norm{f}_{C^0}=\sup_{x\in I}\abs{f(x)},\ [f]_{C^{\alpha}}=\sup_{x,y\in I,\ x\ne
 \end{equation}
 を得る．
 
-(3) $K=\qty{f\in C^\beta(I)\mid \norm{f}_{C^\alpha}\leq 1}$とおく．$K$が点列コンパクトであることを示す．点列$\qty{f_n}\subset K$を取る．$\norm{f_n}_{C^0}\leq \norm{f_n}_{C^\alpha}\leq 1$より$f_n$は$I$上一様有界．さらに$x,y\in I$に対して
+(3) $K=\qty{f\in C^\beta(I)\mid \norm{f}_{C^\alpha}\leq 1}$とおく．$K$が$\norm{\bullet}_{C^\beta}$で点列コンパクトであることを示す．点列$\qty{f_n}\subset K$を取る．$\norm{f_n}_{C^0}\leq \norm{f_n}_{C^\alpha}\leq 1$より$f_n$は$I$上一様有界．さらに$x,y\in I$に対して
 \begin{equation}
     \abs{f_n(x)-f_n(y)}\leq [f_n]_{C^\alpha}\abs{x-y}^{\alpha}\leq \abs{x-y}^{\alpha} 
 \end{equation}
 なので$f_n$は$I$上同程度一様連続．したがって，Ascoli--Arzelàの定理により$f\in C(I)$があり$\norm{f-f_n}_{C^0}\to0$となる．以下$f\in K$かつ$\norm{f-f_n}_{C^\beta}\to0$であることを示す．任意の$x,y\in I,\ x\neq $に対して
 \begin{equation}
-    \frac{f_n(x)-f_n(y)}{\abs{x-y}^\alpha}\leq 1
+    \frac{\abs{f_n(x)-f_n(y)}}{\abs{x-y}^\alpha}\leq 1
 \end{equation}
 であるから$n\to\infty$として
 \begin{equation}
-    \frac{f(x)-f(y)}{\abs{x-y}^{\alpha}}\leq1
+    \frac{\abs{f(x)-f(y)}}{\abs{x-y}^{\alpha}}\leq1
 \end{equation}
 を得る．よって$f\in K$．また(2)で示した不等式を$f-f_n\in C^\alpha(I)$に適用して
 \begin{equation}
-    [f-f_n]_{C^\beta}\leq 2^{1-\beta/\alpha}\norm{f-f_n}_{C^0}^{1-\beta/\alpha}[f-f_n]_{C^\alpha}^{\beta/\alpha}\leq 2\norm{f-f_n}_{C^0}\to0
+    [f-f_n]_{C^\beta}\leq 2^{1-\beta/\alpha}\norm{f-f_n}_{C^0}^{1-\beta/\alpha}[f-f_n]_{C^\alpha}^{\beta/\alpha}\leq 2\norm{f-f_n}_{C^0}^{1-\beta/\alpha}\to0
 \end{equation}
 を得る．これで$K$が点列コンパクトであることをが示された．
 \end{document}
