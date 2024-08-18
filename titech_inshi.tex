@@ -1338,7 +1338,7 @@ $a=-1/(n-1)$の場合，$A$を基本変形を施して
 \begin{equation}
     \limsup_{y\to x-0}g(y)\leq g(x)
 \end{equation}
-を得る．以下$g(x)\leq \liminf_{y\to x-0}g(y)$を示す．$\varepsilon>0$とする．$g$の定義より$t_0\in\Rset$があり$f(t_0)<t<x$かつ$t_0\leq g(y)$となる．任意の$f(t_0)<y<x$に対して$g(y)\geq t_0$であるから，$g(x)<t_0+\varepsilon\leq g(y)+\varepsilon$．したがって
+を得る．以下$g(x)\leq \liminf_{y\to x-0}g(y)$を示す．$\varepsilon>0$とする．$g$の定義より$t_0\in\Rset$があり$f(t_0)<x$かつ$g(x)<t_0+\varepsilon$となる．任意の$f(t_0)<y<x$に対して$g(y)\geq t_0$であるから，$g(x)<t_0+\varepsilon\leq g(y)+\varepsilon$．したがって
 \begin{equation}
     g(x)\leq\limsup_{y\to x-0}g(y)+\varepsilon .
 \end{equation}
@@ -2415,7 +2415,7 @@ Laurent展開級数は広義一様絶対収束であることに注意する．
 であるから，$f_n$は$B_R$上ある正則関数$\widetilde{f}$に一様収束する．一方$f_n\to f$ in $L^2(D)$だったので$f=\widetilde{f}$ a.e. in $B_R$．$B_R$は任意なので$f$は正則関数とa.e.で一致する．
 
 \subsubsection*{[7]}
-(1) 答えは0．積分区間を$(0,\infty)=(0,\pi)\cup[\pi,\infty)$に分ける．$(0,\pi)$上$f(x)>0$ a.e.より$\frac{\arctan f(x)}{f(x)}<1$ a.e.であるから$\qty(\frac{\arctan f(x)}{f(x)})^n\to0$ a.e. 有限測度性から$1\in L^1([0,\pi])$なので，dominated convergenceより
+(1) 答えは0．積分区間を$(0,\infty)=(0,\pi)\times[\pi,\infty)$に分ける．$(0,\pi)$上$f(x)>0$ a.e.より$\frac{\arctan f(x)}{f(x)}<1$ a.e.であるから$\qty(\frac{\arctan f(x)}{f(x)})^n\to0$ a.e. 有限測度性から$1\in L^1([0,\pi])$なので，dominated convergenceより
 \begin{equation}
     \int_{0}^{\pi}\qty(\frac{\arctan f(x)}{f(x)})^n\,dx\to0 
 \end{equation}
@@ -2427,7 +2427,7 @@ $[\pi,\infty)$上$\arctan f(x)\leq \pi/2$かつ$x/2<f(x)$より$\frac{\arctan f(
 \end{equation}
 を得る．
 
-(2) $F(x,t)=pt^{p-1}\1_{\qty(x,t)\mid \abs{f(x)}\geq t}\ ((x,t)\in [0,1]\cup(0,\infty))$とおく．Fubini--Tonelliの定理より
+(2) $F(x,t)=pt^{p-1}\1_{\qty{(x,t)\mid \abs{f(x)}\geq t}}\ ((x,t)\in [0,1]\cup(0,\infty))$とおく．Fubini--Tonelliの定理より
 \begin{equation}
     \int_{0}^{1}dx\int_{0}^{\infty}dt\ F(x,t)=\int_{0}^{\infty}dt\int_{0}^{1}dx\ F(x,t)
 \end{equation}
@@ -2473,13 +2473,13 @@ $\norm{f}_{C^0}=\sup_{x\in I}\abs{f(x)},\ [f]_{C^{\alpha}}=\sup_{x,y\in I,\ x\ne
 \begin{equation}
     \abs{f_n(x)-f_n(y)}\leq [f_n]_{C^\alpha}\abs{x-y}^{\alpha}\leq \abs{x-y}^{\alpha} 
 \end{equation}
-なので$f_n$は$I$上同程度一様連続．したがって，Ascoli--Arzelàの定理により$f\in C(I)$があり$\norm{f-f_n}_{C^0}\to0$となる．以下$f\in K$かつ$\norm{f-f_n}_{C^\beta}\to0$であることを示す．任意の$x,y\in I,\ x\neq $に対して
+なので$f_n$は$I$上同程度一様連続．したがって，Ascoli--Arzelàの定理により$f\in C(I)$があり$\norm{f-f_n}_{C^0}\to0$となる．以下$f\in K$かつ$\norm{f-f_n}_{C^\beta}\to0$であることを示す．任意の$x,y\in I,\ x\neq y$に対して
 \begin{equation}
-    \frac{\abs{f_n(x)-f_n(y)}}{\abs{x-y}^\alpha}\leq 1
+    \abs{f_n(0)}+\frac{\abs{f_n(x)-f_n(y)}}{\abs{x-y}^\alpha}\leq 1
 \end{equation}
 であるから$n\to\infty$として
 \begin{equation}
-    \frac{\abs{f(x)-f(y)}}{\abs{x-y}^{\alpha}}\leq1
+    \abs{f(0)}+\frac{\abs{f(x)-f(y)}}{\abs{x-y}^{\alpha}}\leq1
 \end{equation}
 を得る．よって$f\in K$．また(2)で示した不等式を$f-f_n\in C^\alpha(I)$に適用して
 \begin{equation}
