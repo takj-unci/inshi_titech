@@ -2222,24 +2222,29 @@ $x(0)=0$より，
 である．$g_n'/g_n$は$\partial B$上$g'/g$に一様収束するのでこれは矛盾である．
 
 \subsubsection*{[6]}
-(1) 正しい．$\norm{(f-f_n)1_{\Rset\setminus E_n}}_1\to0$より，ある部分列$f_{n_k}$が存在して
+(1) 正しい．$\norm{(f-f_n)\1_{\Rset\setminus E_n}}_1\to0$より，ある部分列$f_{n_k}$が存在して
 \begin{equation}
-    (f-f_{n_k})1_{\Rset\setminus E_{n_k}}\to 0\quad (\text{a.e. in $\Rset$})
+    (f-f_{n_k})\1_{\Rset\setminus E_{n_k}}\to 0\quad (\text{a.e. in $\Rset$})
 \end{equation}
-となる．
+となる．更に部分列を取って，
 \begin{equation}
-    E\coloneq \liminf_{k\to \infty} E_{n_k} =\bigcup_{k\geq1}\bigcap_{l\geq k}E_{n_l}
+    \mu(E_{n_k})\leq \frac{1}{2^k}
+\end{equation}
+であるとしてよい．
+\begin{equation}
+    E\coloneq \limsup_{k\to \infty} E_{n_k} =\bigcap_{k\geq1}\bigcup_{l\geq k}E_{n_l}
 \end{equation}
 とおくと$\mu(E)=0$である．$x\notin E$ならば，ある$k\geq 1$があり，任意の$l\geq k$に対して$x\notin E_{n_l}$となる．よって
 \begin{equation}
-    \abs{f(x)-f_{n_k}(x)}\leq \abs{f(x)}|1-1_{\Rset\setminus E_{n_k}}|+\abs{f(x)-f_{n_k}(x)}1_{\Rset\setminus E_{n_k}}\to 0\quad (k\to\infty )
+    \abs{f(x)-f_{n_k}(x)}\leq \abs{f(x)}|1-\1_{\Rset\setminus E_{n_k}}|+\abs{f(x)-f_{n_k}(x)}\1_{\Rset\setminus E_{n_k}}\to 0\quad (k\to\infty )
 \end{equation}
-となる．
+となる((1)とFatouの補題より$\norm{f}_2\leq M$である)．
 
 (2) 正しい．Hölderの不等式より
-\begin{equation}
-    \norm{f-f_n}_{1}\leq \norm{(f-f_n)1_{\Rset\setminus E_n}}_1+\norm{f_n(1_{\Rset\setminus E_n}-1)}_{1}\leq \norm{(f-f_n)1_{\Rset\setminus E_n}}_1+\norm{f_n}_2 \mu(E_n)^{1/2}\to0 
-\end{equation} 
+\begin{align}
+    \norm{f-f_n}_{1}&\leq \norm{(f-f_n)\1_{\Rset\setminus E_n}}_1+\norm{f(\1_{\Rset\setminus E}-1)}_1+\norm{f_n(\1_{\Rset\setminus E_n}-1)}_{1}\\
+    &\leq \norm{(f-f_n)1_{\Rset\setminus E_n}}_1+(\norm{f}_{2}+\norm{f_n}_2) \mu(E_n)^{1/2}\to0 
+\end{align} 
 
 \subsubsection*{[7]}
 $f\in C(D),\ x\in D$に対して
@@ -2349,7 +2354,7 @@ Laurent展開級数は広義一様絶対収束であることに注意する．
 \begin{align}
     \infty>\norm{f}^2&\geq \int_{\varepsilon}^{1}\int_{0}^{2\pi}\abs{f(re^{i\theta})}\,rdrd\theta\\
     &=\sum_{n,m\in\Zset}a_n\overline{a_m}\int_{\varepsilon}^{1}r^{n+m+1}\,dr\int_{0}^{2\pi}e^{i(n-m)\theta}\,d\theta\\
-    &=2\pi\sum_{n\in\Zset}\abs{a_n}^2\qty(\log\frac{1}{\varepsilon}+\sum_{n\neq-1}\frac{1-\varepsilon^{2n+2}}{2n+2})
+    &=2\pi\qty(\abs{a_{-1}}^2\log\frac{1}{\varepsilon}+\sum_{n\neq-1}\frac{1-\varepsilon^{2n+2}}{2n+2}\abs{a_n}^2)
 \end{align}
 最右辺が$\varepsilon\to+0$で有限となるには$a_n=0\ (n\leq -1)$でなければならない．
 
@@ -2446,7 +2451,7 @@ $\norm{f}_{C^0}=\sup_{x\in I}\abs{f(x)},\ [f]_{C^{\alpha}}=\sup_{x,y\in I,\ x\ne
 \end{equation}
 を得る．これで$K$が点列コンパクトであることをが示された．
 
-\section{おまけA：未解決問題リスト}
+\section{おまけA：個人的未解決問題リスト}
 院試の過去問で個人的に未解決のもののうち，筆者が解決したいと思っている(重要)もののリストを掲げておく．なお問題は一部抜粋したり表現を改変している．
 
 \subsubsection*{東工大2021年度，午後[6](3) (一部改変)}
@@ -2459,7 +2464,7 @@ $\Rset$上のLebesgue可測関数の列$\qty{u_n}_{n\in\Nset}$が
 \subsubsection*{東大2021年度，専門B 第12問}
 $D\subset\Cset$を$0$を含む有界領域で，$D$上の正則関数$f\colon D\to\Cset$は$f(D)\subset D,\ f(0)=0$を満たすとする．関数列$\qty{f_n}_{n\in\Nset}$を
 \begin{equation}
-    f_1(x)=f(x),\quad f_{n+1}(x)=f(f_n(x))\quad (n\geq 1)
+    f_1(z)=f(z),\quad f_{n+1}(z)=f(f_n(z))\quad (n\geq 1)
 \end{equation}
 で定める．
 \begin{enumerate}
@@ -2519,8 +2524,8 @@ $\Rset$上の複素数値可積分関数$f\in L^1(\Rset;\Cset)$に対して次�
     \item 実数$s,t\in\Rset$が存在して，$\Rset$上ほとんど至るところ$f(x)e^{\sqrt{-1}(sx+t)}\in\Rset_{\geq0}$．
 \end{enumerate}
 
-\subsubsection*{東大2025年度 専門B 第?問}
-$\Cset$内の領域を$\Delta_r=\qty{z\in\Cset\mid \abs{z}<1},\ \Delta=\Delta_1$とおく．$f$は$\Delta$上の単射正則関数とする．
+\subsubsection*{東大2025年度，専門B 第?問}
+$\Cset$内の領域を$\Delta_r=\qty{z\in\Cset\mid \abs{z}<1},\ \Delta=\Delta_1$とおく．$f$を$\Delta$上の単射正則関数とする．
 \begin{enumerate}
     \item $f$の0まわりでのTaylor展開を$f(z)=\sum_{n\geq0}a_nz^n$とおく．このとき$0<r<1$に対して$f(\Delta_r)$の面積を$r,\ a_0,a_1,\ldots$を用いて表せ．
     \item $f(\Delta)$が凸ならば，任意の$0<r<1$に対して$f(\Delta_r)$が凸であることを示せ．
